@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Philosophy of Teaching | Mohammed Amir Umer</title>
+<style>
+:root{
+  --bg:#eaf4ff;
+  --bg2:#fff7df;
+  --primary:#0b2f6b;
+  --primary2:#1455a3;
+  --gold:#f4c542;
+  --orange:#ff7a18;
+  --purple:#5b1d91;
+  --text:#172033;
+  --muted:#5f6b7a;
+  --shadow:0 22px 55px rgba(11,47,107,0.18);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--gold) rgba(11,47,107,0.18);}
+body{
+  margin:0;
+  font-family:"Segoe UI",Arial,sans-serif;
+  color:var(--text);
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top left,#dbeafe 0,transparent 32%),
+    radial-gradient(circle at top right,#fff0b8 0,transparent 30%),
+    linear-gradient(135deg,var(--bg),var(--bg2));
+  overflow-x:hidden;
+  line-height:1.72;
+}
+body::-webkit-scrollbar{width:11px;}
+body::-webkit-scrollbar-track{background:rgba(11,47,107,0.10);border-radius:999px;}
+body::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,var(--gold),var(--orange),var(--primary2));
+  border-radius:999px;
+  border:3px solid rgba(255,255,255,0.75);
+}
+.wrapper{width:min(1180px,92%);margin:0 auto;padding:0 0 34px;}
+.top-nav{
+  display:flex;
+  justify-content:flex-end;
+  padding-top:22px;
+  padding-bottom:18px;
+}
+.home-btn{
+  text-decoration:none;
+  width:64px;
+  height:64px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,rgba(255,255,255,0.92),rgba(240,248,255,0.98));
+  border-radius:50%;
+  border:3px solid var(--gold);
+  box-shadow:
+    0 0 0 4px rgba(122,43,194,0.28),
+    0 14px 32px rgba(11,47,107,0.24),
+    inset 0 1px 0 rgba(255,255,255,0.95);
+  backdrop-filter:blur(10px);
+  transition:all .25s ease;
+  position:relative;
+  overflow:hidden;
+}
+.home-btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:linear-gradient(135deg,rgba(255,255,255,.78) 0%,rgba(255,255,255,.15) 42%,transparent 70%);
+}
+.home-btn svg{width:32px;height:32px;fill:var(--primary2);position:relative;z-index:2;transform:translateY(2px);filter:drop-shadow(0 2px 2px rgba(0,0,0,.16));}
+.home-btn:hover{transform:translateY(-3px) scale(1.08);box-shadow:0 0 0 6px rgba(244,197,66,0.48),0 22px 48px rgba(11,47,107,0.34),inset 0 1px 0 rgba(255,255,255,1);}
+.hero{text-align:center;padding:10px 18px 18px;}
+.hero h1{
+  margin:0;
+  font-size:clamp(42px,6.6vw,78px);
+  line-height:1;
+  color:var(--primary);
+  font-weight:950;
+  letter-spacing:-1.4px;
+}
+.hero h1 span{color:var(--orange);}
+.hero p{
+  max-width:980px;
+  margin:24px auto 0;
+  color:#4e5868;
+  font-size:clamp(20px,2.3vw,31px);
+  line-height:1.36;
+}
+.nav-strip{
+  position:sticky;
+  top:0;
+  z-index:20;
+  margin:24px 0;
+  background:rgba(255,255,255,.82);
+  border:1px solid rgba(20,85,163,.14);
+  border-radius:28px;
+  box-shadow:0 16px 38px rgba(11,47,107,.12);
+  backdrop-filter:blur(14px);
+  padding:10px;
+  display:grid;
+  grid-template-columns:repeat(7,minmax(0,1fr));
+  gap:8px;
+}
+.nav-strip a{
+  text-decoration:none;
+  color:var(--primary);
+  font-weight:850;
+  padding:10px 10px;
+  border-radius:999px;
+  text-align:center;
+  font-size:14px;
+  line-height:1.15;
+}
+.nav-strip a:hover{background:linear-gradient(135deg,var(--primary),var(--primary2));color:white;}
+.panel{
+  background:rgba(255,255,255,.74);
+  border:1px solid rgba(20,85,163,.16);
+  border-radius:36px;
+  padding:34px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(16px);
+  margin-top:22px;
+}
+.main-card{
+  background:linear-gradient(180deg,#ffffff,#f8fbff);
+  border:1px solid rgba(20,85,163,.22);
+  border-left:8px solid var(--gold);
+  border-radius:30px;
+  padding:32px;
+  box-shadow:0 24px 60px rgba(11,47,107,.18);
+}
+.main-card h2{
+  margin:0 0 16px;
+  color:var(--primary);
+  font-size:clamp(28px,3.4vw,44px);
+  line-height:1.1;
+  font-weight:950;
+}
+.main-card p{color:#3f4a59;font-size:1.06rem;margin:0 0 18px;}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
+.mini-card,.framework-card{
+  background:linear-gradient(180deg,#ffffff,#f8fbff);
+  border:1px solid rgba(20,85,163,.20);
+  border-left:7px solid var(--gold);
+  border-radius:24px;
+  padding:22px;
+  box-shadow:0 18px 42px rgba(11,47,107,.12);
+}
+.framework-card{
+  background:linear-gradient(180deg,#ffffff,#fffdf5);
+  border:1px solid rgba(244,197,66,.38);
+}
+.mini-card h3,.framework-card h3{
+  margin:0 0 10px;
+  color:var(--primary);
+  font-size:21px;
+  line-height:1.2;
+}
+.mini-card p,.mini-card li,.framework-card p,.framework-card li{
+  color:var(--muted);
+  font-size:15.5px;
+  line-height:1.7;
+}
+.mini-card ul,.framework-card ul{margin:10px 0 0;padding-left:20px;}
+.tag{
+  display:inline-block;
+  margin-bottom:10px;
+  background:rgba(20,85,163,.08);
+  color:var(--primary2);
+  border:1px solid rgba(20,85,163,.14);
+  border-radius:999px;
+  padding:5px 10px;
+  font-size:13px;
+  font-weight:850;
+}
+.quote{
+  margin:24px 0;
+  padding:22px 24px;
+  border-radius:0 22px 22px 0;
+  border-left:8px solid var(--orange);
+  background:linear-gradient(180deg,#fffdf5,#ffffff);
+  box-shadow:0 18px 40px rgba(11,47,107,.12);
+  color:#344054;
+  font-style:italic;
+  font-size:1.08rem;
+}
+.badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;}
+.badge{
+  display:inline-flex;
+  background:rgba(255,255,255,.82);
+  border:1px solid rgba(20,85,163,.16);
+  color:var(--primary);
+  border-radius:999px;
+  padding:8px 12px;
+  font-weight:850;
+  box-shadow:0 8px 20px rgba(11,47,107,.08);
+}
+.section{scroll-margin-top:120px;}
+.footer-container{text-align:center;margin:34px 0 0;}
+footer{
+  display:inline-block;
+  background:rgba(255,255,255,.78);
+  border-top:3px solid var(--gold);
+  color:#46505f;
+  padding:12px 24px;
+  border-radius:18px;
+  font-size:14px;
+  font-weight:800;
+  font-style:italic;
+  box-shadow:0 12px 28px rgba(11,47,107,.14);
+}
+@media(max-width:1000px){
+  .grid-2,.grid-3{grid-template-columns:1fr;}
+  .nav-strip{grid-template-columns:repeat(2,minmax(0,1fr));border-radius:24px;}
+}
+@media(max-width:720px){
+  .top-nav{padding-bottom:10px;}
+  .hero{padding-top:0;}
+  .panel{padding:22px;}
+  .main-card,.mini-card,.framework-card{padding:22px;}
+  .hero p{font-size:20px;}
+  .nav-strip{position:relative;top:auto;grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="top-nav">
+    <a class="home-btn" href="index.html" aria-label="Back to CV" title="Back to CV">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M10.8 2.4a1.8 1.8 0 0 1 2.4 0l8 7.2c.4.4.5 1 .1 1.5-.3.4-.9.5-1.4.2l-.9-.8V20a1.5 1.5 0 0 1-1.5 1.5h-4v-6h-3v6h-4A1.5 1.5 0 0 1 5 20v-9.5l-.9.8c-.5.3-1.1.2-1.4-.2-.4-.5-.3-1.1.1-1.5l8-7.2z"/>
+      </svg>
+    </a>
+  </div>
+
+  <section class="hero">
+    <h1>Philosophy <span>of Teaching</span></h1>
+    <p>A learner-centred, practical and future-focused teaching philosophy built on respect, inclusion, critical thinking, assessment fairness, digital innovation and lifelong learning.</p>
+  </section>
+
+  <nav class="nav-strip">
+    <a href="#belief">Belief</a>
+    <a href="#learner">Learner-Centred</a>
+    <a href="#practice">Practical Learning</a>
+    <a href="#assessment">Assessment</a>
+    <a href="#technology">Technology</a>
+    <a href="#inclusion">Inclusion</a>
+    <a href="#purpose">Purpose</a>
+  </nav>
+
+  <section class="panel section" id="belief">
+    <div class="main-card">
+      <h2>My Core Belief About Teaching</h2>
+      <p>I believe that effective teaching begins with understanding the learner. Every learner enters education with different experiences, confidence levels, motivations, responsibilities and ways of understanding the world. A meaningful educational experience recognises these differences and creates an environment where learners feel respected, supported, challenged and capable of growth.</p>
+      <p>For this reason, I do not see teaching as the simple delivery of information. I see teaching as the creation of conditions in which learners can develop knowledge, confidence, independence, curiosity, critical thinking and professional judgement.</p>
+      <div class="quote">A teacher should help learners believe that learning is possible, worthwhile and connected to their future.</div>
+    </div>
+  </section>
+
+  <section class="panel section" id="learner">
+    <div class="main-card">
+      <h2>Learner-Centred Education</h2>
+      <p>My philosophy is grounded in learner-centred education. I believe students learn best when they are active participants in the learning process, not passive receivers of information. The role of the educator is to explain clearly, listen carefully, ask meaningful questions, encourage reflection and guide learners towards deeper understanding.</p>
+      <div class="grid-3">
+        <div class="framework-card">
+          <span class="tag">Learner-Centred Practice</span>
+          <h3>Understanding the Individual</h3>
+          <p>I consider the learner’s starting point, confidence, goals, language needs, digital ability and professional background before deciding how best to teach and support them.</p>
+        </div>
+        <div class="framework-card">
+          <span class="tag">Scaffolding</span>
+          <h3>Support Before Independence</h3>
+          <p>I provide structure and guidance in the early stages, then gradually encourage learners to take more responsibility and develop independent judgement.</p>
+        </div>
+        <div class="framework-card">
+          <span class="tag">Reflective Learning</span>
+          <h3>Thinking About Progress</h3>
+          <p>I encourage learners to reflect on what they understand, where they need improvement and how they can apply learning in real academic or professional settings.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel section" id="practice">
+    <div class="main-card">
+      <h2>Academic Understanding With Practical Relevance</h2>
+      <p>I believe education should combine academic understanding with practical relevance. This is especially important in cybersecurity, information technology, artificial intelligence, business management, project management, vocational education and workforce training.</p>
+      <p>In these areas, learners need more than theory. They need analytical thinking, ethical awareness, adaptability, problem-solving ability, digital confidence and the ability to make informed decisions in changing professional environments.</p>
+      <div class="grid-3">
+        <div class="mini-card">
+          <h3>Technical and Digital Subjects</h3>
+          <p>I connect technical knowledge with practical examples, risk awareness, secure systems, data protection, digital resilience and real organisational challenges.</p>
+        </div>
+        <div class="mini-card">
+          <h3>Business and Project Management</h3>
+          <p>I help learners develop communication, planning, leadership, decision-making, ethical awareness and the ability to understand people, systems and organisational goals.</p>
+        </div>
+        <div class="mini-card">
+          <h3>Vocational and Workforce Training</h3>
+          <p>I focus on competence, employability, confidence, workplace behaviour, professional standards and evidence that shows what learners can actually do.</p>
+        </div>
+      </div>
+      <div class="quote">Learning becomes powerful when students understand not only what they are learning, but why it matters and how it connects to real life.</div>
+    </div>
+  </section>
+
+  <section class="panel section" id="assessment">
+    <div class="main-card">
+      <h2>Assessment as Learning and Improvement</h2>
+      <p>Assessment is also part of my philosophy of teaching. I believe assessment should support learning, not simply measure it. Effective assessment gives learners clear expectations, fair opportunities, meaningful feedback and a pathway for improvement.</p>
+      <p>My experience as a teacher, assessor, internal verifier, curriculum manager, lead IQA and head of education and quality assurance has reinforced my belief that fairness, consistency, transparency and academic integrity are essential to good education.</p>
+      <div class="grid-3">
+        <div class="framework-card">
+          <span class="tag">Assessment for Learning</span>
+          <h3>Feedback That Builds Progress</h3>
+          <p>I use feedback to help learners understand what they have done well, what needs improvement and what steps they can take next.</p>
+        </div>
+        <div class="framework-card">
+          <span class="tag">Fair Assessment</span>
+          <h3>Clear Criteria and Transparency</h3>
+          <p>Learners perform better when they know what is expected, how evidence will be judged and how assessment links to learning outcomes.</p>
+        </div>
+        <div class="framework-card">
+          <span class="tag">Academic Integrity</span>
+          <h3>Trust and Responsibility</h3>
+          <p>I believe assessment must protect fairness, honesty and reliable judgement while also helping learners grow in confidence and ability.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel section" id="technology">
+    <div class="main-card">
+      <h2>Technology, Cybersecurity and Future-Focused Education</h2>
+      <p>My passion for information technology, cybersecurity and innovation strongly influences how I understand education. Technology changes continuously, and educators must continue learning if they are to prepare learners for modern workplaces and future challenges.</p>
+      <p>My current research interest in enhancing cybersecurity through artificial intelligence is part of this wider philosophy. I see AI not only as a technical subject, but as an educational and ethical challenge. Learners need to understand how emerging technologies work, how they can be used responsibly and how they affect people, organisations, security, privacy and society.</p>
+      <div class="grid-2">
+        <div class="mini-card">
+          <h3>Cybersecurity and AI Focus</h3>
+          <ul>
+            <li>AI-driven cybersecurity solutions.</li>
+            <li>Secure systems design.</li>
+            <li>Cloud security and data protection.</li>
+            <li>Digital resilience and information systems security.</li>
+            <li>Responsible use of emerging technologies.</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <h3>Umer AI Learning Platform</h3>
+          <p>I independently designed and developed the Umer AI Learning Platform to support teachers, learners and cybersecurity professionals through practical resources, cybersecurity concepts, training materials and technology-based solutions.</p>
+        </div>
+      </div>
+      <div class="quote">For me, future-focused education must combine technical skill with human judgement.</div>
+    </div>
+  </section>
+
+  <section class="panel section" id="inclusion">
+    <div class="main-card">
+      <h2>Respect, Inclusion and Cultural Awareness</h2>
+      <p>Respect is a fundamental part of my teaching philosophy. I believe the strongest learning environments are built on mutual respect, professionalism, trust and inclusion. Learners should feel able to ask questions, test ideas, make mistakes and participate without fear of embarrassment.</p>
+      <p>Inclusion is also central to my view of education. Learners come from different backgrounds and may face different barriers. Some need confidence, some need structure, some need challenge and some need help connecting learning to their own goals.</p>
+      <div class="grid-3">
+        <div class="framework-card">
+          <span class="tag">Inclusive Practice</span>
+          <h3>High Support and High Standards</h3>
+          <p>Inclusion does not mean lowering standards. It means helping learners access the support they need to reach those standards.</p>
+        </div>
+        <div class="framework-card">
+          <span class="tag">Cultural Awareness</span>
+          <h3>Adapting to Context</h3>
+          <p>My work across the UK, USA, UAE and China has taught me that effective teaching adapts to the learner, the culture, the subject and the purpose of learning.</p>
+        </div>
+        <div class="framework-card">
+          <span class="tag">Professional Trust</span>
+          <h3>Respectful Learning Environments</h3>
+          <p>I want learners to feel supported and encouraged, while also understanding responsibility, discipline, effort and academic integrity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel section" id="purpose">
+    <div class="main-card">
+      <h2>The Purpose of My Teaching</h2>
+      <p>At programme and institutional level, I believe education must continuously evolve. Curriculum should be reviewed in response to learner needs, employer expectations, technological change, industry developments, assessment evidence, quality assurance findings and educational research.</p>
+      <p>Ultimately, my goal as an educator is to help learners develop confidence, competence, independence, curiosity and integrity. I want learners to leave the learning environment not only with academic knowledge or technical skills, but with the ability to apply what they know responsibly, continue learning independently and contribute positively to their professions and communities.</p>
+      <div class="quote">If my teaching helps learners recognise their own potential, develop meaningful skills and move forward with confidence and purpose, then I believe I have fulfilled one of the most important responsibilities of education.</div>
+    </div>
+  </section>
+
+  <div class="footer-container">
+    <footer>Philosophy of Teaching | Mohammed Amir Umer</footer>
+  </div>
+</div>
+</body>
+</html>

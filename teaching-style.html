@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teaching Style and Methodology | Mohammed Amir Umer</title>
+<style>
+:root{
+  --bg:#eaf4ff;
+  --bg2:#fff7df;
+  --primary:#0b2f6b;
+  --primary2:#1455a3;
+  --gold:#f4c542;
+  --orange:#ff7a18;
+  --purple:#5b1d91;
+  --purple2:#7a2bc2;
+  --green:#28a745;
+  --text:#172033;
+  --muted:#5f6b7a;
+  --shadow:0 22px 55px rgba(11,47,107,0.18);
+}
+*{box-sizing:border-box;}
+html{
+  scroll-behavior:smooth;
+  scrollbar-width:thin;
+  scrollbar-color:var(--gold) rgba(11,47,107,0.18);
+}
+body{
+  margin:0;
+  font-family:"Segoe UI",Arial,sans-serif;
+  color:var(--text);
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top left,#dbeafe 0,transparent 32%),
+    radial-gradient(circle at top right,#fff0b8 0,transparent 30%),
+    linear-gradient(135deg,var(--bg),var(--bg2));
+  overflow-x:hidden;
+  line-height:1.72;
+}
+body::-webkit-scrollbar{width:11px;}
+body::-webkit-scrollbar-track{background:rgba(11,47,107,0.10);border-radius:999px;}
+body::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,var(--gold),var(--orange),var(--primary2));
+  border-radius:999px;
+  border:3px solid rgba(255,255,255,0.75);
+}
+.wrapper{
+  width:min(1180px,92%);
+  margin:0 auto;
+  padding:0 0 34px;
+}
+.top-nav{
+  display:flex;
+  justify-content:flex-end;
+  padding-top:18px;
+}
+.home-btn{
+  text-decoration:none;
+  width:64px;
+  height:64px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,rgba(255,255,255,0.86),rgba(240,248,255,0.96));
+  border-radius:50%;
+  border:3px solid var(--gold);
+  box-shadow:
+    0 0 0 4px rgba(122,43,194,0.42),
+    0 14px 32px rgba(11,47,107,0.24),
+    inset 0 1px 0 rgba(255,255,255,0.95);
+  backdrop-filter:blur(10px);
+  transition:all .25s ease;
+  position:relative;
+  overflow:hidden;
+}
+.home-btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:linear-gradient(135deg,rgba(255,255,255,.78) 0%,rgba(255,255,255,.15) 42%,transparent 70%);
+}
+.home-btn svg{
+  width:32px;
+  height:32px;
+  fill:var(--primary2);
+  position:relative;
+  z-index:2;
+  transform:translateY(2px);
+  filter:drop-shadow(0 2px 2px rgba(0,0,0,.16));
+}
+.home-btn:hover{
+  transform:translateY(-3px) scale(1.08);
+  box-shadow:
+    0 0 0 6px rgba(244,197,66,0.58),
+    0 22px 48px rgba(11,47,107,0.34),
+    inset 0 1px 0 rgba(255,255,255,1);
+}
+.hero{
+  margin-top:-58px;
+  text-align:center;
+  padding:0 18px 18px;
+}
+.hero h1{
+  margin:0;
+  font-size:clamp(42px,6.4vw,78px);
+  line-height:1;
+  color:var(--primary);
+  font-weight:950;
+  letter-spacing:-1.4px;
+}
+.hero h1 span{color:var(--orange);}
+.hero p{
+  max-width:980px;
+  margin:24px auto 0;
+  color:#4e5868;
+  font-size:clamp(20px,2.4vw,32px);
+  line-height:1.36;
+}
+.nav-strip{
+  position:sticky;
+  top:0;
+  z-index:20;
+  margin:22px auto;
+  background:rgba(255,255,255,.82);
+  border:1px solid rgba(20,85,163,.14);
+  border-radius:28px;
+  box-shadow:0 16px 38px rgba(11,47,107,.12);
+  backdrop-filter:blur(14px);
+  padding:10px;
+  display:grid;
+  grid-template-columns:repeat(7,minmax(0,1fr));
+  gap:8px;
+}
+.nav-strip a{
+  text-decoration:none;
+  color:var(--primary);
+  font-weight:850;
+  padding:10px 10px;
+  border-radius:999px;
+  text-align:center;
+  font-size:14px;
+  line-height:1.15;
+}
+.nav-strip a:hover{
+  background:linear-gradient(135deg,var(--primary),var(--primary2));
+  color:white;
+}
+.panel{
+  background:rgba(255,255,255,.74);
+  border:1px solid rgba(20,85,163,.16);
+  border-radius:36px;
+  padding:34px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(16px);
+  margin-top:22px;
+}
+.statement-card{
+  background:linear-gradient(180deg,#ffffff,#f8fbff);
+  border:1px solid rgba(20,85,163,.22);
+  border-left:8px solid var(--gold);
+  border-radius:30px;
+  padding:32px;
+  box-shadow:0 24px 60px rgba(11,47,107,.18);
+}
+.statement-card h2{
+  margin:0 0 16px;
+  color:var(--primary);
+  font-size:clamp(28px,3.4vw,44px);
+  line-height:1.1;
+  font-weight:950;
+}
+.statement-card p{
+  color:#3f4a59;
+  font-size:1.06rem;
+  margin:0 0 18px;
+}
+.grid-2{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:20px;
+}
+.grid-3{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
+.grid-4{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:16px;
+}
+.mini-card{
+  background:linear-gradient(180deg,#ffffff,#f8fbff);
+  border:1px solid rgba(20,85,163,.20);
+  border-left:7px solid var(--gold);
+  border-radius:24px;
+  padding:22px;
+  box-shadow:0 18px 42px rgba(11,47,107,.12);
+}
+.mini-card h3{
+  margin:0 0 10px;
+  color:var(--primary);
+  font-size:21px;
+  line-height:1.2;
+}
+.mini-card p,.mini-card li{
+  color:var(--muted);
+  font-size:15.5px;
+  line-height:1.7;
+}
+.mini-card ul{margin:10px 0 0;padding-left:20px;}
+.framework-card{
+  background:linear-gradient(180deg,#ffffff,#fffdf5);
+  border:1px solid rgba(244,197,66,.38);
+  border-left:7px solid var(--gold);
+  border-radius:22px;
+  padding:20px;
+  box-shadow:0 16px 34px rgba(11,47,107,.11);
+}
+.framework-card h3{
+  margin:0 0 8px;
+  color:var(--primary);
+  font-size:19px;
+}
+.framework-card .tag{
+  display:inline-block;
+  margin-bottom:10px;
+  background:rgba(20,85,163,.08);
+  color:var(--primary2);
+  border:1px solid rgba(20,85,163,.14);
+  border-radius:999px;
+  padding:5px 10px;
+  font-size:13px;
+  font-weight:850;
+}
+.framework-card p{
+  margin:0;
+  color:#556273;
+  font-size:15px;
+  line-height:1.65;
+}
+.quote{
+  margin:24px 0;
+  padding:22px 24px;
+  border-radius:0 22px 22px 0;
+  border-left:8px solid var(--orange);
+  background:linear-gradient(180deg,#fffdf5,#ffffff);
+  box-shadow:0 18px 40px rgba(11,47,107,.12);
+  color:#344054;
+  font-style:italic;
+  font-size:1.08rem;
+}
+.badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:12px;
+}
+.badge{
+  display:inline-flex;
+  background:rgba(255,255,255,.82);
+  border:1px solid rgba(20,85,163,.16);
+  color:var(--primary);
+  border-radius:999px;
+  padding:8px 12px;
+  font-weight:850;
+  box-shadow:0 8px 20px rgba(11,47,107,.08);
+}
+.section{
+  scroll-margin-top:120px;
+}
+.footer-container{text-align:center;margin:34px 0 0;}
+footer{
+  display:inline-block;
+  background:rgba(255,255,255,.78);
+  border-top:3px solid var(--gold);
+  color:#46505f;
+  padding:12px 24px;
+  border-radius:18px;
+  font-size:14px;
+  font-weight:800;
+  font-style:italic;
+  box-shadow:0 12px 28px rgba(11,47,107,.14);
+}
+@media(max-width:1000px){
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr;}
+  .nav-strip{grid-template-columns:repeat(2,minmax(0,1fr));border-radius:24px;}
+}
+@media(max-width:720px){
+  .hero{margin-top:-24px;}
+  .panel{padding:22px;}
+  .statement-card,.mini-card,.framework-card{padding:22px;}
+  .hero p{font-size:20px;}
+  .nav-strip{position:relative;top:auto;grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="top-nav">
+    <a class="home-btn" href="index.html" aria-label="Back to CV" title="Back to CV">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M10.8 2.4a1.8 1.8 0 0 1 2.4 0l8 7.2c.4.4.5 1 .1 1.5-.3.4-.9.5-1.4.2l-.9-.8V20a1.5 1.5 0 0 1-1.5 1.5h-4v-6h-3v6h-4A1.5 1.5 0 0 1 5 20v-9.5l-.9.8c-.5.3-1.1.2-1.4-.2-.4-.5-.3-1.1.1-1.5l8-7.2z"/>
+      </svg>
+    </a>
+  </div>
+
+  <section class="hero">
+    <h1>Teaching Style <span>and Methodology</span></h1>
+    <p>A practical, learner-centred and evidence-informed approach to teaching, training, assessment, digital learning, inclusion and quality assurance.</p>
+  </section>
+
+  <nav class="nav-strip">
+    <a href="#overview">Overview</a>
+    <a href="#styles">Teaching Styles</a>
+    <a href="#methods">Methods</a>
+    <a href="#digital">Digital & Technical</a>
+    <a href="#assessment">Assessment & QA</a>
+    <a href="#inclusion">Inclusion</a>
+    <a href="#impact">Impact</a>
+  </nav>
+
+  <section class="panel section" id="overview">
+    <div class="statement-card">
+      <h2>Overview of My Teaching Methodology</h2>
+      <p>My teaching style is practical, learner-centred, structured and evidence-informed. I believe effective teaching should help learners understand ideas clearly, practise skills confidently and apply knowledge in academic, professional and workplace situations.</p>
+      <p>My approach has developed through more than 20 years of teaching, training, curriculum leadership, quality assurance and educational management across the United Kingdom, United States, United Arab Emirates and China. This experience has taught me that no single teaching method works for every learner, subject or setting.</p>
+      <p>I therefore use a flexible model. I begin with clear learning aims, build understanding through explanation and demonstration, support learners through guided practice, and then help them apply knowledge independently through tasks, discussion, assessment and reflection.</p>
+      <div class="quote">My aim is not simply to deliver a lesson. My aim is to create learning that is clear, useful, respectful and connected to the real world.</div>
+    </div>
+  </section>
+
+  <section class="panel section" id="styles">
+    <div class="statement-card">
+      <h2>Teaching Styles and Educational Frameworks I Use</h2>
+      <p>I use recognised teaching styles and learning frameworks in a practical way. I do not apply them as fixed labels. I use them to make sure learners can access the subject through different routes: seeing, hearing, discussing, practising, reflecting and applying.</p>
+
+      <div class="grid-3">
+        <div class="framework-card">
+          <span class="tag">VARK Learning Styles</span>
+          <h3>Visual, Auditory, Reading and Kinesthetic Learning</h3>
+          <p>I use diagrams, slides, demonstrations, discussion, written guidance and hands-on activities so visual, auditory, reading/writing and kinesthetic learners can all engage with the topic.</p>
+        </div>
+        <div class="framework-card">
+          <span class="tag">Kinesthetic Learning</span>
+          <h3>Learning Through Practice</h3>
+          <p>In IT, cybersecurity, business and vocational training, I use practical tasks, workshops, labs, role play, simulations and workplace scenarios so learners learn by doing, not only by listening.</p>
+        </div>
+        <div class="framework-card">
+          <span class="tag">Kolb's Experiential Learning</span>
+          <h3>Experience, Reflection and Improvement</h3>
+          <p>I encourage learners to complete practical activities, reflect on what happened, connect it to theory and then improve their approach in the next task or assessment.</p>
+        </div>
+        <div class="framework-card">
+          <span class="tag">Bloom's Taxonomy</span>
+          <h3>From Knowledge to Evaluation</h3>
+          <p>I design learning so learners move from remembering and understanding to applying, analysing, evaluating and creating. This is especially important in higher education, cybersecurity and project-based work.</p>
+        </div>
+        <div class="framework-card">
+          <span class="tag">Differentiated Instruction</span>
+          <h3>Supporting Mixed-Ability Groups</h3>
+          <p>I adapt tasks, questioning, pace and support according to learner confidence, prior knowledge, language needs and professional experience, while keeping expectations high.</p>
+        </div>
+        <div class="framework-card">
+          <span class="tag">Scaffolding</span>
+          <h3>Step-by-Step Confidence Building</h3>
+          <p>I break complex topics into manageable stages. Learners first receive guidance, then practise with support, and later complete more independent work.</p>
+        </div>
+        <div class="framework-card">
+          <span class="tag">Constructivist Learning</span>
+          <h3>Building on Existing Knowledge</h3>
+          <p>I connect new topics with what learners already know from work, study, life experience or previous training, so learning feels meaningful rather than abstract.</p>
+        </div>
+        <div class="framework-card">
+          <span class="tag">Social Learning</span>
+          <h3>Learning Through Others</h3>
+          <p>I use group discussion, peer feedback, debate and shared problem-solving so learners can learn from each other's experience and develop communication skills.</p>
+        </div>
+        <div class="framework-card">
+          <span class="tag">Andragogy</span>
+          <h3>Adult Learning Principles</h3>
+          <p>Many of my learners are adults or professionals, so I keep learning relevant, respectful and practical, with clear links to their goals, workplace needs and career development.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel section" id="methods">
+    <div class="statement-card">
+      <h2>Teaching Methods I Use in Practice</h2>
+      <p>My method changes according to the subject, level and learner group. In technical subjects, I often use explanation, demonstration and lab-based practice. In business and management, I use discussion, case studies, projects and workplace examples. In vocational settings, I focus on competence, evidence and practical application.</p>
+      <div class="grid-3">
+        <div class="mini-card"><h3>Direct Instruction</h3><p>I use clear explanation when learners need structure, definitions, theory or a foundation before moving into practical work.</p></div>
+        <div class="mini-card"><h3>Demonstration</h3><p>I demonstrate processes step by step, especially in IT, networking, cybersecurity, digital skills, website development and systems-based subjects.</p></div>
+        <div class="mini-card"><h3>Workshop Delivery</h3><p>I use workshops for business, project management, employability, compliance and professional development, where learners benefit from active participation.</p></div>
+        <div class="mini-card"><h3>Project-Based Learning</h3><p>I use projects to help learners plan, research, design, implement, evaluate and present their work in a realistic professional format.</p></div>
+        <div class="mini-card"><h3>Case and Scenario-Based Learning</h3><p>I use case studies and realistic scenarios to develop analysis, risk awareness, judgement, problem solving and decision making.</p></div>
+        <div class="mini-card"><h3>Coaching and Mentoring</h3><p>I use coaching with learners, tutors, assessors and staff to build confidence, improve practice and support professional development.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel section" id="digital">
+    <div class="statement-card">
+      <h2>Digital, Blended and Technical Learning</h2>
+      <p>Digital learning is an important part of my teaching and training practice. I have delivered and managed e-learning, online courses, blended programmes, digital skills training and technology-enhanced education across different organisations.</p>
+      <p>I use technology to support teaching, not to replace the human relationship between teacher and learner. Digital tools are most useful when they make learning clearer, more accessible, more flexible and easier to apply.</p>
+      <div class="grid-2">
+        <div class="mini-card">
+          <h3>Digital and Blended Learning Tools</h3>
+          <ul>
+            <li>Learning management systems and virtual learning environments.</li>
+            <li>Microsoft Teams or similar online classroom platforms.</li>
+            <li>PowerPoint, multimedia resources and digital worksheets.</li>
+            <li>Online quizzes, knowledge checks and progress reviews.</li>
+            <li>AI-supported learning activities where they improve clarity, planning or learner engagement.</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <h3>Technical and Lab-Based Learning</h3>
+          <ul>
+            <li>Cisco networking labs and routing / switching environments.</li>
+            <li>CompTIA hardware, software, networking and security activities.</li>
+            <li>Microsoft server technologies and troubleshooting tasks.</li>
+            <li>Cybersecurity case studies, threat scenarios and risk analysis tasks.</li>
+            <li>Python, website development and Android Studio activities.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="quote">For technical learners, confidence grows when they can see the process, practise the process and then explain the process in their own words.</div>
+    </div>
+  </section>
+
+  <section class="panel section" id="assessment">
+    <div class="statement-card">
+      <h2>Assessment and Quality Assurance Methodology</h2>
+      <p>Assessment is central to my teaching methodology. I see assessment as part of learning, not only as a final judgement. Learners should understand what is expected, how evidence is judged and how feedback can help them improve.</p>
+      <div class="grid-2">
+        <div class="mini-card">
+          <h3>Assessment Practice</h3>
+          <ul>
+            <li>Initial assessment to understand learner starting points.</li>
+            <li>Formative assessment during teaching.</li>
+            <li>Questioning, observation and professional discussion.</li>
+            <li>Practical tasks, assignments, projects and portfolios.</li>
+            <li>Clear oral and written feedback linked to improvement.</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <h3>Quality Assurance Practice</h3>
+          <ul>
+            <li>Curriculum mapping, schemes of work and lesson planning.</li>
+            <li>IQA sampling plans and standardisation activity.</li>
+            <li>Assessor observation, feedback and support.</li>
+            <li>Learner tracking, progress monitoring and achievement data.</li>
+            <li>Awarding body documentation and external quality assurance preparation.</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:20px;">As an assessor, internal verifier, lead IQA, curriculum manager and head of education and quality assurance, I ensure that assessment evidence is valid, authentic, reliable, current and sufficient. I also support standardisation, fair judgement, clear feedback and continuous improvement.</p>
+    </div>
+  </section>
+
+  <section class="panel section" id="inclusion">
+    <div class="statement-card">
+      <h2>Inclusion and Teaching Across Different Settings</h2>
+      <p>I believe effective teaching must be inclusive. Inclusion does not mean lowering expectations. It means giving learners the right support, structure and opportunity to reach high standards.</p>
+      <div class="grid-3">
+        <div class="mini-card"><h3>Further Education</h3><p>I use structured teaching, practical tasks, confidence building and clear assessment guidance.</p></div>
+        <div class="mini-card"><h3>Higher Education</h3><p>I use discussion, research tasks, independent learning, critical analysis, project work and academic feedback.</p></div>
+        <div class="mini-card"><h3>Vocational Training</h3><p>I focus on competence, evidence, workplace relevance, practical tasks and assessment against standards.</p></div>
+        <div class="mini-card"><h3>Professional Training</h3><p>I use workshops, case studies, coaching, scenario-based learning and direct links to organisational needs.</p></div>
+        <div class="mini-card"><h3>Online and Blended Learning</h3><p>I combine structured digital resources with live teaching, feedback, discussion and progress monitoring.</p></div>
+        <div class="mini-card"><h3>Community Learning</h3><p>I use accessible language, practical examples, respectful communication and confidence-building methods.</p></div>
+      </div>
+      <div class="quote">Different learners need different routes into learning. My responsibility is to keep the standard high while making the route clear, fair and achievable.</div>
+    </div>
+  </section>
+
+  <section class="panel section" id="impact">
+    <div class="statement-card">
+      <h2>Impact of My Teaching Methodology</h2>
+      <p>The impact of my teaching methodology can be seen through learner achievement, staff development, programme improvement and organisational outcomes. Across my career, I have supported strong learner results in academic, vocational and professional certification programmes.</p>
+      <div class="grid-2">
+        <div class="mini-card">
+          <h3>Impact on Learners</h3>
+          <ul>
+            <li>Improved learner confidence and engagement.</li>
+            <li>Stronger practical understanding of technical and professional subjects.</li>
+            <li>Better links between education, employment and progression.</li>
+            <li>Clearer understanding of assessment expectations and evidence requirements.</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <h3>Impact on Programmes and Staff</h3>
+          <ul>
+            <li>Improved assessment consistency and quality assurance.</li>
+            <li>Development of trainers, assessors and internal verifiers.</li>
+            <li>Successful delivery of vocational and employability programmes.</li>
+            <li>More effective online, blended and face-to-face delivery.</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:20px;">For me, teaching is most effective when it is human, practical, reflective and professionally rigorous. A successful lesson should leave learners clearer, more confident and better prepared to apply what they have learned in real life.</p>
+      <div class="quote">My aim is always the same: to help learners understand, practise, achieve and progress with confidence.</div>
+    </div>
+  </section>
+
+  <div class="footer-container">
+    <footer>Teaching Style and Methodology | Mohammed Amir Umer</footer>
+  </div>
+</div>
+</body>
+</html>

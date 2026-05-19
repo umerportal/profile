@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Covering Letter | Mohammed Amir Umer</title>
+<style>
+:root{
+  --bg:#eaf4ff;
+  --bg2:#fff7df;
+  --primary:#0b2f6b;
+  --primary2:#1455a3;
+  --gold:#f4c542;
+  --orange:#ff7a18;
+  --purple:#5b1d91;
+  --text:#172033;
+  --muted:#5f6b7a;
+  --shadow:0 22px 55px rgba(11,47,107,0.18);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--gold) rgba(11,47,107,0.18);}
+body{
+  margin:0;
+  font-family:"Segoe UI",Arial,sans-serif;
+  color:var(--text);
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top left,#dbeafe 0,transparent 32%),
+    radial-gradient(circle at top right,#fff0b8 0,transparent 30%),
+    linear-gradient(135deg,var(--bg),var(--bg2));
+  overflow-x:hidden;
+  line-height:1.72;
+}
+body::-webkit-scrollbar{width:11px;}
+body::-webkit-scrollbar-track{background:rgba(11,47,107,0.10);border-radius:999px;}
+body::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,var(--gold),var(--orange),var(--primary2));
+  border-radius:999px;
+  border:3px solid rgba(255,255,255,0.75);
+}
+.wrapper{width:min(1180px,92%);margin:0 auto;padding:0 0 34px;}
+.top-nav{
+  display:flex;
+  justify-content:flex-end;
+  padding-top:22px;
+  padding-bottom:18px;
+}
+.home-btn{
+  text-decoration:none;
+  width:64px;
+  height:64px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,rgba(255,255,255,0.92),rgba(240,248,255,0.98));
+  border-radius:50%;
+  border:3px solid var(--gold);
+  box-shadow:
+    0 0 0 4px rgba(122,43,194,0.28),
+    0 14px 32px rgba(11,47,107,0.24),
+    inset 0 1px 0 rgba(255,255,255,0.95);
+  backdrop-filter:blur(10px);
+  transition:all .25s ease;
+  position:relative;
+  overflow:hidden;
+}
+.home-btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:linear-gradient(135deg,rgba(255,255,255,.78) 0%,rgba(255,255,255,.15) 42%,transparent 70%);
+}
+.home-btn svg{width:32px;height:32px;fill:var(--primary2);position:relative;z-index:2;transform:translateY(2px);filter:drop-shadow(0 2px 2px rgba(0,0,0,.16));}
+.home-btn:hover{transform:translateY(-3px) scale(1.08);box-shadow:0 0 0 6px rgba(244,197,66,0.48),0 22px 48px rgba(11,47,107,0.34),inset 0 1px 0 rgba(255,255,255,1);}
+.hero{text-align:center;padding:10px 18px 18px;}
+.hero h1{
+  margin:0;
+  font-size:clamp(42px,6.6vw,78px);
+  line-height:1;
+  color:var(--primary);
+  font-weight:950;
+  letter-spacing:-1.4px;
+}
+.hero h1 span{color:var(--orange);}
+.hero p{
+  max-width:980px;
+  margin:24px auto 0;
+  color:#4e5868;
+  font-size:clamp(20px,2.3vw,31px);
+  line-height:1.36;
+}
+.nav-strip{
+  position:sticky;
+  top:0;
+  z-index:20;
+  margin:24px 0;
+  background:rgba(255,255,255,.82);
+  border:1px solid rgba(20,85,163,.14);
+  border-radius:28px;
+  box-shadow:0 16px 38px rgba(11,47,107,.12);
+  backdrop-filter:blur(14px);
+  padding:10px;
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:8px;
+}
+.nav-strip a{
+  text-decoration:none;
+  color:var(--primary);
+  font-weight:850;
+  padding:10px 10px;
+  border-radius:999px;
+  text-align:center;
+  font-size:14px;
+  line-height:1.15;
+}
+.nav-strip a:hover{background:linear-gradient(135deg,var(--primary),var(--primary2));color:white;}
+.panel{
+  background:rgba(255,255,255,.74);
+  border:1px solid rgba(20,85,163,.16);
+  border-radius:36px;
+  padding:34px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(16px);
+  margin-top:22px;
+}
+.main-card{
+  background:linear-gradient(180deg,#ffffff,#f8fbff);
+  border:1px solid rgba(20,85,163,.22);
+  border-left:8px solid var(--gold);
+  border-radius:30px;
+  padding:32px;
+  box-shadow:0 24px 60px rgba(11,47,107,.18);
+}
+.main-card h2{
+  margin:0 0 16px;
+  color:var(--primary);
+  font-size:clamp(28px,3.4vw,44px);
+  line-height:1.1;
+  font-weight:950;
+}
+.main-card p{color:#3f4a59;font-size:1.06rem;margin:0 0 18px;}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
+.mini-card,.framework-card{
+  background:linear-gradient(180deg,#ffffff,#f8fbff);
+  border:1px solid rgba(20,85,163,.20);
+  border-left:7px solid var(--gold);
+  border-radius:24px;
+  padding:22px;
+  box-shadow:0 18px 42px rgba(11,47,107,.12);
+}
+.framework-card{
+  background:linear-gradient(180deg,#ffffff,#fffdf5);
+  border:1px solid rgba(244,197,66,.38);
+}
+.mini-card h3,.framework-card h3{
+  margin:0 0 10px;
+  color:var(--primary);
+  font-size:21px;
+  line-height:1.2;
+}
+.mini-card p,.mini-card li,.framework-card p,.framework-card li{
+  color:var(--muted);
+  font-size:15.5px;
+  line-height:1.7;
+}
+.mini-card ul,.framework-card ul{margin:10px 0 0;padding-left:20px;}
+.tag{
+  display:inline-block;
+  margin-bottom:10px;
+  background:rgba(20,85,163,.08);
+  color:var(--primary2);
+  border:1px solid rgba(20,85,163,.14);
+  border-radius:999px;
+  padding:5px 10px;
+  font-size:13px;
+  font-weight:850;
+}
+.quote{
+  margin:24px 0;
+  padding:22px 24px;
+  border-radius:0 22px 22px 0;
+  border-left:8px solid var(--orange);
+  background:linear-gradient(180deg,#fffdf5,#ffffff);
+  box-shadow:0 18px 40px rgba(11,47,107,.12);
+  color:#344054;
+  font-style:italic;
+  font-size:1.08rem;
+}
+.badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;}
+.badge{
+  display:inline-flex;
+  background:rgba(255,255,255,.82);
+  border:1px solid rgba(20,85,163,.16);
+  color:var(--primary);
+  border-radius:999px;
+  padding:8px 12px;
+  font-weight:850;
+  box-shadow:0 8px 20px rgba(11,47,107,.08);
+}
+.letter-card{
+  background:linear-gradient(180deg,#ffffff,#fffdf5);
+  border:1px solid rgba(244,197,66,.38);
+  border-left:8px solid var(--orange);
+  border-radius:30px;
+  padding:34px;
+  box-shadow:0 24px 60px rgba(11,47,107,.16);
+}
+.letter-head{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:20px;
+  align-items:start;
+  margin-bottom:22px;
+  padding-bottom:18px;
+  border-bottom:1px solid rgba(20,85,163,.16);
+}
+.letter-head h2{margin:0;color:var(--primary);font-size:clamp(28px,3vw,42px);line-height:1.1;}
+.contact-list{
+  text-align:right;
+  color:#4e5868;
+  font-size:15px;
+  font-weight:750;
+}
+.contact-list a{color:var(--primary2);text-decoration:none;}
+.signature{
+  margin-top:22px;
+  font-weight:850;
+  color:var(--primary);
+}
+.section{scroll-margin-top:120px;}
+.footer-container{text-align:center;margin:34px 0 0;}
+footer{
+  display:inline-block;
+  background:rgba(255,255,255,.78);
+  border-top:3px solid var(--gold);
+  color:#46505f;
+  padding:12px 24px;
+  border-radius:18px;
+  font-size:14px;
+  font-weight:800;
+  font-style:italic;
+  box-shadow:0 12px 28px rgba(11,47,107,.14);
+}
+@media(max-width:1000px){
+  .grid-2,.grid-3{grid-template-columns:1fr;}
+  .nav-strip{grid-template-columns:repeat(2,minmax(0,1fr));border-radius:24px;}
+  .letter-head{grid-template-columns:1fr;}
+  .contact-list{text-align:left;}
+}
+@media(max-width:720px){
+  .top-nav{padding-bottom:10px;}
+  .hero{padding-top:0;}
+  .panel{padding:22px;}
+  .main-card,.mini-card,.framework-card,.letter-card{padding:22px;}
+  .hero p{font-size:20px;}
+  .nav-strip{position:relative;top:auto;grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="top-nav">
+    <a class="home-btn" href="index.html" aria-label="Back to CV" title="Back to CV">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M10.8 2.4a1.8 1.8 0 0 1 2.4 0l8 7.2c.4.4.5 1 .1 1.5-.3.4-.9.5-1.4.2l-.9-.8V20a1.5 1.5 0 0 1-1.5 1.5h-4v-6h-3v6h-4A1.5 1.5 0 0 1 5 20v-9.5l-.9.8c-.5.3-1.1.2-1.4-.2-.4-.5-.3-1.1.1-1.5l8-7.2z"/>
+      </svg>
+    </a>
+  </div>
+
+  <section class="hero">
+    <h1>Covering <span>Letter</span></h1>
+    <p>A professional application letter highlighting international education leadership, curriculum development, quality assurance, cybersecurity, digital innovation and learner-focused training practice.</p>
+  </section>
+
+  <nav class="nav-strip">
+    <a href="#overview">Overview</a>
+    <a href="#strengths">Strengths</a>
+    <a href="#leadership">Leadership</a>
+    <a href="#innovation">Innovation</a>
+    <a href="#letter">Letter</a>
+    <a href="#closing">Closing</a>
+  </nav>
+
+  <section class="panel section" id="overview">
+    <div class="main-card">
+      <h2>Application Overview</h2>
+      <p>This covering letter presents my professional background as an international education, training, curriculum and quality assurance leader with more than 20 years of experience across the United Kingdom, United States, United Arab Emirates and China.</p>
+      <p>It highlights my experience in teaching, curriculum leadership, internal quality assurance, vocational education, digital learning, cybersecurity, business management and workforce development.</p>
+      <div class="quote">My application is built around a clear professional value: combining teaching excellence, strong quality systems, digital innovation and practical learner-focused education.</div>
+    </div>
+  </section>
+
+  <section class="panel section" id="strengths">
+    <div class="main-card">
+      <h2>Key Professional Strengths</h2>
+      <div class="grid-3">
+        <div class="framework-card">
+          <span class="tag">Education Leadership</span>
+          <h3>Senior Academic and Training Roles</h3>
+          <p>Experience as Head of Education and Quality Assurance, Head of IT and Business Management, Director of Teaching and Learning, Curriculum Manager, Lecturer, Internal Verifier and Site Director.</p>
+        </div>
+        <div class="framework-card">
+          <span class="tag">Curriculum and Assessment</span>
+          <h3>Practical Programme Development</h3>
+          <p>Strong experience designing, delivering and improving academic, vocational, professional certification and workforce training programmes from Level 1 through Level 7.</p>
+        </div>
+        <div class="framework-card">
+          <span class="tag">Quality Assurance</span>
+          <h3>IQA, Compliance and Standards</h3>
+          <p>Experience supporting awarding body compliance, standardisation, mentoring, internal quality assurance, evidence-based improvement and external quality assurance readiness.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel section" id="leadership">
+    <div class="main-card">
+      <h2>Teaching, Training and Leadership Profile</h2>
+      <p>I have taught and supported learners across BTEC, HNC, HND, FdSc, undergraduate, vocational, professional certification and workforce training programmes. My teaching and training areas include business management, project management, cybersecurity, artificial intelligence, networking, information technology, digital skills, employability, compliance and professional development.</p>
+      <div class="grid-2">
+        <div class="mini-card">
+          <h3>Academic and Professional Credentials</h3>
+          <ul>
+            <li>MSc Business Management and Information Technology.</li>
+            <li>Bachelor of Computer Science.</li>
+            <li>QTLS and Diploma in Education and Training.</li>
+            <li>Assessor and internal quality assurance qualifications.</li>
+            <li>Cisco, Microsoft, CompTIA, IC3, ECDL and OCR certifications.</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <h3>Current Leadership Focus</h3>
+          <ul>
+            <li>Education and curriculum quality.</li>
+            <li>Internal quality assurance and staff development.</li>
+            <li>Learner outcomes and compliance activity.</li>
+            <li>Mentoring tutors, assessors, IQAs and delivery teams.</li>
+            <li>Continuous improvement through evidence, feedback and standardisation.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel section" id="innovation">
+    <div class="main-card">
+      <h2>Cybersecurity, AI and Digital Innovation</h2>
+      <p>Cybersecurity and digital innovation are central to my current academic and professional development. I am pursuing doctoral research in Cybersecurity, with a focus on enhancing cybersecurity through artificial intelligence.</p>
+      <div class="badges">
+        <span class="badge">AI-driven cybersecurity</span>
+        <span class="badge">Secure systems design</span>
+        <span class="badge">Cloud security</span>
+        <span class="badge">Data protection</span>
+        <span class="badge">Digital resilience</span>
+        <span class="badge">Practical cyber strategies</span>
+        <span class="badge">Umer AI Learning Platform</span>
+        <span class="badge">Web CV and professional portfolio</span>
+      </div>
+      <p style="margin-top:20px;">I have independently designed and developed my own web CV, professional portfolio, study resources and Umer AI Learning Platform. This reflects my commitment to using education and technology to support learners, teachers, small businesses and cybersecurity professionals beyond the classroom.</p>
+    </div>
+  </section>
+
+  <section class="panel section" id="letter">
+    <div class="letter-card">
+      <div class="letter-head">
+        <div>
+          <h2>Formal Covering Letter</h2>
+          <p style="margin:10px 0 0;color:#5f6b7a;">Mohammed Amir Umer</p>
+        </div>
+        <div class="contact-list">
+          <div><a href="mailto:Umermalikk@gmail.com">Umermalikk@gmail.com</a></div>
+          <div><a href="https://www.linkedin.com/in/umeredu">LinkedIn Profile</a></div>
+          <div><a href="https://umeraio.github.io/home/">Professional Website</a></div>
+        </div>
+      </div>
+
+      <p><strong>Dear Hiring Manager,</strong></p>
+      <p>I am pleased to submit my application for the advertised position. I bring more than 20 years of international experience across the United Kingdom, United States, United Arab Emirates and China, with a strong background in teaching, curriculum leadership, internal quality assurance, vocational education, digital learning, cybersecurity, business management and workforce development.</p>
+      <p>My professional experience includes senior roles such as Head of Education and Quality Assurance, Head of Information Technology and Business Management, Director of Teaching and Learning, Curriculum Manager, Lecturer, Internal Verifier, Site Director and National Training and Quality Assurance Manager. These roles have allowed me to lead multidisciplinary teams, improve curriculum quality, support awarding body compliance, mentor staff, strengthen assessment practice and deliver practical learning aligned with learner, employer and organisational needs.</p>
+      <p>I hold an MSc in Business Management and Information Technology, a Bachelor of Computer Science, QTLS status, a Diploma in Education and Training, assessor and internal quality assurance qualifications, and industry-recognised certifications including Cisco, Microsoft, CompTIA, IC3, ECDL and OCR. I have taught and supported learners from Level 1 through Level 7 across BTEC, HNC, HND, FdSc, undergraduate, vocational, professional certification and workforce training programmes.</p>
+      <p>A key strength I offer is the ability to connect academic learning with practical application. My teaching and training experience covers business management, project management, cybersecurity, artificial intelligence, networking, information technology, digital skills, employability, compliance and professional development. I aim to create learning environments where students feel supported, challenged and able to apply knowledge confidently in real workplace and professional settings.</p>
+      <p>In my current work as Head of Education and Quality Assurance at HHF Training, I lead education, curriculum quality, internal quality assurance, staff development, learner outcomes and compliance activity. I support tutors, assessors, IQAs and delivery teams through mentoring, standardisation, feedback and continuous improvement. This experience has strengthened my ability to combine teaching excellence with strong systems, evidence-based quality assurance and learner-focused operational leadership.</p>
+      <p>Cybersecurity and digital innovation are central to my current academic and professional development. I am pursuing doctoral research in Cybersecurity, with a focus on enhancing cybersecurity through artificial intelligence. My interests include AI-driven cybersecurity, secure systems design, cloud security, data protection, digital resilience and practical cyber strategies for education and organisations.</p>
+      <p>I have also independently designed and developed my own web CV, professional portfolio, study resources and Umer AI Learning Platform. Through this platform, I share educational resources, study guides, cybersecurity concepts, AI-supported learning materials and practical technology-based guidance to support learners, teachers, small businesses and cybersecurity professionals. This work reflects my commitment to using education and technology to help others beyond the classroom.</p>
+      <p>Alongside my teaching and technical background, I bring strong experience in staff mentoring, assessor and IQA training, curriculum development, e-learning, professional certification delivery, work placement coordination, industry engagement and partnership development. I have worked with colleges, universities, awarding bodies, councils, employers, public sector organisations and industry partners including Cisco, Microsoft, CompTIA, ADNOC and Abu Dhabi Police.</p>
+      <p>I am motivated by opportunities where I can contribute to high-quality teaching, learner development, curriculum improvement, digital innovation, quality assurance and organisational growth. I am dependable, reflective and committed to continuous professional development. I believe strongly in practical education that builds confidence, competence, independence and meaningful progression.</p>
+      <p>I would welcome the opportunity to bring my experience, international perspective and commitment to education, technology, quality assurance and learner success to your organisation. Thank you for considering my application. I look forward to the opportunity to discuss how my background and skills can support your team and wider educational objectives.</p>
+
+      <p class="signature">Yours faithfully,<br>Mohammed Amir Umer</p>
+    </div>
+  </section>
+
+  <section class="panel section" id="closing">
+    <div class="main-card">
+      <h2>Professional Closing Message</h2>
+      <p>This covering letter is suitable for roles connected to teaching, training, curriculum leadership, quality assurance, digital learning, cybersecurity education, business management, workforce development and senior education operations.</p>
+      <div class="quote">I bring international experience, practical teaching expertise, technical knowledge, quality assurance leadership and a strong commitment to learner success.</div>
+    </div>
+  </section>
+
+  <div class="footer-container">
+    <footer>Covering Letter | Mohammed Amir Umer</footer>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohammed Amir Umer | Professional CV</title>
+<style>
+:root{
+  --bg:#eaf4ff;
+  --bg2:#fff7df;
+  --primary:#0b2f6b;
+  --primary2:#1455a3;
+  --gold:#f4c542;
+  --orange:#ff7a18;
+  --purple:#5b1d91;
+  --purple2:#7a2bc2;
+  --green:#28a745;
+  --red:#dc3545;
+  --text:#172033;
+  --muted:#5f6b7a;
+  --card:#ffffff;
+  --shadow:0 22px 55px rgba(11,47,107,0.18);
+}
+*{box-sizing:border-box;}
+html{
+  scroll-behavior:smooth;
+  scrollbar-width:thin;
+  scrollbar-color:var(--gold) rgba(11,47,107,0.18);
+}
+body{
+  margin:0;
+  font-family:"Segoe UI",Arial,sans-serif;
+  color:var(--text);
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top left,#dbeafe 0,transparent 32%),
+    radial-gradient(circle at top right,#fff0b8 0,transparent 30%),
+    linear-gradient(135deg,var(--bg),var(--bg2));
+  overflow-x:hidden;
+}
+body::-webkit-scrollbar{width:11px;}
+body::-webkit-scrollbar-track{background:rgba(11,47,107,0.10);border-radius:999px;}
+body::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,var(--gold),var(--orange),var(--primary2));
+  border-radius:999px;
+  border:3px solid rgba(255,255,255,0.75);
+}
+.wrapper{
+  width:min(1220px,92%);
+  margin:0 auto;
+  padding:0 0 34px;
+}
+.top-nav{
+  position:sticky;
+  top:0;
+  z-index:50;
+  display:flex;
+  justify-content:flex-end;
+  gap:12px;
+  padding:18px 0 0;
+  pointer-events:none;
+}
+.icon-btn{
+  pointer-events:auto;
+  text-decoration:none;
+  width:64px;
+  height:64px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,rgba(255,255,255,0.86),rgba(240,248,255,0.96));
+  border-radius:50%;
+  border:3px solid var(--gold);
+  box-shadow:
+    0 0 0 4px rgba(122,43,194,0.42),
+    0 14px 32px rgba(11,47,107,0.24),
+    inset 0 1px 0 rgba(255,255,255,0.95);
+  backdrop-filter:blur(10px);
+  transition:all .25s ease;
+  position:relative;
+  overflow:hidden;
+}
+.icon-btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:linear-gradient(135deg,rgba(255,255,255,.78) 0%,rgba(255,255,255,.15) 42%,transparent 70%);
+}
+.icon-btn svg{
+  width:31px;
+  height:31px;
+  fill:var(--primary2);
+  position:relative;
+  z-index:2;
+  transform:translateY(1px);
+  filter:drop-shadow(0 2px 2px rgba(0,0,0,.16));
+}
+.icon-btn:hover{
+  transform:translateY(-3px) scale(1.08);
+  box-shadow:
+    0 0 0 6px rgba(244,197,66,0.58),
+    0 22px 48px rgba(11,47,107,0.34),
+    inset 0 1px 0 rgba(255,255,255,1);
+}
+.hero{
+  margin-top:-56px;
+  text-align:center;
+  padding:0 18px 22px;
+}
+.hero h1{
+  margin:0;
+  color:var(--primary);
+  font-size:clamp(46px,7vw,84px);
+  line-height:.98;
+  font-weight:950;
+  letter-spacing:-1.8px;
+}
+.hero h1 span{color:var(--orange);}
+.hero .subtitle{
+  max-width:980px;
+  margin:24px auto 0;
+  color:#4e5868;
+  font-size:clamp(21px,2.4vw,34px);
+  line-height:1.32;
+}
+.contact-bar{
+  margin:26px auto 0;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px;
+}
+.contact-pill{
+  background:rgba(255,255,255,.78);
+  border:1px solid rgba(20,85,163,.18);
+  color:var(--primary);
+  border-radius:999px;
+  padding:10px 15px;
+  box-shadow:0 10px 24px rgba(11,47,107,.10);
+  font-weight:800;
+  text-decoration:none;
+}
+.summary-panel{
+  margin-top:18px;
+  background:rgba(255,255,255,.74);
+  border:1px solid rgba(20,85,163,.16);
+  border-radius:36px;
+  padding:34px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(16px);
+}
+.profile-card{
+  background:linear-gradient(180deg,#ffffff,#f8fbff);
+  border:1px solid rgba(20,85,163,.22);
+  border-left:8px solid var(--gold);
+  border-radius:30px;
+  padding:32px;
+  box-shadow:0 24px 60px rgba(11,47,107,.18);
+}
+.profile-card h2,
+.section h2{
+  margin:0 0 15px;
+  color:var(--primary);
+  font-size:clamp(28px,3.4vw,44px);
+  line-height:1.1;
+  font-weight:950;
+}
+.profile-card p{
+  color:#3f4a59;
+  font-size:1.08rem;
+  line-height:1.75;
+  margin:0;
+}
+.metrics{
+  margin-top:22px;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:16px;
+}
+.metric{
+  background:linear-gradient(180deg,#fffdf5,#ffffff);
+  border:1px solid rgba(244,197,66,.38);
+  border-left:6px solid var(--gold);
+  border-radius:22px;
+  padding:18px;
+  box-shadow:0 14px 32px rgba(11,47,107,.10);
+}
+.metric strong{
+  display:block;
+  color:var(--orange);
+  font-size:clamp(24px,3vw,36px);
+  line-height:1;
+}
+.metric span{
+  display:block;
+  margin-top:8px;
+  color:#4e5868;
+  font-weight:700;
+  line-height:1.35;
+}
+.nav-strip{
+  position:sticky;
+  top:0;
+  z-index:40;
+  margin:24px 0;
+  background:rgba(255,255,255,.76);
+  border:1px solid rgba(20,85,163,.14);
+  border-radius:999px;
+  box-shadow:0 16px 38px rgba(11,47,107,.12);
+  backdrop-filter:blur(14px);
+  padding:10px;
+  display:flex;
+  gap:8px;
+  overflow:auto;
+}
+.nav-strip a{
+  white-space:nowrap;
+  text-decoration:none;
+  color:var(--primary);
+  font-weight:850;
+  padding:10px 14px;
+  border-radius:999px;
+}
+.nav-strip a:hover{
+  background:linear-gradient(135deg,var(--primary),var(--primary2));
+  color:white;
+}
+.section{
+  scroll-margin-top:100px;
+  margin-top:24px;
+  background:rgba(255,255,255,.74);
+  border:1px solid rgba(20,85,163,.16);
+  border-radius:36px;
+  padding:34px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(16px);
+}
+.grid-2{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:20px;
+}
+.grid-3{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
+.card{
+  background:linear-gradient(180deg,#ffffff,#f8fbff);
+  border:1px solid rgba(20,85,163,.22);
+  border-left:7px solid var(--gold);
+  border-radius:26px;
+  padding:24px;
+  box-shadow:0 18px 42px rgba(11,47,107,.13);
+}
+.card h3{
+  margin:0 0 10px;
+  color:var(--primary);
+  font-size:22px;
+  line-height:1.2;
+}
+.card p,.card li{
+  color:var(--muted);
+  line-height:1.7;
+  font-size:15.5px;
+}
+.card ul{margin:10px 0 0; padding-left:20px;}
+.skill-card{
+  border-left-color:var(--primary2);
+}
+.timeline{
+  display:grid;
+  gap:20px;
+}
+.role{
+  background:linear-gradient(180deg,#ffffff,#f8fbff);
+  border:1px solid rgba(20,85,163,.20);
+  border-left:8px solid var(--primary2);
+  border-radius:28px;
+  padding:26px;
+  box-shadow:0 18px 44px rgba(11,47,107,.14);
+}
+.role-header{
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
+  align-items:flex-start;
+  margin-bottom:10px;
+}
+.role h3{
+  margin:0;
+  color:var(--primary);
+  font-size:24px;
+  line-height:1.2;
+}
+.org{
+  margin-top:5px;
+  color:var(--orange);
+  font-weight:900;
+}
+.date{
+  background:rgba(244,197,66,.18);
+  color:#7a5200;
+  border:1px solid rgba(244,197,66,.35);
+  padding:8px 12px;
+  border-radius:999px;
+  font-weight:900;
+  white-space:nowrap;
+}
+.role p{
+  color:#4f5c6c;
+  line-height:1.7;
+}
+.role ul{
+  margin:12px 0 0;
+  padding-left:20px;
+}
+.role li{
+  color:var(--muted);
+  line-height:1.68;
+  margin:6px 0;
+}
+.badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:12px;
+}
+.badge{
+  background:rgba(255,255,255,.8);
+  border:1px solid rgba(20,85,163,.16);
+  color:var(--primary);
+  border-radius:999px;
+  padding:8px 12px;
+  font-weight:800;
+  box-shadow:0 8px 20px rgba(11,47,107,.08);
+}
+.pub-list{
+  counter-reset:item;
+  display:grid;
+  gap:12px;
+}
+.pub{
+  background:linear-gradient(180deg,#ffffff,#fffdf5);
+  border:1px solid rgba(244,197,66,.35);
+  border-left:7px solid var(--gold);
+  border-radius:20px;
+  padding:16px 18px;
+  color:#485466;
+  font-weight:750;
+  box-shadow:0 12px 28px rgba(11,47,107,.10);
+}
+.footer-container{text-align:center;margin:34px 0 0;}
+footer{
+  display:inline-block;
+  background:rgba(255,255,255,.78);
+  border-top:3px solid var(--gold);
+  color:#46505f;
+  padding:12px 24px;
+  border-radius:18px;
+  font-size:14px;
+  font-weight:800;
+  font-style:italic;
+  box-shadow:0 12px 28px rgba(11,47,107,.14);
+}
+
+.doc-buttons{
+  margin:24px auto 0;
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:14px;
+  max-width:1100px;
+}
+.doc-btn{
+  position:relative;
+  text-decoration:none;
+  background:linear-gradient(180deg,#ffffff,#f8fbff);
+  color:var(--primary);
+  border:1px solid rgba(20,85,163,.22);
+  border-left:6px solid var(--gold);
+  border-radius:20px;
+  padding:16px 14px;
+  font-weight:900;
+  text-align:center;
+  box-shadow:0 16px 36px rgba(11,47,107,.13);
+  transition:all .25s ease;
+  overflow:hidden;
+}
+.doc-btn::after{
+  content:"";
+  position:absolute;
+  right:-30px;
+  top:-30px;
+  width:78px;
+  height:78px;
+  border-radius:50%;
+  background:rgba(244,197,66,.20);
+}
+.doc-btn span{
+  position:relative;
+  z-index:1;
+}
+.doc-btn:hover{
+  transform:translateY(-5px);
+  box-shadow:0 24px 52px rgba(11,47,107,.22);
+  border-left-color:var(--orange);
+}
+@media(max-width:1000px){
+  .doc-buttons{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media(max-width:620px){
+  .doc-buttons{grid-template-columns:1fr;}
+}
+
+@media(max-width:1000px){
+  .metrics,.grid-3{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .grid-2{grid-template-columns:1fr;}
+}
+@media(max-width:720px){
+  .hero{margin-top:-28px;}
+  .metrics,.grid-3{grid-template-columns:1fr;}
+  .section,.summary-panel{padding:22px;}
+  .profile-card,.role,.card{padding:22px;}
+  .hero .subtitle{font-size:21px;}
+}
+@media print{
+  .top-nav,.nav-strip{display:none;}
+  body{background:white;}
+  .section,.summary-panel{box-shadow:none;break-inside:avoid;}
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="top-nav">
+    <a class="icon-btn" href="https://umeraio.github.io/home/" aria-label="Home" title="Home">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.8 2.4a1.8 1.8 0 0 1 2.4 0l8 7.2c.4.4.5 1 .1 1.5-.3.4-.9.5-1.4.2l-.9-.8V20a1.5 1.5 0 0 1-1.5 1.5h-4v-6h-3v6h-4A1.5 1.5 0 0 1 5 20v-9.5l-.9.8c-.5.3-1.1.2-1.4-.2-.4-.5-.3-1.1.1-1.5l8-7.2z"/></svg>
+    </a>
+  </div>
+
+  <section class="hero">
+    <h1>Mohammed Amir <span>Umer</span></h1>
+    <p class="subtitle">Education, Quality Assurance, Teaching and Learning, Business, IT, AI and Cybersecurity, Teacher/Leader</p>
+    <div class="contact-bar">
+      <a class="contact-pill" href="covering-letter.html">Covering Letter</a>
+      <a class="contact-pill" href="https://umeraio.github.io/home/">My Learning Platform</a>
+            <a class="contact-pill" href="https://www.linkedin.com/in/umeredu">LinkedIn</a>
+            <a class="contact-pill" href="mailto:Umermalikk@gmail.com">Umermalikk@gmail.com</a>
+            <span class="contact-pill">Nationality: British</span>
+    </div>
+    <div class="doc-buttons">
+            <a class="doc-btn" href="teaching-philosophy.html"><span>Teaching Philosophy</span></a>
+            <a class="doc-btn" href="teaching-style.html"><span>Teaching Style</span></a>
+      <a class="doc-btn" href="teaching-statement.html"><span>Teaching Statement</span></a>
+      <a class="doc-btn" href="quality-assurance.html"><span>Quality Assurance</span></a>
+      <a class="doc-btn" href="cpd.html"><span>CPD Record</span></a>
+    </div>
+  </section>
+
+  <section class="summary-panel" id="profile">
+    <div class="profile-card">
+      <h2>Professional Summary</h2>
+      <p>Experienced education and training leader with over 20 years of international experience across the United Kingdom, United States, United Arab Emirates and China, specialising in teaching, curriculum leadership, quality assurance, vocational education and organisational management. Proven track record of leading educational programmes within Further Education, Higher Education, corporate training and workforce development environments.</p>
+      <p style="margin-top:14px;">Skilled in teaching and learning leadership, curriculum development, internal quality assurance, staff mentoring, assessor training and strategic educational operations. Extensive experience managing multidisciplinary teams, developing learner-centred programmes, and maintaining high academic, operational and compliance standards across international educational settings.</p>
+      <p style="margin-top:14px;">Recognised for strong leadership, communication and organisational abilities, with a professional approach focused on educational excellence, continuous improvement, learner achievement and staff development. Committed to creating inclusive, engaging and high-performing learning environments that support both academic success and professional growth.</p>
+
+      <div class="metrics">
+        <div class="metric"><strong>20+</strong><span>Years international education and training leadership</span></div>
+        <div class="metric"><strong>95-100%</strong><span>Recorded learner and certification pass rates</span></div>
+        <div class="metric"><strong>4</strong><span>Countries across global professional experience</span></div>
+        <div class="metric"><strong>15+</strong><span>E-learning centres managed across regional delivery</span></div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="nav-strip">
+    <a href="#profile">Profile</a>
+    <a href="#expertise">Expertise</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#qualifications">Qualifications</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#experience">Experience</a>
+    <a href="#publications">Publications</a>
+  </nav>
+
+  <section class="section" id="expertise">
+    <h2>Key Skills and Competencies</h2>
+    <div class="grid-3">
+      <div class="card skill-card"><h3>Educational Leadership and Strategic Management</h3><p>Leadership across education, training, curriculum, quality assurance and operational delivery.</p></div>
+      <div class="card skill-card"><h3>Teaching, Learning and Curriculum Development</h3><p>Designing learner-centred programmes, teaching resources, curriculum plans and inclusive learning experiences.</p></div>
+      <div class="card skill-card"><h3>Internal Quality Assurance and Standardisation</h3><p>Managing IQA frameworks, assessment monitoring, standardisation, compliance checks and evidence quality.</p></div>
+      <div class="card skill-card"><h3>Staff Mentoring and Professional Development</h3><p>Supporting tutors, assessors, instructional designers and staff through coaching, appraisal and CPD planning.</p></div>
+      <div class="card skill-card"><h3>Vocational Education and Workforce Training</h3><p>Experience across FE, HE, corporate training, workforce development and professional certification routes.</p></div>
+      <div class="card skill-card"><h3>Quality Assurance and Awarding Body Standards</h3><p>Maintaining academic, operational and compliance standards aligned with awarding organisation expectations.</p></div>
+      <div class="card skill-card"><h3>Digital Learning and Educational Technology</h3><p>Developing online, blended and face-to-face delivery using digital learning and technology-enhanced approaches.</p></div>
+      <div class="card skill-card"><h3>Stakeholder Engagement and Partnerships</h3><p>Working with schools, colleges, businesses, institutions, senior leaders, employers and external quality stakeholders.</p></div>
+      <div class="card skill-card"><h3>Project Management and Organisational Planning</h3><p>Planning programmes, managing projects, prioritising work, solving problems and supporting strategic outcomes.</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="achievements">
+    <h2>Selected Achievements and Proven Record</h2>
+    <div class="grid-2">
+      <div class="card"><h3>Performance Outcomes</h3><ul>
+          <li>95% pass rate for Yes2Work UAE national programme students.</li>
+          <li>96% pass rate for academic students.</li>
+          <li>100% pass rate for professional certification programmes including IC3, A+, Network+ and CCNA.</li>
+          <li>Developed articulation agreements with UAE educational institutions including HCT, Zayed University and AD Poly.</li>
+        </ul></div>
+      <div class="card"><h3>Awards and Recognition</h3><ul>
+          <li>Certificate of appreciation from ACTVET for service as Site Director, Assessor and IQA.</li>
+          <li>ADVETI Employee of the Year Award 2015/2016.</li>
+          <li>Certificate of appreciation in 2016.</li>
+          <li>Established Cisco, Microsoft, CompTIA and Certiport laboratories at Al Jazirah and obtained approved training centre recognition.</li>
+        </ul></div>
+    </div>
+  </section>
+
+  <section class="section" id="qualifications">
+    <h2>Academic Qualifications</h2>
+    <div class="grid-3">
+      <div class="card"><h3>MSc Business Management and Information Technology</h3><p>2004 to 2005 - United Kingdom.</p></div>
+      <div class="card"><h3>BCS Bachelor of Computer Science</h3><p>1993 to 1996 - United Kingdom.</p></div>
+      <div class="card"><h3>BTEC First and National Diploma</h3><p>1990 to 1993 - Electronics and Computer Technology, United Kingdom.</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="certifications">
+    <h2>Professional Certifications</h2>
+    <div class="grid-2">
+      <div class="card"><h3>Teaching, Assessment and Quality Assurance</h3><div class="badges">
+          <span class="badge">UK Qualified Teaching Status - QTLS</span>
+          <span class="badge">Level 5 Diploma in Teaching - DET</span>
+          <span class="badge">Quality Assurance Certificate</span>
+          <span class="badge">Assessor Certificate</span>
+          <span class="badge">Lead Internal Verifier</span>
+          <span class="badge">ESLM Teaching English</span>
+      </div></div>
+      <div class="card"><h3>Information Technology</h3><div class="badges">
+          <span class="badge">IC3</span>
+          <span class="badge">ECDL</span>
+          <span class="badge">OCR</span>
+          <span class="badge">CompTIA A+</span>
+          <span class="badge">Microsoft MCP</span>
+          <span class="badge">Microsoft MCPI</span>
+          <span class="badge">Microsoft MCSE</span>
+          <span class="badge">Cisco CCNA</span>
+      </div></div>
+    </div>
+  </section>
+
+  <section class="section" id="teaching">
+    <h2>Teaching Contribution</h2>
+    <div class="grid-2">
+      <div class="card"><h3>Programmes and Levels Taught</h3><ul>
+          <li>BTEC, HNC, HND, FdSc and Bachelor’s programmes from Level 1 to Level 7 in the UK.</li>
+          <li>Business Communication, Innovation, Fundamentals, Collaboration, Systems and Relationship.</li>
+          <li>Project Management, Organisational Behaviour, Information Systems and Business Management.</li>
+        </ul></div>
+      <div class="card"><h3>Technical and Professional Subjects</h3><ul>
+          <li>Cisco courses including CCNA routing, switching and security.</li>
+          <li>Cybersecurity and information security awareness.</li>
+          <li>Computer hardware and software.</li>
+          <li>CompTIA A+, Network+, Security+ and IC3 certification preparation.</li>
+          <li>Artificial Intelligence, digital skills and technology-enhanced learning.</li>
+        </ul></div>
+    </div>
+  </section>
+
+  <section class="section" id="experience">
+    <h2>Employment History</h2>
+    <div class="timeline">
+
+      <article class="role">
+        <div class="role-header"><div><h3>Head of Education and Quality Assurance</h3><div class="org">HHF Training, United Kingdom</div></div><span class="date">02/2023 - Present</span></div>
+        <p>Provide strategic leadership across education, quality assurance, and operational delivery for a multi-disciplinary training organisation specialising in digital learning, professional development, and corporate training solutions.</p><p>Lead the design, implementation, and quality oversight of online, blended, and face-to-face educational programmes delivered to schools, colleges, businesses, and institutional partners across the North West region.</p><p>Hold executive responsibility for curriculum quality, organisational compliance, staff performance management, operational efficiency, and awarding body standards.</p><p>Act as the organisation’s lead for Internal Quality Assurance (IQA), ensuring delivery, assessment, and quality processes meet regulatory, pedagogical, and awarding organisation requirements.</p>
+        <ul>
+          <li>Lead end-to-end educational operations, including programme planning, curriculum delivery, learner outcomes, quality assurance, and organisational performance.</li>
+          <li>Manage and continuously improve the IQA framework, including standardisation, assessment monitoring, quality reviews and compliance auditing.</li>
+          <li>Serve as the primary liaison and Quality Nominee for UK awarding organisations, supporting positive external quality assurance outcomes.</li>
+          <li>Direct and mentor tutors, assessors, instructional designers and administrative staff to promote high standards of teaching, assessment and professional development.</li>
+          <li>Design innovative educational programmes and bespoke training packages for online learning, B2B clients and institutional partnerships.</li>
+          <li>Build strategic partnerships with schools, colleges, training providers and regional stakeholders to support workforce development.</li>
+          <li>Use learner achievement data, retention metrics, quality indicators and stakeholder feedback to drive continuous improvement.</li>
+          <li>Support organisational growth through commercially aligned training solutions, tenders and partnership opportunities.</li>
+          <li>Oversee compliance with awarding organisation requirements, internal policies, safeguarding expectations and quality assurance procedures.</li>
+        </ul>
+      </article>
+      <article class="role">
+        <div class="role-header"><div><h3>Head of Information Technology / Business Management</h3><div class="org">The ELA Education Group, United Kingdom</div></div><span class="date">09/2021 - 01/2023</span></div>
+        <p>Provided leadership across the Business and Information Technology department within a professional education and training environment.</p><p>Supported vocational, commercial and workforce development programmes across Business Management, Project Management, Cybersecurity, Artificial Intelligence and Digital Skills.</p><p>Helped design flexible educational programmes aligned with employer needs, sector requirements and changing government funding frameworks.</p>
+        <ul>
+          <li>Led curriculum delivery, staff coordination, departmental planning and continuous quality improvement initiatives.</li>
+          <li>Conducted staff appraisals, performance reviews and professional development planning to support teaching effectiveness.</li>
+          <li>Contributed to strategic planning for technology and digital education initiatives.</li>
+          <li>Managed development and continuous improvement of Business and IT programmes to ensure curriculum relevance and learner engagement.</li>
+          <li>Created a positive, inclusive and high-performing learning environment focused on learner achievement and professional development.</li>
+          <li>Delivered teaching and training across Business Management, Project Management, Cybersecurity, Artificial Intelligence and Information Technology.</li>
+          <li>Integrated emerging technologies, practical learning activities and industry-focused teaching approaches.</li>
+          <li>Collaborated with teams and stakeholders to ensure programmes met organisational standards, learner expectations and awarding body requirements.</li>
+        </ul>
+      </article>
+      <article class="role">
+        <div class="role-header"><div><h3>Director of Teaching and Learning</h3><div class="org">Nanjing Education Bureau - EIC, China</div></div><span class="date">03/2018 - 07/2021</span></div>
+        <p>Held a senior leadership role supporting strategic development and continuous improvement of teaching and learning programmes across schools within the Nanjing education sector.</p><p>Worked with senior leaders, academic staff and stakeholders to strengthen curriculum quality, staff development, operational effectiveness and educational outcomes.</p>
+        <ul>
+          <li>Implemented strategic educational initiatives to enhance teaching quality, learner engagement and academic performance.</li>
+          <li>Led improvement and innovation across curriculum development, teaching practice, staff mentoring, educational operations and policy implementation.</li>
+          <li>Supported senior executive leadership in organisational development and educational strategy.</li>
+          <li>Designed and promoted learner-centred teaching approaches focused on engagement and continuous improvement.</li>
+          <li>Mentored and coached teaching staff to strengthen instructional practice and classroom effectiveness.</li>
+          <li>Contributed to academic policies, operational procedures and educational frameworks.</li>
+          <li>Strengthened community and stakeholder relationships through collaborative communication and educational engagement.</li>
+        </ul>
+      </article>
+      <article class="role">
+        <div class="role-header"><div><h3>Instructor / Internal Verifier / Curriculum Manager</h3><div class="org">Higher Colleges of Technology - Al Ain Women’s College, United Arab Emirates</div></div><span class="date">12/2017 - 01/2018</span></div>
+        <p>Contributed to teaching, assessment, internal verification, curriculum management and learner support within one of the UAE’s leading higher education institutions.</p><p>Supported Business and Information Technology programmes within a technology-enhanced learning environment.</p>
+        <ul>
+          <li>Delivered teaching, training and assessment across Business and Information Technology using blended and learner-centred approaches.</li>
+          <li>Planned workshops, lectures, demonstrations and practical learning activities tailored to diverse learner needs and learning styles.</li>
+          <li>Designed and updated curriculum materials, training resources and assessment instruments aligned with awarding body requirements.</li>
+          <li>Conducted assessment and internal verification activities to ensure validity, reliability, authenticity, fairness and standardisation.</li>
+          <li>Maintained assessment records, evidence portfolios, quality assurance documentation and internal verification reports.</li>
+          <li>Monitored learner progress and provided constructive oral and written feedback.</li>
+          <li>Supported assessor development and standardisation by identifying training needs and promoting consistent assessment practice.</li>
+          <li>Contributed to curriculum enhancement through research into emerging industry trends, educational technologies and workforce requirements.</li>
+        </ul>
+      </article>
+      <article class="role">
+        <div class="role-header"><div><h3>Lecturer / Site Director / National Training and Quality Assurance Manager</h3><div class="org">Abu Dhabi Vocational Education and Training Institute - ADVETI, United Arab Emirates</div></div><span class="date">12/2013 - 12/2016</span></div>
+        <p>Held academic, operational and quality assurance leadership roles within a leading UAE government vocational education institution.</p><p>Contributed to TVET delivery across Business, Information Technology, Project Management and workplace-based learning programmes.</p>
+        <ul>
+          <li>Delivered teaching, training and assessment across Information Technology, Business Management and Project Management at Diploma and Undergraduate level.</li>
+          <li>Developed curriculum materials, assessment strategies, internal verification processes and standardisation practices.</li>
+          <li>Served as Course Coordinator for Business Management and Information Technology programmes.</li>
+          <li>Supervised learner projects, assessed coursework and provided academic mentoring and learner support.</li>
+          <li>Collaborated with CompTIA, Microsoft, Cisco, ADNOC and Abu Dhabi Police to support curriculum relevance and workplace learning.</li>
+          <li>Delivered professional development programmes and assessor training qualifications to staff and industry professionals.</li>
+          <li>Led the YES2WORK national employability programme for Emirati youth, managing teams of assessors and Internal Verifiers.</li>
+          <li>Developed assessment monitoring systems, inspection templates, reporting structures and quality assurance procedures.</li>
+          <li>Worked with External Verifiers and senior leaders to prepare for audits, verification visits and quality assurance reviews.</li>
+          <li>Produced operational and quality assurance reports for senior management.</li>
+        </ul>
+      </article>
+      <article class="role">
+        <div class="role-header"><div><h3>Director of Information Technology</h3><div class="org">The Property File, Manchester, United Kingdom</div></div><span class="date">07/2010 - 11/2013</span></div>
+        <p>Led IT operations, infrastructure management, network security, system implementation and technical support services.</p>
+        <ul>
+          <li>Managed day-to-day IT operations including network infrastructure, maintenance, upgrades, installations and technical support.</li>
+          <li>Developed IT policies, procedures and security practices to support operational efficiency and data protection.</li>
+          <li>Identified technology requirements and recommended hardware, software and infrastructure solutions.</li>
+          <li>Procured cost-effective IT equipment and software while ensuring system reliability and performance.</li>
+          <li>Monitored system performance, resolved technical issues and implemented service improvements.</li>
+          <li>Led, supported and trained IT staff and users.</li>
+        </ul>
+      </article>
+      <article class="role">
+        <div class="role-header"><div><h3>Regional E-Learning Training Director</h3><div class="org">Manchester Business Consortium, United Kingdom</div></div><span class="date">11/2006 - 06/2010</span></div>
+        <p>Led regional delivery and management of e-learning and staff development programmes across the North West region of the UK.</p><p>Managed the setup and operational oversight of 15 e-learning centres and approximately 75 staff.</p>
+        <ul>
+          <li>Managed regional e-learning operations and online training delivery.</li>
+          <li>Designed and developed online courses, workshops and digital training materials.</li>
+          <li>Conducted research and contributed to new training programmes and curriculum resources.</li>
+          <li>Facilitated online learning sessions, workshops and interactive classroom discussions.</li>
+          <li>Identified staff training and development needs and implemented CPD plans.</li>
+          <li>Monitored delivery and operational performance to ensure compliance with organisational standards and legislation.</li>
+        </ul>
+      </article>
+      <article class="role">
+        <div class="role-header"><div><h3>Information Technology and Business Lecturer</h3><div class="org">Manchester College of Arts and Technology - MANCAT, United Kingdom</div></div><span class="date">09/2001 - 10/2006</span></div>
+        <p>Delivered teaching and assessment across Information Technology and Business programmes within Further and Higher Education.</p>
+        <ul>
+          <li>Planned and delivered engaging lessons and workshops aligned with approved curriculum requirements.</li>
+          <li>Researched and developed new courses, teaching materials and learning resources.</li>
+          <li>Assessed coursework, examinations and learner performance.</li>
+          <li>Supported examination preparation, invigilation and marking activities.</li>
+          <li>Provided academic mentoring, guidance and pastoral support.</li>
+          <li>Produced progress and performance reports for senior management and academic teams.</li>
+          <li>Facilitated interactive classroom discussions to promote critical thinking and student engagement.</li>
+        </ul>
+      </article>
+      <article class="role">
+        <div class="role-header"><div><h3>Part-Time Information Technology Teacher</h3><div class="org">White Wings Consulting &amp; Training Inc., New York, USA</div></div><span class="date">03/1997 - 09/2001</span></div>
+        <p>Delivered part-time evening and weekend training in A+ Hardware and Software, Network+ and CCNA programmes.</p>
+        <ul>
+          <li>Planned lessons, practical demonstrations and hands-on learning activities for adult learners and professional trainees.</li>
+          <li>Assessed learner progress and provided academic guidance, mentoring and technical support.</li>
+          <li>Supported learner achievement through communication, classroom management and learner-centred teaching.</li>
+          <li>Developed strong presentation, leadership and interpersonal skills through regular classroom delivery.</li>
+        </ul>
+      </article>
+      <article class="role">
+        <div class="role-header"><div><h3>IT Field Engineer / Project Manager</h3><div class="org">United States</div></div><span class="date">10/1996 - 09/2001</span></div>
+        <p>Worked across enterprise IT infrastructure, field engineering, network deployment and technical project management in fast-paced commercial environments.</p><p>Combined hands-on technical expertise with operational leadership, managing engineering teams and delivering major infrastructure projects across multiple client sites.</p>
+        <ul>
+          <li>Managed approximately 25 field engineers and 3 IT managers across project allocation, operational performance and service delivery.</li>
+          <li>Installed, configured and supported Cisco routers, CSU/DSU devices, firewalls, servers and TCP/IP networks.</li>
+          <li>Troubleshot desktop systems, enterprise networks, servers and software environments for major commercial clients.</li>
+          <li>Supported Microsoft server technologies including Exchange Server, IIS, proxy services, print management, backup, DHCP and remote access services.</li>
+          <li>Led development of a secure web-based support and reporting system for field engineers.</li>
+          <li>Managed installation and configuration of approximately 1,500 PCs for the American Diabetes Association in Manhattan.</li>
+          <li>Led deployment of approximately 1,350 Cisco routers for The Depository Trust Company.</li>
+          <li>Delivered firewall and network implementation projects for Allstate.</li>
+          <li>Managed approximately 1,750 router deployments for Vote.com in Manhattan.</li>
+          <li>Installed and configured approximately 1,450 WatchGuard firewall devices.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="publications">
+    <h2>Recent Publications</h2>
+    <div class="pub-list">
+      <div class="pub">M.A. Umer - “Fundamentals of Cybersecurity for Small to Medium Enterprises” - submitted.</div>
+      <div class="pub">M.A. Umer - “Cryptosystems and Data Protection” - submitted.</div>
+      <div class="pub">M.A. Umer - “Designing Secure Systems for Small to Medium Enterprises” - submitted.</div>
+      <div class="pub">M.A. Umer - “Mobile Network Security” - submitted.</div>
+      <div class="pub">M.A. Umer - “Cloud Computing Security in SMEs” - submitted.</div>
+      <div class="pub">M.A. Umer - “Information System Security” - submitted.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>References</h2>
+    <div class="card"><p>References available upon request.</p></div>
+  </section>
+
+  <div class="footer-container">
+    <footer>Professional CV Portfolio | Mohammed Amir Umer</footer>
+  </div>
+</div>
+</body>
+</html>

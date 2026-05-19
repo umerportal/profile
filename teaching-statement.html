@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teaching Statement | Mohammed Amir Umer</title>
+<style>
+:root{
+  --bg:#eaf4ff;
+  --bg2:#fff7df;
+  --primary:#0b2f6b;
+  --primary2:#1455a3;
+  --gold:#f4c542;
+  --orange:#ff7a18;
+  --purple:#5b1d91;
+  --purple2:#7a2bc2;
+  --green:#28a745;
+  --text:#172033;
+  --muted:#5f6b7a;
+  --shadow:0 22px 55px rgba(11,47,107,0.18);
+}
+*{box-sizing:border-box;}
+html{
+  scroll-behavior:smooth;
+  scrollbar-width:thin;
+  scrollbar-color:var(--gold) rgba(11,47,107,0.18);
+}
+body{
+  margin:0;
+  font-family:"Segoe UI",Arial,sans-serif;
+  color:var(--text);
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top left,#dbeafe 0,transparent 32%),
+    radial-gradient(circle at top right,#fff0b8 0,transparent 30%),
+    linear-gradient(135deg,var(--bg),var(--bg2));
+  overflow-x:hidden;
+  line-height:1.72;
+}
+body::-webkit-scrollbar{width:11px;}
+body::-webkit-scrollbar-track{background:rgba(11,47,107,0.10);border-radius:999px;}
+body::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,var(--gold),var(--orange),var(--primary2));
+  border-radius:999px;
+  border:3px solid rgba(255,255,255,0.75);
+}
+.wrapper{
+  width:min(1180px,92%);
+  margin:0 auto;
+  padding:0 0 34px;
+}
+.top-nav{
+  display:flex;
+  justify-content:flex-end;
+  padding-top:18px;
+}
+.home-btn{
+  text-decoration:none;
+  width:64px;
+  height:64px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,rgba(255,255,255,0.86),rgba(240,248,255,0.96));
+  border-radius:50%;
+  border:3px solid var(--gold);
+  box-shadow:
+    0 0 0 4px rgba(122,43,194,0.42),
+    0 14px 32px rgba(11,47,107,0.24),
+    inset 0 1px 0 rgba(255,255,255,0.95);
+  backdrop-filter:blur(10px);
+  transition:all .25s ease;
+  position:relative;
+  overflow:hidden;
+}
+.home-btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:linear-gradient(135deg,rgba(255,255,255,.78) 0%,rgba(255,255,255,.15) 42%,transparent 70%);
+}
+.home-btn svg{
+  width:32px;
+  height:32px;
+  fill:var(--primary2);
+  position:relative;
+  z-index:2;
+  transform:translateY(2px);
+  filter:drop-shadow(0 2px 2px rgba(0,0,0,.16));
+}
+.home-btn:hover{
+  transform:translateY(-3px) scale(1.08);
+  box-shadow:
+    0 0 0 6px rgba(244,197,66,0.58),
+    0 22px 48px rgba(11,47,107,0.34),
+    inset 0 1px 0 rgba(255,255,255,1);
+}
+.hero{
+  margin-top:-58px;
+  text-align:center;
+  padding:0 18px 18px;
+}
+.hero h1{
+  margin:0;
+  font-size:clamp(44px,7vw,82px);
+  line-height:1;
+  color:var(--primary);
+  font-weight:950;
+  letter-spacing:-1.4px;
+}
+.hero h1 span{color:var(--orange);}
+.hero p{
+  max-width:940px;
+  margin:24px auto 0;
+  color:#4e5868;
+  font-size:clamp(21px,2.6vw,34px);
+  line-height:1.34;
+}
+.nav-strip{
+  position:sticky;
+  top:0;
+  z-index:20;
+  margin:22px 0;
+  background:rgba(255,255,255,.76);
+  border:1px solid rgba(20,85,163,.14);
+  border-radius:999px;
+  box-shadow:0 16px 38px rgba(11,47,107,.12);
+  backdrop-filter:blur(14px);
+  padding:10px;
+  display:flex;
+  gap:8px;
+  overflow:auto;
+}
+.nav-strip a{
+  white-space:nowrap;
+  text-decoration:none;
+  color:var(--primary);
+  font-weight:850;
+  padding:10px 14px;
+  border-radius:999px;
+}
+.nav-strip a:hover{
+  background:linear-gradient(135deg,var(--primary),var(--primary2));
+  color:white;
+}
+.panel{
+  background:rgba(255,255,255,.74);
+  border:1px solid rgba(20,85,163,.16);
+  border-radius:36px;
+  padding:34px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(16px);
+  margin-top:22px;
+}
+.statement-card{
+  background:linear-gradient(180deg,#ffffff,#f8fbff);
+  border:1px solid rgba(20,85,163,.22);
+  border-left:8px solid var(--gold);
+  border-radius:30px;
+  padding:32px;
+  box-shadow:0 24px 60px rgba(11,47,107,.18);
+}
+.statement-card h2{
+  margin:0 0 16px;
+  color:var(--primary);
+  font-size:clamp(28px,3.4vw,44px);
+  line-height:1.1;
+  font-weight:950;
+}
+.statement-card p{
+  color:#3f4a59;
+  font-size:1.06rem;
+  margin:0 0 18px;
+}
+.grid-2{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:20px;
+}
+.grid-3{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
+.mini-card{
+  background:linear-gradient(180deg,#ffffff,#f8fbff);
+  border:1px solid rgba(20,85,163,.20);
+  border-left:7px solid var(--gold);
+  border-radius:24px;
+  padding:22px;
+  box-shadow:0 18px 42px rgba(11,47,107,.12);
+}
+.mini-card h3{
+  margin:0 0 10px;
+  color:var(--primary);
+  font-size:22px;
+  line-height:1.2;
+}
+.mini-card p,.mini-card li{
+  color:var(--muted);
+  font-size:15.5px;
+  line-height:1.7;
+}
+.mini-card ul{margin:10px 0 0;padding-left:20px;}
+.quote{
+  margin:24px 0;
+  padding:22px 24px;
+  border-radius:0 22px 22px 0;
+  border-left:8px solid var(--orange);
+  background:linear-gradient(180deg,#fffdf5,#ffffff);
+  box-shadow:0 18px 40px rgba(11,47,107,.12);
+  color:#344054;
+  font-style:italic;
+  font-size:1.08rem;
+}
+.badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:12px;
+}
+.badge{
+  display:inline-flex;
+  background:rgba(255,255,255,.82);
+  border:1px solid rgba(20,85,163,.16);
+  color:var(--primary);
+  border-radius:999px;
+  padding:8px 12px;
+  font-weight:850;
+  box-shadow:0 8px 20px rgba(11,47,107,.08);
+}
+.section{
+  scroll-margin-top:100px;
+}
+.footer-container{text-align:center;margin:34px 0 0;}
+footer{
+  display:inline-block;
+  background:rgba(255,255,255,.78);
+  border-top:3px solid var(--gold);
+  color:#46505f;
+  padding:12px 24px;
+  border-radius:18px;
+  font-size:14px;
+  font-weight:800;
+  font-style:italic;
+  box-shadow:0 12px 28px rgba(11,47,107,.14);
+}
+@media(max-width:1000px){
+  .grid-2,.grid-3{grid-template-columns:1fr;}
+}
+@media(max-width:720px){
+  .hero{margin-top:-24px;}
+  .panel{padding:22px;}
+  .statement-card,.mini-card{padding:22px;}
+  .hero p{font-size:21px;}
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="top-nav">
+    <a class="home-btn" href="index.html" aria-label="Back to CV" title="Back to CV">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M10.8 2.4a1.8 1.8 0 0 1 2.4 0l8 7.2c.4.4.5 1 .1 1.5-.3.4-.9.5-1.4.2l-.9-.8V20a1.5 1.5 0 0 1-1.5 1.5h-4v-6h-3v6h-4A1.5 1.5 0 0 1 5 20v-9.5l-.9.8c-.5.3-1.1.2-1.4-.2-.4-.5-.3-1.1.1-1.5l8-7.2z"/>
+      </svg>
+    </a>
+  </div>
+
+  <section class="hero">
+    <h1>Teaching <span>Statement</span></h1>
+    <p>Professional teaching, training, curriculum, assessment, quality assurance, and education leadership statement for Mohammed Amir Umer.</p>
+  </section>
+
+  <nav class="nav-strip">
+    <a href="#overview">Overview</a>
+    <a href="#leadership">Leadership</a>
+    <a href="#expertise">Expertise</a>
+    <a href="#practice">Practice</a>
+    <a href="#subjects">Subjects</a>
+    <a href="#impact">Impact</a>
+    <a href="#credentials">Credentials</a>
+  </nav>
+
+  <section class="panel section" id="overview">
+    <div class="statement-card">
+      <h2>Professional Teaching and Training Overview</h2>
+      <p>I am an education and training professional with more than 20 years of international experience in teaching, training, curriculum design, assessment, quality assurance, and academic leadership. My work has taken me across the United Kingdom, the United Arab Emirates, China, Europe, and the United States.</p>
+      <p>Throughout my career, I have designed, delivered, and managed academic, vocational, and professional programmes in business, information technology, cybersecurity, compliance, employability, and teacher training. I believe education should connect knowledge with real opportunity. It should be practical, inclusive, and able to help learners improve their confidence, skills, and future prospects.</p>
+      <p>In my current role as Head of Information Technology and Business Management at HHF Training and The ELA Education Group, I lead the design, delivery, and quality assurance of training programmes. This includes developing education strategies, mentoring trainers and assessors, supporting internal quality assurance, and making sure that courses meet the needs of learners, employers, awarding bodies, and the wider community.</p>
+      <div class="quote">Education is not only the transfer of knowledge. It is a way to transform lives, build confidence, develop competence, and create lasting opportunity.</div>
+    </div>
+  </section>
+
+  <section class="panel section" id="leadership">
+    <div class="statement-card">
+      <h2>Strategic Leadership and Responsibilities</h2>
+      <p>At HHF Training, I help shape and deliver education and training strategies that support the organisation's mission and respond to the changing skills needs of the workforce. My role includes leading trainers, assessors, and internal quality assurers, while making sure programmes remain current, compliant, and effective.</p>
+      <p>I work to maintain strong standards in teaching practice, learner engagement, assessment, and quality assurance. I also support programme development in line with Ofqual, iCQ, and awarding body requirements, ensuring that training is delivered with consistency, fairness, and professional accountability.</p>
+      <p>A key part of my work involves collaboration with UK councils, industry partners, community organisations, and awarding bodies. Through these partnerships, I have helped develop tailored training programmes that support employability, professional licensing, compliance, and career progression. These programmes are designed to meet real local and industry needs, not only classroom objectives.</p>
+      <p>I also use data and learner feedback to review the effectiveness of training. This helps measure learner progress, completion rates, satisfaction, employer impact, and areas for improvement. I believe strong education leadership must be both people-focused and evidence-informed.</p>
+    </div>
+  </section>
+
+  <section class="panel section" id="expertise">
+    <div class="statement-card">
+      <h2>Key Areas of Expertise</h2>
+      <div class="grid-3">
+        <div class="mini-card"><h3>Strategic Educational Leadership</h3><p>Planning education strategy, leading teams, building partnerships, and aligning training provision with institutional, workforce, and community priorities.</p></div>
+        <div class="mini-card"><h3>Curriculum and Quality Design</h3><p>Developing and managing vocational and professional programmes aligned with Ofqual, iCQ, City & Guilds, and other awarding body standards.</p></div>
+        <div class="mini-card"><h3>Digital Transformation</h3><p>Supporting digital tools, blended learning, and artificial intelligence where they improve access, engagement, and learning outcomes.</p></div>
+        <div class="mini-card"><h3>Learning and Development</h3><p>Training, coaching, and mentoring teachers, trainers, assessors, and internal quality assurers to improve professional confidence and standards.</p></div>
+        <div class="mini-card"><h3>Compliance and Accreditation</h3><p>Maintaining regulatory compliance, awarding body requirements, evidence standards, accurate records, and learner-centred quality systems.</p></div>
+        <div class="mini-card"><h3>Community and Council Partnerships</h3><p>Designing employability, compliance, professional driver development, health and safety, customer care, and community training programmes.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel section" id="practice">
+    <div class="statement-card">
+      <h2>Teaching and Learning Practice</h2>
+      <p>My teaching approach is learner-centred, practical, and reflective. I aim to create a learning environment where students and trainees feel respected, involved, and confident enough to ask questions. I want learners to understand not only what they are learning, but also why it matters and how they can apply it.</p>
+      <p>I use a range of teaching methods, including scenario-based projects, live case studies, role play, group discussion, coaching, blended learning, and online learning activities. I also use digital and AI-supported tools where they help make complex ideas easier to understand.</p>
+      <p>Feedback is central to my teaching. I give learners clear guidance on what they are doing well and what they need to improve. This helps them build confidence over time and take responsibility for their own development. My goal is always to help learners move from understanding a subject to applying it effectively in professional and community settings.</p>
+    </div>
+  </section>
+
+  <section class="panel section" id="subjects">
+    <div class="statement-card">
+      <h2>Subjects and Courses Delivered</h2>
+      <div class="grid-3">
+        <div class="mini-card">
+          <h3>Business and Management</h3>
+          <ul>
+            <li>Business Management, Levels 2 to 6</li>
+            <li>Business Communication</li>
+            <li>Organisational Behaviour</li>
+            <li>Leadership and Professional Development</li>
+            <li>Project Management</li>
+            <li>Employability and workplace skills</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <h3>Information Technology and Networking</h3>
+          <ul>
+            <li>CompTIA A+</li>
+            <li>CompTIA Network+</li>
+            <li>CompTIA Security+</li>
+            <li>Cisco CCNA</li>
+            <li>Cisco CCNP Routing and Switching</li>
+            <li>IT Security and Cybersecurity</li>
+            <li>Network Defence</li>
+            <li>Microsoft MCP and MCSE</li>
+            <li>IC3 Digital Literacy Certification</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <h3>Education and Vocational Qualifications</h3>
+          <ul>
+            <li>Education and Training, Levels 2 to 6</li>
+            <li>Assessor qualifications including TAQA</li>
+            <li>Internal Quality Assurance awards</li>
+            <li>Vocational and employability courses, Levels 2 to 6</li>
+            <li>Taxi and private hire compliance training</li>
+            <li>Health and safety training</li>
+            <li>Customer care training</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel section" id="impact">
+    <div class="statement-card">
+      <h2>Collaborative Partnerships, Awards and Training Impact</h2>
+      <div class="grid-2">
+        <div class="mini-card">
+          <h3>Collaborative Educational Partnerships</h3>
+          <p>A major part of my career has involved working with colleges, universities, training providers, councils, and industry partners to make education more relevant to employment. I have helped institutions integrate professional certifications into academic programmes, including Cisco, Microsoft, CompTIA, and Certiport qualifications.</p>
+          <p>This dual approach gives learners the opportunity to gain both academic qualifications and recognised professional certifications. It also helps institutions strengthen their offer and gives learners a clearer pathway into employment, promotion, or further study.</p>
+        </div>
+        <div class="mini-card">
+          <h3>Awards and Recognition</h3>
+          <ul>
+            <li>Certificate of Appreciation from ACTVET for work as Site Director, Assessor, and Internal Quality Assurer.</li>
+            <li>ADVETI Employee of the Year Award in 2015 and Certificate of Appreciation in 2016.</li>
+            <li>Recognition for the UAE National Programme “Yes to Work”.</li>
+            <li>Recognition for establishing Cisco, Microsoft, CompTIA, and Certiport laboratories at Al Jazirah Institute.</li>
+            <li>Accreditation of Al Jazirah Institute as an approved Cisco Networking Academy, Microsoft, CompTIA, and IC3 training centre.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mini-card" style="margin-top:20px;">
+        <h3>Training Impact and Achievements</h3>
+        <p>Across my career, I have delivered more than 1,000 structured training and assessment sessions in business, IT, and vocational disciplines. I have designed blended learning frameworks, improved learner engagement, and supported access to learning through flexible delivery models.</p>
+        <p>I have also mentored and qualified trainers, assessors, and internal quality assurers, strengthening quality assurance practice across different institutions. My work with UK councils, UAE education authorities, and community partners has supported employability initiatives, professional development, and national training programmes.</p>
+        <p>In addition, I have led the establishment of internationally accredited laboratories and digital learning systems that have supported learners, staff, and institutions in meeting modern education and industry standards.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel section" id="credentials">
+    <div class="statement-card">
+      <h2>Academic and Professional Credentials</h2>
+      <div class="grid-2">
+        <div class="mini-card">
+          <h3>Education and Teaching Credentials</h3>
+          <div class="badges">
+            <span class="badge">PhD in Progress - AI-Based Cybersecurity</span>
+            <span class="badge">MSc Business Management and Information Technology</span>
+            <span class="badge">BCS Bachelor of Computer Science</span>
+            <span class="badge">QTLS</span>
+            <span class="badge">DET</span>
+            <span class="badge">Internal Quality Assurance</span>
+            <span class="badge">Lead Internal Quality Assurance</span>
+            <span class="badge">Teaching English as a Second Language</span>
+          </div>
+        </div>
+        <div class="mini-card">
+          <h3>Information Technology Credentials</h3>
+          <p>My IT credentials include internationally recognised certifications such as IC3, ECDL, OCR, CompTIA A+, Microsoft MCP, MCPI, MCSE, and Cisco CCNA. These qualifications support my ability to bring together technical expertise, teaching experience, and education leadership.</p>
+        </div>
+      </div>
+      <div class="quote">As I continue my work in education and training, my goal is to combine innovation, technology, and human connection to create learning that is practical, meaningful, and lasting.</div>
+    </div>
+  </section>
+
+  <div class="footer-container">
+    <footer>Teaching Statement | Mohammed Amir Umer</footer>
+  </div>
+</div>
+</body>
+</html>
