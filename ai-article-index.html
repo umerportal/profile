@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI, Assessment and Educational Integrity | Article Library</title>
+<style>
+:root{
+  --bg:#eaf4ff;
+  --bg2:#fff7df;
+  --primary:#0b2f6b;
+  --primary2:#1455a3;
+  --gold:#f4c542;
+  --orange:#ff7a18;
+  --purple:#5b1d91;
+  --text:#172033;
+  --muted:#5f6b7a;
+  --card:#ffffff;
+  --shadow:0 22px 55px rgba(11,47,107,0.18);
+  --radius:28px;
+}
+*{box-sizing:border-box;}
+html{
+  scrollbar-width:thin;
+  scrollbar-color:var(--gold) rgba(11,47,107,0.18);
+  scroll-behavior:smooth;
+}
+body{
+  margin:0;
+  font-family:"Segoe UI",Arial,sans-serif;
+  color:var(--text);
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top left, #dbeafe 0, transparent 32%),
+    radial-gradient(circle at top right, #fff0b8 0, transparent 30%),
+    linear-gradient(135deg,var(--bg),var(--bg2));
+  overflow-x:hidden;
+}
+body::-webkit-scrollbar{width:11px;}
+body::-webkit-scrollbar-track{background:rgba(11,47,107,0.10);border-radius:999px;}
+body::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,var(--gold),var(--orange),var(--primary2));
+  border-radius:999px;
+  border:3px solid rgba(255,255,255,0.75);
+}
+.wrapper{
+  width:min(1180px,92%);
+  margin:0 auto;
+  padding:0 0 28px;
+}
+.top-nav{
+  display:flex;
+  justify-content:flex-end;
+  margin-bottom:0;
+  margin-top:18px;
+}
+.home-btn{
+  text-decoration:none;
+  width:64px;
+  height:64px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.84), rgba(255,248,241,0.95));
+  color:#fff;
+  border-radius:50%;
+  border:3px solid var(--purple);
+  box-shadow:
+    0 0 0 4px rgba(255,122,24,0.48),
+    0 14px 32px rgba(180,83,9,0.24),
+    inset 0 1px 0 rgba(255,255,255,0.95);
+  backdrop-filter:blur(10px);
+  transition:all .25s ease;
+  position:relative;
+  overflow:hidden;
+}
+.home-btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:linear-gradient(135deg,rgba(255,255,255,0.78) 0%,rgba(255,255,255,0.15) 42%,transparent 70%);
+  pointer-events:none;
+}
+.home-btn svg{
+  width:32px;
+  height:32px;
+  fill:var(--orange);
+  filter:drop-shadow(0 2px 2px rgba(0,0,0,0.18));
+  transform:translateY(2px);
+  position:relative;
+  z-index:1;
+}
+.home-btn:hover{
+  transform:translateY(-3px) scale(1.08);
+  box-shadow:
+    0 0 0 6px rgba(91,29,145,0.44),
+    0 22px 48px rgba(180,83,9,0.32),
+    inset 0 1px 0 rgba(255,255,255,1);
+}
+.hero{
+  text-align:center;
+  padding:0 18px 18px;
+  margin-top:-62px;
+}
+.hero h1{
+  margin:0;
+  font-size:clamp(42px,6.5vw,78px);
+  line-height:1;
+  color:var(--orange);
+  font-weight:900;
+  letter-spacing:-1px;
+}
+.hero .cap{
+  font-size:48px;
+  display:inline-block;
+  margin-right:14px;
+  vertical-align:middle;
+}
+.hero p{
+  max-width:940px;
+  margin:28px auto 0;
+  color:#4e5868;
+  font-size:clamp(21px,2.6vw,34px);
+  line-height:1.35;
+}
+.stats-row{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+  margin:20px 0 24px;
+}
+.stat{
+  background:rgba(255,255,255,0.74);
+  border:1px solid rgba(20,85,163,0.16);
+  border-radius:24px;
+  padding:18px 20px;
+  box-shadow:0 18px 42px rgba(11,47,107,0.12);
+  text-align:center;
+}
+.stat strong{
+  display:block;
+  color:var(--primary);
+  font-size:32px;
+  line-height:1;
+}
+.stat span{
+  display:block;
+  margin-top:6px;
+  color:var(--muted);
+  font-weight:800;
+}
+.section-card{
+  background:rgba(255,255,255,0.72);
+  border:1px solid rgba(20,85,163,0.16);
+  border-radius:36px;
+  padding:34px;
+  box-shadow:0 26px 65px rgba(180,83,9,0.15);
+  backdrop-filter:blur(16px);
+}
+.section-title{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  margin:0 0 26px;
+  color:var(--purple);
+  font-size:clamp(30px,4vw,48px);
+  font-weight:900;
+  text-align:center;
+}
+.cards{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:22px;
+}
+.card{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  text-decoration:none;
+  background:linear-gradient(180deg,#ffffff,#f8fbff);
+  color:var(--primary);
+  border-radius:24px;
+  padding:24px 24px;
+  min-height:142px;
+  box-shadow:0 20px 48px rgba(180,83,9,0.14);
+  border:1px solid rgba(20,85,163,0.20);
+  border-left:8px solid var(--gold);
+  overflow:hidden;
+  transition:all .25s ease;
+}
+.card::after{
+  content:"";
+  position:absolute;
+  right:-45px;
+  top:-45px;
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  background:rgba(244,197,66,0.18);
+}
+.card:hover{
+  transform:translateY(-7px);
+  box-shadow:0 30px 70px rgba(180,83,9,0.25);
+  border-left-color:var(--orange);
+}
+.icon{
+  width:58px;
+  height:58px;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+  font-size:30px;
+  background:linear-gradient(135deg,var(--orange),#b45309);
+  color:#fff;
+  box-shadow:0 12px 24px rgba(180,83,9,0.22);
+  position:relative;
+  z-index:1;
+  font-weight:900;
+}
+.card-content{
+  position:relative;
+  z-index:1;
+}
+.tag{
+  display:inline-block;
+  margin:0 0 8px;
+  padding:5px 10px;
+  border-radius:999px;
+  background:rgba(244,197,66,0.20);
+  color:var(--purple);
+  font-size:12px;
+  font-weight:900;
+}
+.card h2{
+  margin:0 0 7px;
+  font-size:21px;
+  color:var(--primary);
+  line-height:1.22;
+}
+.card p{
+  margin:0;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.55;
+}
+.notice{
+  margin-top:24px;
+  background:linear-gradient(180deg,#fffdf5,#ffffff);
+  border:1px solid rgba(244,197,66,0.55);
+  border-left:8px solid var(--orange);
+  border-radius:24px;
+  padding:22px 24px;
+  color:#445064;
+  line-height:1.7;
+  box-shadow:0 18px 40px rgba(11,47,107,0.10);
+}
+.notice strong{color:var(--primary);}
+.footer-container{
+  text-align:center;
+  margin:34px 0 0;
+}
+footer{
+  display:inline-block;
+  background:rgba(255,255,255,0.78);
+  border-top:3px solid var(--gold);
+  color:#46505f;
+  padding:12px 24px;
+  border-radius:18px;
+  font-size:14px;
+  font-weight:700;
+  font-style:italic;
+  box-shadow:0 12px 28px rgba(11,47,107,0.14);
+}
+@media(max-width:900px){
+  .cards{grid-template-columns:1fr;}
+  .stats-row{grid-template-columns:1fr;}
+  .section-card{padding:22px;}
+  .hero{margin-top:-24px;}
+  .hero p{font-size:22px;}
+  .card{padding:20px;min-height:auto;}
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="top-nav">
+    <a class="home-btn" href="TEACHERINDEX.HTML" aria-label="Back to Teacher Resources" title="Back to Teacher Resources">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M10.8 2.4a1.8 1.8 0 0 1 2.4 0l8 7.2c.4.4.5 1 .1 1.5-.3.4-.9.5-1.4.2l-.9-.8V20a1.5 1.5 0 0 1-1.5 1.5h-4v-6h-3v6h-4A1.5 1.5 0 0 1 5 20v-9.5l-.9.8c-.5.3-1.1.2-1.4-.2-.4-.5-.3-1.1.1-1.5l8-7.2z"/>
+      </svg>
+    </a>
+  </div>
+
+  <section class="hero">
+    <h1><span class="cap">🤖</span>AI Article Library</h1>
+    <p>AI, assessment, authentic learning, IQA, CPD, quality assurance, inclusion, governance, and practical implementation guidance for modern education.</p>
+  </section>
+
+  <div class="stats-row">
+    <div class="stat"><strong>16</strong><span>Local article links</span></div>
+    <div class="stat"><strong>AI</strong><span>Assessment and integrity focus</span></div>
+    <div class="stat"><strong>QA</strong><span>IQA, CPD and provider guidance</span></div>
+  </div>
+
+  <section class="section-card">
+    <h2 class="section-title">AI, Assessment and Educational Integrity</h2>
+
+    <div class="cards">
+
+      <a href="AI-Detection-Software-Is-Not-the-Solution.html" class="card">
+        <span class="icon">⚖️</span>
+        <span class="card-content">
+          <span class="tag">Integrity</span>
+          <h2>AI Detection Software Is Not the Solution</h2>
+          <p>Why AI detection tools cannot replace authentic assessment, professional discussion, and human judgement.</p>
+        </span>
+      </a>
+
+      <a href="AI-Governance-in-Education.html" class="card">
+        <span class="icon">🛡️</span>
+        <span class="card-content">
+          <span class="tag">Governance</span>
+          <h2>AI Governance in Education</h2>
+          <p>A practical starting point for responsible AI policies, staff guidance, learner expectations, and quality controls.</p>
+        </span>
+      </a>
+
+      <a href="AI-Will-Not-Replace-Educators-But-It-Will-Change-Education.html" class="card">
+        <span class="icon">🤝</span>
+        <span class="card-content">
+          <span class="tag">Education</span>
+          <h2>AI Will Not Replace Educators - But It Will Change Education</h2>
+          <p>How educators remain essential while AI changes teaching, learning support, planning, and assessment practice.</p>
+        </span>
+      </a>
+
+      <a href="Authentic-Assessment-Is-the-Future-of-Education.html" class="card">
+        <span class="icon">✅</span>
+        <span class="card-content">
+          <span class="tag">Assessment</span>
+          <h2>Authentic Assessment Is the Future of Education</h2>
+          <p>Why practical, reflective, scenario-based and competence-focused assessment is central to future-ready education.</p>
+        </span>
+      </a>
+
+      <a href="Authentic-Assessment-Matters-More-Than-Ever-in-the-AI-Era.html" class="card">
+        <span class="icon">🎯</span>
+        <span class="card-content">
+          <span class="tag">Assessment</span>
+          <h2>Authentic Assessment Matters More Than Ever in the AI Era</h2>
+          <p>Why assessment must now verify genuine understanding, critical thinking, practical application, and competence.</p>
+        </span>
+      </a>
+
+      <a href="How-AI-Can-Support-Learners-With-Additional-Learning-Needs-and-Language-Barriers.html" class="card">
+        <span class="icon">🌍</span>
+        <span class="card-content">
+          <span class="tag">Inclusion</span>
+          <h2>How AI Can Support Learners With Additional Learning Needs and Language Barriers</h2>
+          <p>How AI can improve accessibility, learner confidence, language support, communication, and inclusive education.</p>
+        </span>
+      </a>
+
+      <a href="How-AI-Is-Changing-the-Role-of-the-IQA.html" class="card">
+        <span class="icon">🔍</span>
+        <span class="card-content">
+          <span class="tag">IQA</span>
+          <h2>How AI Is Changing the Role of the IQA</h2>
+          <p>How IQAs are moving from compliance checking to authenticity, risk management, standardisation, and leadership.</p>
+        </span>
+      </a>
+
+      <a href="How-AI-Is-Transforming-Assessment-IQA-and-Educational-Quality-Assurance.html" class="card">
+        <span class="icon">📋</span>
+        <span class="card-content">
+          <span class="tag">Quality</span>
+          <h2>How AI Is Transforming Assessment, IQA and Educational Quality Assurance</h2>
+          <p>A detailed article on AI, assessment design, IQA, governance, risks, opportunities, and future quality assurance.</p>
+        </span>
+      </a>
+
+      <a href="Human-Judgement-Still-Matters-in-AI-Assisted-Education.html" class="card">
+        <span class="icon">🧠</span>
+        <span class="card-content">
+          <span class="tag">Judgement</span>
+          <h2>Human Judgement Still Matters in AI Assisted Education</h2>
+          <p>Why human judgement, empathy, ethics, safeguarding, and professional wisdom remain central in AI-assisted education.</p>
+        </span>
+      </a>
+
+      <a href="The-Biggest-Mistake-Educational-Providers-Are-Making-About-AI.html" class="card">
+        <span class="icon">🚨</span>
+        <span class="card-content">
+          <span class="tag">Strategy</span>
+          <h2>The Biggest Mistake Educational Providers Are Making About AI</h2>
+          <p>Why ignoring AI or banning it without a strategy creates confusion, inconsistency, and assessment risk.</p>
+        </span>
+      </a>
+
+      <a href="The-Future-of-Quality-Assurance-in-the-Age-of-AI.html" class="card">
+        <span class="icon">📊</span>
+        <span class="card-content">
+          <span class="tag">QA</span>
+          <h2>The Future of Quality Assurance in the Age of AI</h2>
+          <p>How quality assurance is evolving toward authenticity, ethical governance, AI literacy, and risk-based monitoring.</p>
+        </span>
+      </a>
+
+      <a href="The-Rise-of-Authentic-Assessment-in-the-Age-of-AI.html" class="card">
+        <span class="icon">🧩</span>
+        <span class="card-content">
+          <span class="tag">Assessment</span>
+          <h2>The Rise of Authentic Assessment in the Age of AI</h2>
+          <p>Why professional discussion, reflective learning, practical demonstration, and scenario-based questioning matter now.</p>
+        </span>
+      </a>
+
+      <a href="Why-AI-CPD-Is-Becoming-Essential-for-Educators.html" class="card">
+        <span class="icon">📚</span>
+        <span class="card-content">
+          <span class="tag">CPD</span>
+          <h2>Why AI CPD Is Becoming Essential for Educators</h2>
+          <p>Why AI awareness and staff CPD are now essential for consistency, confidence, learner guidance, and integrity.</p>
+        </span>
+      </a>
+
+      <a href="Why-AI-Training-for-IQAs-and-Assessors-Is-No-Longer-Optional.html" class="card">
+        <span class="icon">🎓</span>
+        <span class="card-content">
+          <span class="tag">Training</span>
+          <h2>Why AI Training for IQAs and Assessors Is No Longer Optional</h2>
+          <p>Why assessors and IQAs need AI literacy, authenticity verification skills, and confident professional judgement.</p>
+        </span>
+      </a>
+
+      <a href="Why-Professional-Discussion-Matters-More-Than-Ever.html" class="card">
+        <span class="icon">💬</span>
+        <span class="card-content">
+          <span class="tag">Discussion</span>
+          <h2>Why Professional Discussion Matters More Than Ever</h2>
+          <p>How professional discussion verifies genuine understanding, reasoning, confidence, communication, and competence.</p>
+        </span>
+      </a>
+
+      <a href="FUTURE-ARTICLES.html" class="card">
+        <span class="icon">🔮</span>
+        <span class="card-content">
+          <span class="tag">Planning</span>
+          <h2>Future Articles</h2>
+          <p>A local placeholder link for future AI, assessment, quality assurance, and education article topics.</p>
+        </span>
+      </a>
+    </div>
+
+    <div class="notice">
+      <strong>Local link structure:</strong> All article buttons use local HTML filenames, so keep this index page in the same folder as the article HTML files and images.
+    </div>
+  </section>
+
+  <div class="footer-container">
+    <footer>Crafted Through Research by Umer Malik</footer>
+  </div>
+</div>
+</body>
+</html>

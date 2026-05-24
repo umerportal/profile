@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Governance in Education | AI, Assessment and Educational Integrity</title>
+<style>
+:root{
+  --bg:#eaf4ff;
+  --bg2:#fff7df;
+  --primary:#0b2f6b;
+  --primary2:#1455a3;
+  --gold:#f4c542;
+  --orange:#ff7a18;
+  --purple:#5b1d91;
+  --green:#198754;
+  --red:#c62828;
+  --text:#172033;
+  --muted:#5f6b7a;
+  --shadow:0 22px 55px rgba(11,47,107,0.18);
+}
+*{box-sizing:border-box;}
+html{
+  scroll-behavior:smooth;
+  scrollbar-width:thin;
+  scrollbar-color:var(--gold) rgba(11,47,107,0.18);
+}
+body{
+  margin:0;
+  font-family:"Segoe UI",Arial,sans-serif;
+  color:var(--text);
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top left,#dbeafe 0,transparent 32%),
+    radial-gradient(circle at top right,#fff0b8 0,transparent 30%),
+    linear-gradient(135deg,var(--bg),var(--bg2));
+  overflow-x:hidden;
+  line-height:1.72;
+}
+body::-webkit-scrollbar{width:11px;}
+body::-webkit-scrollbar-track{background:rgba(11,47,107,0.10);border-radius:999px;}
+body::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,var(--gold),var(--orange),var(--primary2));
+  border-radius:999px;
+  border:3px solid rgba(255,255,255,0.75);
+}
+.wrapper{
+  width:min(1180px,92%);
+  margin:0 auto;
+  padding:0 0 36px;
+}
+.top-nav{
+  display:flex;
+  justify-content:flex-end;
+  gap:12px;
+  padding-top:18px;
+}
+.icon-btn{
+  text-decoration:none;
+  width:64px;
+  height:64px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,rgba(255,255,255,0.86),rgba(240,248,255,0.96));
+  border-radius:50%;
+  border:3px solid var(--gold);
+  box-shadow:
+    0 0 0 4px rgba(122,43,194,0.42),
+    0 14px 32px rgba(11,47,107,0.24),
+    inset 0 1px 0 rgba(255,255,255,0.95);
+  backdrop-filter:blur(10px);
+  transition:all .25s ease;
+  position:relative;
+  overflow:hidden;
+}
+.icon-btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:linear-gradient(135deg,rgba(255,255,255,.78) 0%,rgba(255,255,255,.15) 42%,transparent 70%);
+}
+.icon-btn svg{
+  width:31px;
+  height:31px;
+  fill:var(--primary2);
+  position:relative;
+  z-index:2;
+  filter:drop-shadow(0 2px 2px rgba(0,0,0,.16));
+}
+.icon-btn:hover{
+  transform:translateY(-3px) scale(1.08);
+  box-shadow:
+    0 0 0 6px rgba(244,197,66,0.58),
+    0 22px 48px rgba(11,47,107,0.34),
+    inset 0 1px 0 rgba(255,255,255,1);
+}
+.hero{
+  margin-top:-54px;
+  text-align:center;
+  padding:0 18px 20px;
+}
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 18px;
+  border-radius:999px;
+  background:rgba(255,255,255,.78);
+  border:1px solid rgba(20,85,163,.16);
+  color:var(--primary);
+  font-weight:900;
+  box-shadow:0 12px 28px rgba(11,47,107,.12);
+  margin-bottom:18px;
+}
+.hero h1{
+  margin:0;
+  font-size:clamp(40px,6vw,76px);
+  line-height:1;
+  color:var(--primary);
+  font-weight:950;
+  letter-spacing:-1.4px;
+}
+.hero h1 span{color:var(--orange);}
+.hero p{
+  max-width:940px;
+  margin:24px auto 0;
+  color:#4e5868;
+  font-size:clamp(20px,2.4vw,31px);
+  line-height:1.36;
+}
+.meta-row{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  margin-top:20px;
+}
+.meta-pill{
+  display:inline-flex;
+  align-items:center;
+  border-radius:999px;
+  padding:9px 14px;
+  background:rgba(255,255,255,.82);
+  border:1px solid rgba(20,85,163,.16);
+  color:var(--primary);
+  font-weight:900;
+  box-shadow:0 8px 20px rgba(11,47,107,.08);
+}
+.nav-strip{
+  position:sticky;
+  top:0;
+  z-index:20;
+  margin:22px 0;
+  background:rgba(255,255,255,.78);
+  border:1px solid rgba(20,85,163,.14);
+  border-radius:999px;
+  box-shadow:0 16px 38px rgba(11,47,107,.12);
+  backdrop-filter:blur(14px);
+  padding:10px;
+  display:flex;
+  gap:8px;
+  overflow:auto;
+}
+.nav-strip a{
+  white-space:nowrap;
+  text-decoration:none;
+  color:var(--primary);
+  font-weight:850;
+  padding:10px 14px;
+  border-radius:999px;
+}
+.nav-strip a:hover{
+  background:linear-gradient(135deg,var(--primary),var(--primary2));
+  color:white;
+}
+.panel{
+  background:rgba(255,255,255,.74);
+  border:1px solid rgba(20,85,163,.16);
+  border-radius:36px;
+  padding:34px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(16px);
+  margin-top:22px;
+}
+.feature-image{
+  background:linear-gradient(180deg,#ffffff,#f8fbff);
+  border:1px solid rgba(20,85,163,.20);
+  border-radius:30px;
+  padding:14px;
+  box-shadow:0 24px 60px rgba(11,47,107,.18);
+  overflow:hidden;
+}
+.feature-image img{
+  width:100%;
+  display:block;
+  border-radius:22px;
+}
+.article-card{
+  background:linear-gradient(180deg,#ffffff,#f8fbff);
+  border:1px solid rgba(20,85,163,.22);
+  border-left:8px solid var(--gold);
+  border-radius:30px;
+  padding:32px;
+  box-shadow:0 24px 60px rgba(11,47,107,.18);
+}
+.article-card h2{
+  margin:0 0 16px;
+  color:var(--primary);
+  font-size:clamp(28px,3.4vw,44px);
+  line-height:1.1;
+  font-weight:950;
+}
+.article-card h3{
+  margin:28px 0 12px;
+  color:var(--purple);
+  font-size:clamp(22px,2.4vw,30px);
+  line-height:1.18;
+  font-weight:950;
+}
+.article-card p{
+  color:#3f4a59;
+  font-size:1.06rem;
+  margin:0 0 18px;
+}
+.article-card ul,.article-card ol{
+  margin:10px 0 20px;
+  padding-left:24px;
+}
+.article-card li{
+  margin:8px 0;
+  color:#4b5563;
+  font-size:1.03rem;
+}
+.quote{
+  margin:26px 0;
+  padding:24px 26px;
+  border-radius:0 24px 24px 0;
+  border-left:8px solid var(--orange);
+  background:linear-gradient(180deg,#fffdf5,#ffffff);
+  box-shadow:0 18px 40px rgba(11,47,107,.12);
+  color:#344054;
+  font-style:italic;
+  font-size:1.15rem;
+  font-weight:700;
+}
+.key-box{
+  margin:24px 0;
+  padding:24px;
+  border-radius:24px;
+  background:linear-gradient(135deg,rgba(11,47,107,.96),rgba(20,85,163,.92));
+  color:white;
+  box-shadow:0 22px 45px rgba(11,47,107,.24);
+}
+.key-box h3{
+  color:var(--gold);
+  margin:0 0 10px;
+}
+.key-box p,.key-box li{color:white;}
+.grid-2{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+.grid-3{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
+.mini-card{
+  background:linear-gradient(180deg,#ffffff,#f8fbff);
+  border:1px solid rgba(20,85,163,.20);
+  border-left:7px solid var(--gold);
+  border-radius:24px;
+  padding:22px;
+  box-shadow:0 18px 42px rgba(11,47,107,.12);
+}
+.mini-card h3{
+  margin:0 0 10px;
+  color:var(--primary);
+  font-size:21px;
+  line-height:1.2;
+}
+.mini-card p,.mini-card li{
+  color:var(--muted);
+  font-size:15.5px;
+  line-height:1.65;
+}
+.checklist li::marker{color:var(--green);}
+.warning li::marker{color:var(--red);}
+.action-panel{
+  background:linear-gradient(180deg,#fffdf5,#ffffff);
+  border:1px solid rgba(244,197,66,.55);
+  border-left:8px solid var(--orange);
+  border-radius:30px;
+  padding:30px;
+  box-shadow:0 24px 60px rgba(11,47,107,.15);
+}
+.action-panel h2{
+  color:var(--primary);
+  margin:0 0 14px;
+  font-size:clamp(30px,3.6vw,46px);
+}
+.related a,.back-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  background:linear-gradient(135deg,var(--orange),#b45309);
+  color:#fff;
+  border-radius:999px;
+  padding:12px 16px;
+  font-weight:950;
+  box-shadow:0 14px 28px rgba(180,83,9,.22);
+  transition:.2s ease;
+  margin:6px 8px 6px 0;
+}
+.related a:hover,.back-link:hover{
+  transform:translateY(-2px);
+  box-shadow:0 20px 36px rgba(180,83,9,.30);
+}
+.section{scroll-margin-top:100px;}
+.footer-container{text-align:center;margin:34px 0 0;}
+footer{
+  display:inline-block;
+  background:rgba(255,255,255,.78);
+  border-top:3px solid var(--gold);
+  color:#46505f;
+  padding:12px 24px;
+  border-radius:18px;
+  font-size:14px;
+  font-weight:800;
+  font-style:italic;
+  box-shadow:0 12px 28px rgba(11,47,107,.14);
+}
+@media(max-width:1000px){
+  .grid-2,.grid-3{grid-template-columns:1fr;}
+}
+@media(max-width:720px){
+  .hero{margin-top:-20px;}
+  .hero p{font-size:20px;}
+  .panel{padding:20px;border-radius:28px;}
+  .article-card,.action-panel{padding:22px;}
+  .nav-strip{border-radius:24px;}
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="top-nav">
+    <a class="icon-btn" href="ai-article-index.html" aria-label="Back to Article Index" title="Back to Article Index">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v13A2.5 2.5 0 0 1 17.5 21h-11A2.5 2.5 0 0 1 4 18.5v-13zm3 1v3h10v-3H7zm0 5v2h10v-2H7zm0 4v2h7v-2H7z"/>
+      </svg>
+    </a>
+    <a class="icon-btn" href="TEACHERINDEX.HTML" aria-label="Back to Teacher Resources" title="Back to Teacher Resources">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M10.8 2.4a1.8 1.8 0 0 1 2.4 0l8 7.2c.4.4.5 1 .1 1.5-.3.4-.9.5-1.4.2l-.9-.8V20a1.5 1.5 0 0 1-1.5 1.5h-4v-6h-3v6h-4A1.5 1.5 0 0 1 5 20v-9.5l-.9.8c-.5.3-1.1.2-1.4-.2-.4-.5-.3-1.1.1-1.5l8-7.2z"/>
+      </svg>
+    </a>
+  </div>
+
+  <section class="hero">
+    <div class="hero-badge">AI Governance and Education Leadership</div>
+    <h1>AI Governance in Education: <span>Where Do We Start?</span></h1>
+    <p>AI can improve education, but without governance it can create confusion, risk, unfairness, and weak assessment decisions. Strong governance protects learners, educators, data, and the value of qualifications.</p>
+    <div class="meta-row">
+      <span class="meta-pill">AI Governance</span>
+      <span class="meta-pill">Educational Integrity</span>
+      <span class="meta-pill">IQA and QA</span>
+      <span class="meta-pill">8 min read</span>
+    </div>
+  </section>
+
+  <nav class="nav-strip">
+    <a href="#overview">Overview</a>
+    <a href="#governance">Governance</a>
+    <a href="#policy">Policies</a>
+    <a href="#training">Staff Training</a>
+    <a href="#assessment">Assessment</a>
+    <a href="#data">Data and Inclusion</a>
+    <a href="#implementation">Implementation</a>
+  </nav>
+
+  <section class="panel">
+    <div class="feature-image">
+      <img src="ai-governance-in-education.png" alt="AI Governance in Education infographic">
+    </div>
+  </section>
+
+  <section class="panel section" id="overview">
+    <div class="article-card">
+      <h2>Overview</h2>
+      <p>Artificial intelligence is rapidly becoming part of everyday education. Across schools, colleges, universities, and vocational training environments, AI-powered systems such as ChatGPT, Microsoft Copilot, and Gemini are increasingly being used by learners, educators, assessors, and organisations to support learning, research, lesson planning, accessibility, administration, and assessment preparation.</p>
+      <p>However, while AI adoption is growing quickly, many educational providers are still facing one major question: how should AI actually be governed within education?</p>
+      <p>In many organisations, AI usage has developed faster than policies, staff training, learner guidance, or quality assurance processes. Some educators encourage AI use openly, others discourage it completely, and some learners use AI without understanding where support ends and misconduct begins. This inconsistency creates confusion, uncertainty, and risk.</p>
+      <div class="quote">Good AI governance does not slow innovation. It protects learning, people, data, fairness, and the value of education.</div>
+    </div>
+  </section>
+
+  <section class="panel section" id="governance">
+    <div class="article-card">
+      <h2>What AI Governance Means in Education</h2>
+      <p>AI governance refers to the systems, policies, procedures, and professional expectations used to ensure that AI technologies are used responsibly, ethically, fairly, and safely within educational settings.</p>
+      <p>It is not about banning technology completely. It is also not about allowing unrestricted AI use without boundaries. Effective AI governance creates a balanced approach that supports innovation while protecting:</p>
+      <ul>
+        <li>educational integrity,</li>
+        <li>authentic assessment,</li>
+        <li>learner fairness,</li>
+        <li>data protection,</li>
+        <li>safeguarding,</li>
+        <li>professional standards,</li>
+        <li>and qualification credibility.</li>
+      </ul>
+      <p>One of the biggest mistakes providers make is assuming AI governance only relates to academic misconduct. In reality, AI governance affects teaching practice, learner support, accessibility, curriculum design, assessment, quality assurance, safeguarding, staff development, and organisational leadership.</p>
+    </div>
+  </section>
+
+  <section class="panel section" id="policy">
+    <div class="article-card">
+      <h2>Start with Clear Policies and Practical Guidance</h2>
+      <p>A strong starting point is to develop clear AI usage policies for staff and learners. These policies should be realistic, understandable, and directly linked to the organisation's teaching, assessment, IQA, safeguarding, and data protection processes.</p>
+      <p>Without clear guidance, basic questions become difficult to answer:</p>
+      <ul>
+        <li>Is AI use allowed?</li>
+        <li>What type of AI support is acceptable?</li>
+        <li>Should learners declare AI use?</li>
+        <li>Can AI be used for grammar support only?</li>
+        <li>Can it be used for idea generation?</li>
+        <li>How should authenticity be verified?</li>
+        <li>What happens if AI-generated information is inaccurate?</li>
+      </ul>
+      <p>Attempting to ban AI completely is unlikely to succeed long term because learners can access AI through phones, laptops, browsers, apps, and home devices. A stronger approach is to define responsible use, transparent use, and unacceptable use.</p>
+      <div class="key-box">
+        <h3>Balanced Policy Position</h3>
+        <p>Providers may allow learners to use AI for revision, grammar improvement, practice questions, accessibility support, and simplified explanations, while still requiring learners to prove genuine understanding through professional discussion, practical assessment, reflective learning, and applied competence.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel section" id="training">
+    <div class="article-card">
+      <h2>Staff Training Is Essential</h2>
+      <p>AI governance cannot work if staff are unsure how AI operates or how it should be managed. Many educators, assessors, and IQAs are still developing confidence in this area. Without training, organisations risk inconsistent practice across departments, assessors, tutors, and qualification areas.</p>
+      <p>For example, one tutor may encourage AI use responsibly, another may treat every use of AI as misconduct, while another may rely too heavily on unreliable AI detection tools. This inconsistency damages learner trust and weakens quality assurance.</p>
+      <p>Educational providers need ongoing CPD covering:</p>
+      <ul>
+        <li>AI literacy,</li>
+        <li>ethical AI use,</li>
+        <li>assessment authenticity,</li>
+        <li>data protection and GDPR responsibilities,</li>
+        <li>safeguarding risks,</li>
+        <li>AI-aware assessment design,</li>
+        <li>and consistent assessor and IQA practice.</li>
+      </ul>
+      <div class="quote">People do not need to become AI engineers. They need enough AI literacy to make fair, confident, and professionally defensible education decisions.</div>
+    </div>
+  </section>
+
+  <section class="panel section" id="assessment">
+    <div class="article-card">
+      <h2>Governance Must Strengthen Authentic Assessment</h2>
+      <p>AI governance must work alongside authentic assessment practice. The issue is not only whether learners use AI. The real question is whether the assessment system successfully verifies genuine learner understanding.</p>
+      <p>Consider a learner studying business administration who uses AI to help structure a reflective assignment. The written work appears professional, but during discussion the learner struggles to explain key ideas independently. In this situation, the problem is not simply AI use. The problem is that written evidence alone did not prove competence.</p>
+      <p>Providers increasingly need assessment methods that focus on:</p>
+      <ul>
+        <li>applied knowledge,</li>
+        <li>professional judgement,</li>
+        <li>real-world competence,</li>
+        <li>critical thinking,</li>
+        <li>learner engagement,</li>
+        <li>and confident explanation.</li>
+      </ul>
+      <p>Professional discussion, practical demonstration, workplace observation, reflective learning, and scenario-based questioning are therefore central to good AI governance. They help educators verify authentic understanding more effectively than written evidence alone.</p>
+    </div>
+  </section>
+
+  <section class="panel section" id="data">
+    <div class="article-card">
+      <h2>Data Protection, Safeguarding, Fairness and Inclusion</h2>
+      <div class="grid-2">
+        <div class="mini-card">
+          <h3>Data Protection and Safeguarding</h3>
+          <p>Many AI systems process prompts, uploaded files, user information, and interaction data. Staff and learners may unknowingly upload personal, workplace, assessment, or sensitive information into external platforms. Providers need clear guidance on safe AI use, GDPR responsibilities, confidentiality, and learner information protection.</p>
+        </div>
+        <div class="mini-card">
+          <h3>Fairness and Inclusion</h3>
+          <p>Not all learners have equal access to technology, stable internet, paid AI tools, or digital confidence. AI adoption must not increase inequality. At the same time, AI can support inclusion through translation, speech-to-text, text simplification, revision support, and personalised guidance when used responsibly.</p>
+        </div>
+      </div>
+      <p>Good governance balances opportunity with responsibility. It allows education providers to benefit from AI while controlling risks that could damage fairness, safeguarding, assessment validity, or learner trust.</p>
+    </div>
+  </section>
+
+  <section class="panel section" id="implementation">
+    <div class="action-panel">
+      <h2>How This Can Be Implemented in Real Life</h2>
+      <p>AI governance should be practical, visible, and manageable. A provider does not need a perfect AI system before taking action. It needs clear starting points, consistent expectations, and a review process that improves over time.</p>
+
+      <h3>Step-by-Step Implementation Plan</h3>
+      <ol>
+        <li><strong>Review current AI use.</strong> Identify how learners, assessors, tutors, administrators, and managers are already using AI.</li>
+        <li><strong>Create a clear AI policy.</strong> Define acceptable use, unacceptable use, declaration requirements, data protection boundaries, and assessment expectations.</li>
+        <li><strong>Write learner guidance.</strong> Explain AI in simple language so learners understand how to use it ethically and when to declare it.</li>
+        <li><strong>Deliver staff CPD.</strong> Train assessors, tutors, IQAs, and managers on AI literacy, authenticity, safeguarding, and professional judgement.</li>
+        <li><strong>Strengthen assessment design.</strong> Add professional discussion, scenario-based questioning, practical evidence, reflection, and observation where appropriate.</li>
+        <li><strong>Update IQA sampling.</strong> Add AI-related risk indicators into IQA plans, standardisation meetings, and assessor monitoring.</li>
+        <li><strong>Review data protection risks.</strong> Make sure staff and learners do not upload confidential or sensitive information into external AI tools.</li>
+        <li><strong>Monitor and improve.</strong> Review incidents, learner feedback, assessor practice, IQA findings, and policy effectiveness every term or delivery cycle.</li>
+      </ol>
+
+      <div class="grid-3">
+        <div class="mini-card">
+          <h3>What Assessors Should Do</h3>
+          <ul class="checklist">
+            <li>Explain AI expectations before assessment starts.</li>
+            <li>Use professional discussion where authenticity is unclear.</li>
+            <li>Check whether learners can explain and apply their work.</li>
+            <li>Record judgement clearly and consistently.</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <h3>What IQAs Should Check</h3>
+          <ul class="checklist">
+            <li>Whether assessment decisions are consistent across assessors.</li>
+            <li>Whether AI risks are included in sampling plans.</li>
+            <li>Whether professional discussions are recorded properly.</li>
+            <li>Whether learners are treated fairly and proportionately.</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <h3>What Providers Should Implement</h3>
+          <ul class="checklist">
+            <li>AI usage policy for staff and learners.</li>
+            <li>AI CPD and standardisation sessions.</li>
+            <li>GDPR and safeguarding guidance for AI tools.</li>
+            <li>Clear review cycle for policy updates.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Practical Example</h3>
+      <p>A training provider introduces an AI policy for learners and staff. Learners are allowed to use AI for revision, grammar support, and practice questions, but they must not submit AI-generated work as their own. Assessors add short professional discussion questions to selected assignments. IQAs update sampling plans to include AI-related authenticity risks. The provider reviews the policy after one delivery cycle using learner feedback, assessor records, IQA findings, and any malpractice concerns.</p>
+
+      <h3>Common Mistakes to Avoid</h3>
+      <ul class="warning">
+        <li>Creating an AI policy but not training staff on how to apply it.</li>
+        <li>Assuming AI governance is only about plagiarism or misconduct.</li>
+        <li>Trying to ban AI without offering realistic learner guidance.</li>
+        <li>Using AI tools without considering GDPR, safeguarding, and confidentiality.</li>
+        <li>Failing to update assessment and IQA processes.</li>
+      </ul>
+
+      <h3>Simple Action Plan</h3>
+      <ol>
+        <li>Hold one staff discussion on current AI use.</li>
+        <li>Draft a one-page learner AI guidance document.</li>
+        <li>Add AI risks to the next IQA standardisation meeting.</li>
+        <li>Select one assessment and add authenticity checks.</li>
+        <li>Review the process after the next cohort or assessment cycle.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="panel related">
+    <div class="article-card">
+      <h2>Related Articles</h2>
+      <p>Continue reading the series through the main article library.</p>
+      <a href="ai-article-index.html">Back to Article Library</a>
+      <a href="Why-AI-Training-for-IQAs-and-Assessors-Is-No-Longer-Optional.html">Why AI Training for IQAs and Assessors Is No Longer Optional</a>
+      <a href="The-Future-of-Quality-Assurance-in-the-Age-of-AI.html">The Future of Quality Assurance in the Age of AI</a>
+    </div>
+  </section>
+
+  <div class="footer-container">
+    <footer>Crafted Through Research by Umer Malik</footer>
+  </div>
+</div>
+</body>
+</html>
