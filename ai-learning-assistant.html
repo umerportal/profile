@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI as a Learning Assistant, Not a Replacement for Teachers | LEAF Article</title>
+<meta name="description" content="The strongest use of AI in education is not to replace teachers. It is to extend the support teachers can give. A teacher understands the learner, the grou">
+<style>
+:root{
+  --bg:#eaf4ff;
+  --bg2:#fff7df;
+  --primary:#0b2f6b;
+  --primary2:#1455a3;
+  --gold:#f4c542;
+  --orange:#ff7a18;
+  --purple:#5b1d91;
+  --purple2:#7a2bc2;
+  --green:#198754;
+  --red:#c62828;
+  --text:#172033;
+  --muted:#5f6b7a;
+  --shadow:0 22px 55px rgba(11,47,107,0.18);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--gold) rgba(11,47,107,0.18);}
+body{
+  margin:0;
+  font-family:"Segoe UI",Arial,sans-serif;
+  color:var(--text);
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top left,#dbeafe 0,transparent 32%),
+    radial-gradient(circle at top right,#fff0b8 0,transparent 30%),
+    linear-gradient(135deg,var(--bg),var(--bg2));
+  overflow-x:hidden;
+  line-height:1.72;
+}
+body::-webkit-scrollbar{width:11px;}
+body::-webkit-scrollbar-track{background:rgba(11,47,107,0.10);border-radius:999px;}
+body::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--gold),var(--orange),var(--primary2));border-radius:999px;border:3px solid rgba(255,255,255,0.75);}
+.wrapper{width:min(1180px,92%);margin:0 auto;padding:0 0 36px;}
+.top-nav{display:flex;justify-content:flex-end;gap:12px;padding-top:18px;}
+.icon-btn{text-decoration:none;width:64px;height:64px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(255,255,255,0.86),rgba(240,248,255,0.96));border-radius:50%;border:3px solid var(--gold);box-shadow:0 0 0 4px rgba(122,43,194,0.42),0 14px 32px rgba(11,47,107,0.24),inset 0 1px 0 rgba(255,255,255,0.95);backdrop-filter:blur(10px);transition:all .25s ease;position:relative;overflow:hidden;}
+.icon-btn::before{content:"";position:absolute;inset:0;border-radius:50%;background:linear-gradient(135deg,rgba(255,255,255,.78) 0%,rgba(255,255,255,.15) 42%,transparent 70%);}
+.icon-btn svg{width:31px;height:31px;fill:var(--primary2);position:relative;z-index:2;filter:drop-shadow(0 2px 2px rgba(0,0,0,.16));}
+.icon-btn:hover{transform:translateY(-3px) scale(1.08);box-shadow:0 0 0 6px rgba(244,197,66,0.58),0 22px 48px rgba(11,47,107,0.34),inset 0 1px 0 rgba(255,255,255,1);}
+.hero{margin-top:-54px;text-align:center;padding:0 18px 20px;}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;padding:10px 18px;border-radius:999px;background:rgba(255,255,255,.78);border:1px solid rgba(20,85,163,.16);color:var(--primary);font-weight:900;box-shadow:0 12px 28px rgba(11,47,107,.12);margin-bottom:18px;}
+.hero h1{margin:0;font-size:clamp(40px,6vw,76px);line-height:1;color:var(--primary);font-weight:950;letter-spacing:-1.4px;}
+.hero h1 span{color:var(--orange);}
+.hero p{max-width:940px;margin:24px auto 0;color:#4e5868;font-size:clamp(20px,2.4vw,31px);line-height:1.36;}
+.meta-row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:20px;}
+.meta-pill{display:inline-flex;align-items:center;border-radius:999px;padding:9px 14px;background:rgba(255,255,255,.82);border:1px solid rgba(20,85,163,.16);color:var(--primary);font-weight:900;box-shadow:0 8px 20px rgba(11,47,107,.08);}
+.nav-strip{position:sticky;top:0;z-index:20;margin:22px 0;background:rgba(255,255,255,.78);border:1px solid rgba(20,85,163,.14);border-radius:999px;box-shadow:0 16px 38px rgba(11,47,107,.12);backdrop-filter:blur(14px);padding:10px;display:flex;gap:8px;overflow:auto;}
+.nav-strip a{white-space:nowrap;text-decoration:none;color:var(--primary);font-weight:850;padding:10px 14px;border-radius:999px;}
+.nav-strip a:hover{background:linear-gradient(135deg,var(--primary),var(--primary2));color:white;}
+.panel{background:rgba(255,255,255,.74);border:1px solid rgba(20,85,163,.16);border-radius:36px;padding:34px;box-shadow:var(--shadow);backdrop-filter:blur(16px);margin-top:22px;}
+.feature-image{background:linear-gradient(180deg,#ffffff,#f8fbff);border:1px solid rgba(20,85,163,.20);border-radius:30px;padding:14px;box-shadow:0 24px 60px rgba(11,47,107,.18);overflow:hidden;}
+.feature-image img{width:100%;display:block;border-radius:22px;}
+.article-card{background:linear-gradient(180deg,#ffffff,#f8fbff);border:1px solid rgba(20,85,163,.22);border-left:8px solid var(--gold);border-radius:30px;padding:32px;box-shadow:0 24px 60px rgba(11,47,107,.18);}
+.article-card h2{margin:0 0 16px;color:var(--primary);font-size:clamp(28px,3.4vw,44px);line-height:1.1;font-weight:950;}
+.article-card h3{margin:28px 0 12px;color:var(--purple);font-size:clamp(22px,2.4vw,30px);line-height:1.18;font-weight:950;}
+.article-card p{color:#3f4a59;font-size:1.06rem;margin:0 0 18px;}
+.article-card ul,.article-card ol{margin:10px 0 20px;padding-left:24px;}
+.article-card li{margin:8px 0;color:#4b5563;font-size:1.03rem;}
+.quote{margin:26px 0;padding:24px 26px;border-radius:0 24px 24px 0;border-left:8px solid var(--orange);background:linear-gradient(180deg,#fffdf5,#ffffff);box-shadow:0 18px 40px rgba(11,47,107,.12);color:#344054;font-style:italic;font-size:1.15rem;font-weight:700;}
+.key-box{margin:24px 0;padding:24px;border-radius:24px;background:linear-gradient(135deg,rgba(11,47,107,.96),rgba(20,85,163,.92));color:white;box-shadow:0 22px 45px rgba(11,47,107,.24);}
+.key-box h3{color:var(--gold);margin:0 0 10px;}
+.key-box p,.key-box li{color:white;}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
+.mini-card{background:linear-gradient(180deg,#ffffff,#f8fbff);border:1px solid rgba(20,85,163,.20);border-left:7px solid var(--gold);border-radius:24px;padding:22px;box-shadow:0 18px 42px rgba(11,47,107,.12);}
+.mini-card h3{margin:0 0 10px;color:var(--primary);font-size:21px;line-height:1.2;}
+.mini-card p,.mini-card li{color:var(--muted);font-size:15.5px;line-height:1.65;}
+.checklist li::marker{color:var(--green);}
+.warning li::marker{color:var(--red);}
+.action-panel{background:linear-gradient(180deg,#fffdf5,#ffffff);border:1px solid rgba(244,197,66,.55);border-left:8px solid var(--orange);border-radius:30px;padding:30px;box-shadow:0 24px 60px rgba(11,47,107,.15);}
+.action-panel h2{color:var(--primary);margin:0 0 14px;font-size:clamp(30px,3.6vw,46px);}
+.related a,.back-link{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;background:linear-gradient(135deg,var(--orange),#b45309);color:#fff;border-radius:999px;padding:12px 16px;font-weight:950;box-shadow:0 14px 28px rgba(180,83,9,.22);transition:.2s ease;margin:6px 8px 6px 0;}
+.related a:hover,.back-link:hover{transform:translateY(-2px);box-shadow:0 20px 36px rgba(180,83,9,.30);}
+.sources a{color:var(--primary2);font-weight:800;}
+.section{scroll-margin-top:100px;}
+.footer-container{text-align:center;margin:34px 0 0;}
+footer{display:inline-block;background:rgba(255,255,255,.78);border-top:3px solid var(--gold);color:#46505f;padding:12px 24px;border-radius:18px;font-size:14px;font-weight:800;font-style:italic;box-shadow:0 12px 28px rgba(11,47,107,.14);}
+@media(max-width:1000px){.grid-2,.grid-3{grid-template-columns:1fr;}}
+@media(max-width:720px){.hero{margin-top:-20px;}.hero p{font-size:20px;}.panel{padding:20px;border-radius:28px;}.article-card,.action-panel{padding:22px;}.nav-strip{border-radius:24px;}.hero h1{letter-spacing:0;}}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="top-nav">
+    <a class="icon-btn" href="https://mumer.org/index.html" aria-label="Home" title="Home">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.8 2.4a1.8 1.8 0 0 1 2.4 0l8 7.2c.4.4.5 1 .1 1.5-.3.4-.9.5-1.4.2l-.9-.8V20a1.5 1.5 0 0 1-1.5 1.5h-4v-6h-3v6h-4A1.5 1.5 0 0 1 5 20v-9.5l-.9.8c-.5.3-1.1.2-1.4-.2-.4-.5-.3-1.1.1-1.5l8-7.2z"/></svg>
+    </a>
+    <a class="icon-btn" href="ai-learning-assistant.md" aria-label="Read Markdown article" title="Read Markdown article">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v13A2.5 2.5 0 0 1 17.5 21h-11A2.5 2.5 0 0 1 4 18.5v-13zm3 1v3h10v-3H7zm0 5v2h10v-2H7zm0 4v2h7v-2H7z"/></svg>
+    </a>
+  </div>
+
+  <section class="hero">
+    <div class="hero-badge">AI, Teaching and Professional Judgement</div>
+    <h1>AI as a Learning Assistant, <span>Not a Replacement for Teachers</span></h1>
+    <p>The strongest use of AI in education is not to replace teachers. It is to extend the support teachers can give.</p>
+    <div class="meta-row">
+      <span class="meta-pill">Teacher Oversight</span>
+      <span class="meta-pill">Differentiation</span>
+      <span class="meta-pill">Independent Learning</span>
+      <span class="meta-pill">7 min read</span>
+    </div>
+  </section>
+
+  <nav class="nav-strip">
+    <a href="#overview">Overview</a>
+    <a href="#challenge">Challenge</a>
+    <a href="#examples">Examples</a>
+    <a href="#risks">Risks</a>
+    <a href="#way-forward">Better Way</a>
+    <a href="#reflection">Reflection</a>
+  </nav>
+
+  <section class="panel">
+    <div class="feature-image">
+      <img src="ai-learning-assistant.png" alt="AI as a Learning Assistant, Not a Replacement for Teachers infographic">
+    </div>
+  </section>
+
+  <section class="panel section" id="overview">
+    <div class="article-card">
+      <h2>Opening Hook</h2>
+      <p>The strongest use of AI in education is not to replace teachers. It is to extend the support teachers can give.</p>
+<p>A teacher understands the learner, the group, the curriculum, the assessment standard and the emotional climate in the room. AI does not.</p>
+<p>That difference matters.</p>
+      <div class="quote">That difference matters.</div>
+      <h2>Why This Matters</h2>
+      <p>AI is becoming part of everyday learning. Learners can ask for explanations, examples, summaries, quizzes and feedback at any time. This creates opportunity, but it also creates responsibility.</p>
+<p>If AI is treated as a substitute for teaching, education becomes weaker. If it is treated as a learning assistant under teacher oversight, it can strengthen individual support, differentiation and independent learning.</p>
+<p>The goal should be better learning, not less teaching.</p>
+      <div class="key-box">
+        <h3>Key Point</h3>
+        <p>AI can be a powerful learning assistant, but it should never replace the professional role of teachers.</p>
+      </div>
+      <h2>The Core Reality</h2>
+      <p>Teachers are already managing mixed abilities, different confidence levels, language needs, assessment pressure and increasing administrative workload.</p>
+<p>AI can help by producing alternative explanations, practice questions, revision prompts, examples and learning activities. It can help learners revisit content at their own pace and ask questions they may feel embarrassed to ask in class.</p>
+<p>However, AI does not know whether a learner is anxious, disengaged, masking confusion or relying too heavily on generated answers. That is why teacher oversight remains essential.</p>
+    </div>
+  </section>
+
+  <section class="panel section" id="challenge">
+    <div class="article-card">
+      <h2>The Main Challenge</h2>
+      <p>The main challenge is drawing the line between support and dependency.</p>
+<p>A learner who uses AI to explain a topic in simpler language may be developing independence. A learner who uses AI to complete tasks without understanding may be losing the purpose of learning.</p>
+<p>Teachers need to help learners understand how to use AI as a thinking partner, not as a replacement for effort, reflection or evidence of competence.</p>
+      <h3>Why It Happens</h3>
+      <p>This challenge happens because AI tools are easy to access but not always easy to use well.</p>
+<p>Learners may receive little guidance on prompting, checking accuracy or recognising when an answer is weak. Staff may be asked to respond to AI quickly without enough training or policy clarity.</p>
+<p>When expectations are unclear, AI use becomes inconsistent. Some learners benefit. Others become over-reliant.</p>
+    </div>
+  </section>
+
+  <section class="panel section" id="examples">
+    <div class="article-card">
+      <h2>Real-World Examples</h2>
+      <p>These examples show how the idea can be applied in everyday education, training and learner support practice.</p>
+      <div class="grid-2">
+        <div class="mini-card"><h3>Individual support</h3><p>A learner asks AI to explain a maths method using a different example. The teacher checks the explanation and asks the learner to solve a new problem independently.</p></div>
+        <div class="mini-card"><h3>Differentiation</h3><p>A teacher uses AI to create three reading levels of the same topic, then checks vocabulary, accuracy and curriculum fit before using them.</p></div>
+        <div class="mini-card"><h3>Independent learning</h3><p>A learner uses AI to generate revision questions, answers them without assistance and then reviews gaps with the teacher.</p></div>
+        <div class="mini-card"><h3>Teacher oversight</h3><p>A class uses AI for brainstorming, but the teacher sets the criteria, challenges weak ideas and connects the work to assessment standards.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel section" id="risks">
+    <div class="article-card">
+      <h2>The Risks of Doing Nothing</h2>
+      <p>If AI is used without teacher oversight, learners may receive inaccurate information, shallow explanations or answers that look confident but are wrong.</p>
+<p>There is also a risk that learners stop practising the difficult parts of learning: planning, drafting, remembering, explaining, questioning and improving.</p>
+<p>Replacing teachers with tools would reduce education to content delivery. Teaching is far more than content delivery.</p>
+      <div class="grid-2">
+        <div class="mini-card warning">
+          <h3>Risk to Learners</h3>
+          <p>Barriers can remain hidden, support can become inconsistent, and confidence can be damaged.</p>
+        </div>
+        <div class="mini-card warning">
+          <h3>Risk to Organisations</h3>
+          <p>Quality, inclusion, safeguarding and assessment integrity can suffer when AI use is unmanaged.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel section" id="way-forward">
+    <div class="article-card">
+      <h2>A Better Way Forward</h2>
+      <p>A better approach is to define AI as a supervised learning assistant.</p>
+<p>Teachers should decide when AI is useful, what tasks it can support, what outputs must be checked and how learners should show their own understanding.</p>
+<p>Organisations should provide staff training, learner guidance and clear policy so AI supports learning rather than weakening it.</p>
+      <h3>Who Benefits and How</h3>
+      <div class="grid-2">
+        <div class="mini-card checklist"><h3>Learners</h3><p>receive extra explanation, practice and confidence between lessons.</p></div>
+        <div class="mini-card checklist"><h3>Teachers</h3><p>gain support for differentiation and resource creation while retaining professional control.</p></div>
+        <div class="mini-card checklist"><h3>Organisations</h3><p>can improve consistency by setting clear expectations for responsible AI use.</p></div>
+        <div class="mini-card checklist"><h3>Assessment teams</h3><p>can protect authenticity by requiring explanation, application and reflection.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel section" id="reflection">
+    <div class="article-card">
+      <h2>Leadership Reflection</h2>
+      <p>The leadership issue is not whether AI will enter learning. It already has.</p>
+<p>The strategic question is whether organisations will shape AI use through professional standards, or leave learners and staff to work it out alone.</p>
+      <div class="key-box">
+        <h3>Key Takeaway</h3>
+        <p>AI can be a powerful learning assistant, but it should never replace the professional role of teachers.</p>
+<p>The best model is teacher-led, learner-centred and quality-assured.</p>
+      </div>
+      <h3>Closing Question</h3>
+      <p>How can we help learners use AI to think more deeply rather than avoid thinking altogether?</p>
+      <div class="quote">What are your thoughts? Where have you seen AI genuinely support teaching and learning?</div>
+    </div>
+  </section>
+
+  <section class="panel section">
+    <div class="action-panel sources">
+      <h2>Reference Sources Reviewed</h2>
+      <p>This article has been written as professional guidance, with factual claims checked against recognised education, accessibility and health-information sources.</p>
+      <ul>
+        <li><a href="https://www.gov.uk/government/publications/generative-artificial-intelligence-in-education/generative-artificial-intelligence-ai-in-education">Department for Education: Generative AI in education</a></li>
+        <li><a href="https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research">UNESCO: Guidance for generative AI in education and research</a></li>
+        <li><a href="https://www.w3.org/WAI/media/av/captions/">W3C WAI: Captions, transcripts and media accessibility</a></li>
+        <li><a href="https://www.nhs.uk/conditions/dyslexia/">NHS: Dyslexia overview</a></li>
+        <li><a href="https://www.nhs.uk/conditions/autism/">NHS: Autism overview</a></li>
+        <li><a href="https://www.nhs.uk/conditions/attention-deficit-hyperactivity-disorder-adhd/">NHS: Attention deficit hyperactivity disorder overview</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="footer-container">
+    <footer>
+  <p>
+    <a href="https://mumer.org/index.html">Home</a> |
+    <a href="https://mumer.org/ai-article-index.html">Back to Article Index</a>
+  </p>
+</footer>
+  </div>
+</div>
+</body>
+</html>
