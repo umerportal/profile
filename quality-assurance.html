@@ -1,518 +1,419 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Training, Curriculum and Quality Assurance Master Profile | Mohammed Umer</title>
-<style>
-:root{
-  --bg:#d6e7ff;
-  --bg2:#f4dda2;
-  --ink:#101827;
-  --muted:#243447;
-  --primary:#08285c;
-  --primary2:#104f9f;
-  --gold:#f4c542;
-  --orange:#e85f00;
-  --green:#1f8f3a;
-  --red:#b91c1c;
-  --paper:rgba(255,255,255,.92);
-  --line:rgba(8,40,92,.32);
-  --shadow:0 26px 70px rgba(8,40,92,.26);
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--gold) rgba(11,47,107,.18)}
-body{
-  margin:0;
-  min-height:100vh;
-  font-family:"Segoe UI",Arial,sans-serif;
-  color:var(--ink);
-  line-height:1.7;
-  overflow-x:hidden;
-  background:
-    radial-gradient(circle at top left,#b8d8ff 0,transparent 34%),
-    radial-gradient(circle at top right,#ffe08a 0,transparent 32%),
-    linear-gradient(135deg,var(--bg),var(--bg2));
-}
-body::-webkit-scrollbar{width:11px}
-body::-webkit-scrollbar-track{background:rgba(11,47,107,.10);border-radius:999px}
-body::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--gold),var(--orange),var(--primary2));border-radius:999px;border:3px solid rgba(255,255,255,.75)}
-.wrapper{width:min(1180px,92%);margin:0 auto;padding:0 0 36px}
-.top-nav{display:flex;justify-content:flex-end;padding:22px 0 18px}
-.home-btn{
-  width:64px;height:64px;display:inline-flex;align-items:center;justify-content:center;
-  text-decoration:none;border-radius:50%;border:3px solid var(--gold);
-  background:linear-gradient(135deg,rgba(255,255,255,.94),rgba(240,248,255,.98));
-  box-shadow:0 0 0 4px rgba(122,43,194,.24),0 14px 32px rgba(11,47,107,.22),inset 0 1px 0 rgba(255,255,255,.95);
-  transition:transform .25s ease,box-shadow .25s ease;position:relative;overflow:hidden;
-}
-.home-btn:before{content:"";position:absolute;inset:0;border-radius:50%;background:linear-gradient(135deg,rgba(255,255,255,.78),rgba(255,255,255,.14) 44%,transparent 70%)}
-.home-btn svg{width:32px;height:32px;fill:var(--primary2);position:relative;z-index:2;transform:translateY(2px);filter:drop-shadow(0 2px 2px rgba(0,0,0,.16))}
-.home-btn:hover{transform:translateY(-3px) scale(1.08);box-shadow:0 0 0 6px rgba(244,197,66,.44),0 22px 48px rgba(11,47,107,.30)}
-.hero{text-align:center;padding:8px 18px 16px}
-.eyebrow{display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px;border:2px solid rgba(8,40,92,.28);border-radius:999px;background:rgba(255,255,255,.94);color:var(--primary);font-size:13px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;padding:7px 13px;box-shadow:0 10px 24px rgba(8,40,92,.12)}
-.hero h1{margin:0;color:var(--primary);font-size:clamp(40px,6.3vw,76px);font-weight:950;line-height:1;letter-spacing:0}
-.hero h1 span{color:var(--orange)}
-.hero p{max-width:1060px;margin:24px auto 0;color:#243447;font-size:clamp(19px,2.2vw,29px);line-height:1.38;font-weight:650}
-.nav-strip{
-  position:sticky;top:0;z-index:20;margin:24px 0 22px;padding:10px;
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:8px;
-  background:rgba(255,255,255,.94);border:2px solid rgba(8,40,92,.24);border-radius:28px;
-  box-shadow:0 20px 46px rgba(8,40,92,.20);backdrop-filter:blur(14px);
-}
-.nav-strip a{text-decoration:none;color:var(--primary);font-weight:900;padding:10px;border-radius:999px;text-align:center;font-size:13.5px;line-height:1.15}
-.nav-strip a:hover,.nav-strip a:focus-visible{background:linear-gradient(135deg,var(--primary),var(--primary2));color:white;outline:none}
-.panel{background:rgba(248,251,255,.94);border:2px solid rgba(8,40,92,.22);border-radius:34px;padding:32px;box-shadow:var(--shadow);backdrop-filter:blur(16px);margin-top:22px}
-.section{scroll-margin-top:120px}
-.main-card{background:linear-gradient(180deg,#ffffff,#eef6ff);border:2px solid rgba(8,40,92,.30);border-left:10px solid var(--gold);border-radius:28px;padding:30px;box-shadow:0 26px 64px rgba(8,40,92,.22)}
-.main-card h2{margin:0 0 16px;color:var(--primary);font-size:clamp(26px,3vw,40px);line-height:1.12;font-weight:950;letter-spacing:0}
-.main-card p{color:#243447;font-size:1.04rem;margin:0 0 18px}
-.subhead{margin-top:30px!important}
-.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.mini-card,.framework-card,.metric,.dash,.tool,.stage{
-  background:linear-gradient(180deg,#ffffff,#eef6ff);border:2px solid rgba(8,40,92,.28);border-left:10px solid var(--gold);
-  border-radius:22px;padding:21px;box-shadow:0 20px 48px rgba(8,40,92,.18);
-}
-.framework-card{background:linear-gradient(180deg,#ffffff,#fff7d6);border-color:rgba(8,40,92,.26);border-left-color:var(--gold)}
-.mini-card h3,.framework-card h3,.stage h3{margin:0 0 10px;color:var(--primary);font-size:21px;line-height:1.22;font-weight:950}
-.mini-card p,.mini-card li,.framework-card p,.framework-card li,.stage p,.stage li{color:var(--muted);font-size:15.5px;line-height:1.68}
-.mini-card ul,.framework-card ul,.stage ul{margin:10px 0 0;padding-left:20px}
-.metric-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
-.metric{text-align:center;border-left-color:var(--primary2)}
-.metric strong,.dash strong{display:block;color:var(--orange);font-size:clamp(26px,3vw,34px);line-height:1;font-weight:950}
-.metric span,.dash span{display:block;color:var(--muted);font-weight:800;margin-top:8px;line-height:1.35}
-.dash{text-align:center;border-left-color:var(--primary2)}
-.tag{display:inline-block;margin-bottom:10px;background:rgba(8,40,92,.10);color:var(--primary);border:1px solid rgba(8,40,92,.24);border-radius:999px;padding:5px 10px;font-size:13px;font-weight:900}
-.quote{margin:24px 0 0;padding:22px 24px;border-radius:0 22px 22px 0;border-left:10px solid var(--orange);background:linear-gradient(180deg,#fff4c2,#ffffff);box-shadow:0 20px 46px rgba(8,40,92,.18);color:#1f2a3d;font-style:italic;font-size:1.06rem;border-top:1px solid rgba(8,40,92,.18);border-right:1px solid rgba(8,40,92,.18);border-bottom:1px solid rgba(8,40,92,.18)}
-.badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-.badge{display:inline-flex;background:rgba(255,255,255,.96);border:1px solid rgba(8,40,92,.26);color:var(--primary);border-radius:999px;padding:8px 12px;font-weight:900;box-shadow:0 10px 24px rgba(8,40,92,.12)}
-.flow{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin:24px 0}
-.flow.compact{grid-template-columns:repeat(5,1fr)}
-.flow-step{background:linear-gradient(180deg,#ffffff,#fff4c2);border:2px solid rgba(8,40,92,.22);border-left:6px solid var(--gold);border-radius:18px;padding:15px 12px;text-align:center;box-shadow:0 16px 34px rgba(8,40,92,.16);position:relative}
-.flow-step:not(:last-child):after{content:">";position:absolute;right:-8px;top:50%;transform:translateY(-50%);color:var(--orange);font-size:24px;font-weight:950;z-index:2}
-.flow-step strong{display:block;color:var(--primary);font-size:15px;line-height:1.2}
-.flow-step span{display:block;color:var(--muted);font-size:12.8px;margin-top:6px;line-height:1.35;font-weight:700}
-.timeline{display:grid;gap:15px;margin-top:20px}
-.timeline-row{display:grid;grid-template-columns:122px 1fr;gap:16px;align-items:start}
-.timeline-label{background:linear-gradient(135deg,var(--primary),var(--primary2));color:white;border-radius:999px;padding:9px 12px;font-weight:900;text-align:center;box-shadow:0 10px 22px rgba(11,47,107,.20)}
-.timeline-body{background:rgba(255,255,255,.96);border:2px solid rgba(8,40,92,.24);border-left:8px solid var(--gold);border-radius:18px;padding:17px;box-shadow:0 16px 36px rgba(8,40,92,.15)}
-.timeline-body h3{margin:0 0 6px;color:var(--primary);font-size:19px}
-.timeline-body p{margin:0;color:#243447;font-size:15.5px}
-.tool-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:18px}
-.stage .grid-3{grid-template-columns:1fr}
-.tool{border-left-color:var(--primary2);padding:16px;background:linear-gradient(180deg,#ffffff,#eef6ff)}
-.tool strong{display:block;color:var(--primary);font-size:15px;margin-bottom:5px}
-.tool span{color:var(--muted);font-size:13.5px;line-height:1.5}
-.footer-container{text-align:center;margin:34px 0 0}
-footer{display:inline-block;background:rgba(255,255,255,.94);border-top:4px solid var(--gold);color:#243447;padding:12px 24px;border-radius:18px;font-size:14px;font-weight:900;font-style:italic;box-shadow:0 14px 32px rgba(8,40,92,.18)}
-@media(max-width:1120px){.flow,.flow.compact{grid-template-columns:1fr}.flow-step:not(:last-child):after{content:"v";right:50%;top:auto;bottom:-22px;transform:translateX(50%);font-size:22px}}
-@media(max-width:940px){.grid-2,.grid-3,.grid-4,.metric-grid,.tool-grid{grid-template-columns:1fr}.nav-strip{grid-template-columns:repeat(2,minmax(0,1fr));border-radius:24px}.timeline-row{grid-template-columns:1fr}}
-@media(max-width:640px){.wrapper{width:min(94%,1180px)}.top-nav{padding-bottom:8px}.hero{padding-inline:4px}.hero p{font-size:19px}.panel{padding:20px;border-radius:24px}.main-card,.mini-card,.framework-card,.metric,.dash,.tool,.stage{padding:20px}.nav-strip{position:relative;top:auto;grid-template-columns:1fr}.home-btn{width:58px;height:58px}.main-card h2{font-size:25px}}
-</style>
-</head>
-<body>
-<div class="wrapper">
-  <div class="top-nav">
-    <a class="home-btn" href="index.html" aria-label="Back to CV" title="Back to CV">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.8 2.4a1.8 1.8 0 0 1 2.4 0l8 7.2c.4.4.5 1 .1 1.5-.3.4-.9.5-1.4.2l-.9-.8V20a1.5 1.5 0 0 1-1.5 1.5h-4v-6h-3v6h-4A1.5 1.5 0 0 1 5 20v-9.5l-.9.8c-.5.3-1.1.2-1.4-.2-.4-.5-.3-1.1.1-1.5l8-7.2z"/></svg>
-    </a>
-  </div>
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Training, Curriculum &amp; Quality Assurance | Mohammed Umer</title><meta name="description" content="Training, Curriculum &amp; Quality Assurance — Mohammed Umer’s education, quality assurance and digital transformation portfolio."><style>
+:root{--bg:#f7fafc;--ink:#14243a;--soft:#52647a;--teal:#087f8c;--line:#dbe5ec;--tint:#e7f3f3}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.65}a{color:var(--teal);text-underline-offset:4px}a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var(--teal);outline-offset:5px}.container{max-width:1180px;margin:auto;padding:0 32px}h1,h2,h3{line-height:1.16;letter-spacing:-.035em}h1{font-size:clamp(42px,5.8vw,74px);margin:12px 0 18px}h2{font-size:clamp(28px,3.4vw,42px);margin:0 0 28px}h3{font-size:22px;margin:0 0 12px}p{color:var(--soft)}.eyebrow{font-family:Consolas,monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);font-weight:bold;margin:0 0 18px}.header{position:sticky;top:0;z-index:10;background:#f7fafcf5;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}.header-inner{display:flex;align-items:center;justify-content:space-between;gap:25px;min-height:80px}.brand{text-decoration:none;color:var(--ink);font-size:21px;font-weight:bold;letter-spacing:-.04em}.brand span{color:var(--teal)}nav{display:flex;gap:22px;align-items:center}nav a{text-decoration:none;color:var(--ink);font-size:13px}nav a:hover{color:var(--teal)}.btn{display:inline-flex;justify-content:center;align-items:center;gap:12px;padding:13px 21px;border-radius:8px;font-weight:bold;font-size:14px;text-decoration:none;border:1px solid var(--teal);background:var(--teal);color:white}.btn.secondary{background:transparent;color:var(--ink);border-color:#a9bbc8}.hero{padding:86px 0 76px;background:radial-gradient(ellipse at 90% 10%,#dceff1,transparent 55%)}.hero-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:65px;align-items:center}.hero-tagline{font-size:clamp(27px,3.2vw,41px);color:var(--teal);line-height:1.16;letter-spacing:-.035em;font-weight:bold;margin:0 0 24px}.hero-copy{font-size:18px;max-width:55ch}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.glance{background:white;border:1px solid var(--line);border-radius:16px;box-shadow:0 16px 50px #14243a0b;overflow:hidden}.glance h2{font-size:21px;margin:0;padding:22px 26px;border-bottom:1px solid var(--line)}.glance dl{padding:0 26px;margin:0}.glance dl div{padding:16px 0;border-bottom:1px solid var(--line)}dt{font-size:11px;color:var(--soft);text-transform:uppercase;letter-spacing:.1em}dd{font-size:15px;font-weight:bold;margin:5px 0 0}.glance-foot{padding:15px 26px;background:var(--tint);color:var(--teal);font-size:13px;font-weight:bold}.stats{border-block:1px solid var(--line);background:white}.metrics{display:grid;grid-template-columns:repeat(4,1fr);padding:32px 0}.metric{padding:0 25px;border-left:1px solid var(--line)}.metric:first-child{border:0;padding-left:0}.metric strong{display:block;font-size:39px;line-height:1.2;letter-spacing:-.04em}.metric span{display:block;color:var(--soft);font-size:13px;margin-top:9px}.stat-note{font-size:11px;text-align:center;margin:0 0 16px}.section{padding:76px 0;border-bottom:1px solid var(--line)}.section:nth-of-type(even){background:white}.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.portfolio-card{background:white;border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .2s}.portfolio-card:hover{transform:translateY(-4px)}.card-body{padding:24px}.card-body h3{font-size:21px}.card-body p{font-size:14px}.card-body a{font-size:14px;font-weight:bold}.preview{height:205px;background:linear-gradient(135deg,#dcecf1,#edf7f7);padding:28px 30px;overflow:hidden}.paper{background:white;border:1px solid #cfdee5;border-radius:5px;padding:20px;box-shadow:0 12px 25px #14243a13;transform:rotate(-4deg);height:190px}.paper b{font-size:14px}.paper small{font-size:10px;color:var(--teal);display:block;margin:5px 0 16px}.paper i{display:block;background:#e3ecf1;height:6px;margin:10px 0;width:90%;border-radius:3px}.paper i:nth-child(even){width:65%}.checklist .paper{transform:rotate(3deg)}.checklist i:before{content:'✓';color:var(--teal);position:relative;left:-12px;top:-8px}.platform .paper{transform:none;background:var(--ink);color:white}.platform .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:15px}.tiles span{background:#d8ecee;height:50px;border-radius:4px}.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card,.profile-card{background:white;border:1px solid var(--line);border-radius:12px;padding:25px}.card p,.card li{font-size:15px;color:var(--soft)}.card ul{padding-left:20px}.profile-card{border:0;background:transparent;padding:0;max-width:85ch}.profile-card p{font-size:17px;line-height:1.8}.timeline{display:grid;gap:18px}.role{background:white;border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:10px;padding:24px}.role-header{display:flex;justify-content:space-between;gap:20px}.role h3{font-size:23px}.org{color:var(--teal);font-weight:bold;margin-top:8px}.date{font-family:Consolas,monospace;font-size:12px;color:var(--soft);white-space:nowrap}.role p,.role li{font-size:15px;color:var(--soft)}.role-section h4{font-size:16px;color:var(--ink)}.role summary{cursor:pointer;font-size:20px;font-weight:bold;padding:0 0 3px}.role[open] summary{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:20px}.badges{display:flex;flex-wrap:wrap;gap:9px}.badge{padding:7px 12px;background:var(--tint);color:#096670;font-size:13px;border-radius:6px}.pub-list{display:grid;gap:12px}.pub{padding:17px 20px;border:1px solid var(--line);border-radius:8px;color:var(--soft);font-size:15px}.resource-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.resource{display:flex;align-items:center;justify-content:space-between;padding:21px;border:1px solid var(--line);border-radius:10px;text-decoration:none;background:white;font-weight:bold;font-size:14px;color:var(--ink)}.resource:hover{border-color:var(--teal);color:var(--teal)}.contact{background:var(--ink);padding:65px 0 28px;color:white}.contact h2{font-size:46px;margin-bottom:12px}.contact p{color:#c0cddd}.contact a:not(.btn){color:#d6eff1}.contact-top{display:flex;align-items:center;justify-content:space-between;gap:30px}.footer{display:flex;justify-content:space-between;border-top:1px solid #ffffff25;margin-top:45px;padding-top:22px;font-size:12px;color:#c0cddd}.skip{position:absolute;top:-100px}.skip:focus{top:10px;left:10px;background:white;padding:10px;z-index:100}.menu-button{display:none}.intro-note{font-size:14px;max-width:65ch;margin-bottom:28px}@media(max-width:950px){nav{gap:13px}.hero-grid{gap:30px;grid-template-columns:1.2fr 1fr}.grid-3{grid-template-columns:repeat(2,1fr)}.resource-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:720px){.container{padding:0 22px}.header-inner{min-height:68px;flex-wrap:wrap;padding-block:14px}.brand{font-size:19px}.menu-button{display:block;border:1px solid var(--line);background:white;border-radius:6px;padding:8px 12px;color:var(--ink)}nav{display:none;width:100%;flex-wrap:wrap;padding:10px 0}nav.open{display:flex}.hero{padding:50px 0}.hero-grid{grid-template-columns:1fr;gap:32px}.metrics{grid-template-columns:repeat(2,1fr);gap:25px}.metric:nth-child(odd){border:0;padding-left:0}.metric strong{font-size:33px}.portfolio-grid,.grid-2,.grid-3{grid-template-columns:1fr}.section{padding:52px 0}.role-header{flex-direction:column;gap:12px}.resource-grid{grid-template-columns:1fr 1fr}.resource{padding:17px;font-size:13px}.contact-top,.footer{flex-direction:column;align-items:flex-start}.contact h2{font-size:36px}.actions .btn{flex:1}.role{padding:20px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 
-  <section class="hero">
-        <h1>Training, Curriculum <span>and Quality Assurance</span></h1>
-    <p>Executive profile covering training leadership, curriculum design, assessment methodology, internal quality assurance, standardisation, digital learning, compliance, Higher Education, vocational education and workforce-focused programme development.</p>
-  </section>
 
-  <nav class="nav-strip" aria-label="Page sections">
-    <a href="#overview">Overview</a>
-    <a href="#leadership">Leadership</a>
-    <a href="#curriculum">Curriculum</a>
-    <a href="#qa">QA Model</a>
-    <a href="#assessment">Assessment</a>
-    <a href="#iqa">IQA</a>
-    <a href="#routes">HE/Vocational</a>
-    <a href="#cyber">Cyber Example</a>
-    <a href="#tools">Tools</a>
-    <a href="#roadmap">30-60-90</a>
-    <a href="#digital">Digital</a>
-    <a href="#impact">Impact</a>
-  </nav>
+/* Portfolio contrast and card hierarchy */
+body{background:#e8f0f5}.hero{background:radial-gradient(ellipse at 90% 15%,#b9dde1,transparent 60%),linear-gradient(125deg,#e8f0f7,#d7e9ee)}.section{background:#e7eef5}.section:nth-of-type(even){background:#dcecef}.section#portfolio{background:#d6e8ee}.section#resources{background:#cee3e9}.section#qualifications,.section#certifications{background:#e0e9f3}.stats{background:#edf4f7}.header{background:#edf4f9f5}.card,.role,.portfolio-card,.resource,.glance{border-color:#a8becd;box-shadow:0 7px 22px #14243a12}.card{border-top:4px solid var(--teal)}.portfolio-card{border:1px solid #94b3c1;box-shadow:0 12px 28px #14243a20}.portfolio-card .card-body{background:#f4f8fb;min-height:220px;border-top:3px solid var(--teal)}.preview{background:linear-gradient(130deg,#92becb,#c8e1e6);height:220px}.resource{border-left:4px solid var(--teal);background:#f4f8fb}.pub{background:#f4f8fb;border-color:#b3c6d3}.profile-card{background:transparent;box-shadow:none}.platform small{color:#b7e7eb}.ha-launch{position:fixed;right:22px;bottom:22px;z-index:90;border:1px solid #8eb9c6;border-radius:18px;background:#14243a;box-shadow:0 8px 30px #14243a40;width:100px;padding:8px;cursor:pointer;color:white}.ha-launch img{width:70px;height:70px;object-fit:contain}.ha-launch span{display:block;font-size:12px;font-weight:bold}.ha-panel{position:fixed;right:22px;bottom:22px;width:min(420px,calc(100vw - 32px));height:min(650px,calc(100dvh - 32px));z-index:100;background:#eaf1f6;border:1px solid #8aaab9;border-radius:18px;box-shadow:0 20px 65px #14243a55;display:flex;flex-direction:column;overflow:hidden}.ha-panel[hidden],.ha-launch[hidden]{display:none}.ha-head{padding:17px 20px;background:#14243a;color:white;display:flex;align-items:center;justify-content:space-between;gap:15px}.ha-head h2{margin:0;font-size:21px;color:white;letter-spacing:-.02em}.ha-head small{font-size:12px;color:#bfd5e1}.ha-close{background:none;border:0;color:white;font-size:28px;cursor:pointer;padding:4px 9px}.ha-context{padding:10px 18px;background:#d7e8ed;color:#244d62;font-size:12px;border-bottom:1px solid #bad0dc}.ha-messages{padding:15px;overflow-y:auto;flex:1;min-height:0;overscroll-behavior:contain}.ha-message{padding:14px;background:#fff;border:1px solid #c3d4df;border-radius:12px;margin-bottom:12px;font-size:14px;overflow-wrap:anywhere;color:#14243a}.ha-user{background:#d1ebef;margin-left:28px}.ha-message p{margin:0;color:#29475b}.ha-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}.ha-choice{border:1px solid #8db5c3;border-radius:7px;padding:8px 10px;background:#e7f2f5;color:#075d6b;font:600 12px/1.4 Arial;text-decoration:none;cursor:pointer}.ha-choice:hover{background:#cce6eb}.ha-form{display:flex;gap:8px;padding:12px;background:#dce8ef}.ha-form input{min-width:0;flex:1;padding:12px;border:1px solid #8aa7b7;border-radius:8px;background:white;color:#14243a;font-size:16px}.ha-form button{background:#087f8c;color:white;border:0;border-radius:8px;padding:10px 13px;font-weight:bold;cursor:pointer}.ha-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 15px;font-size:11px;color:#425c70}.ha-foot button{background:none;border:0;color:#075d6b;cursor:pointer;font-size:12px}.ha-panel :focus-visible,.ha-launch:focus-visible{outline:3px solid #36c4d0;outline-offset:2px}.contact{padding-bottom:145px}@media(max-width:720px){.ha-launch{right:14px;bottom:15px;width:84px}.ha-launch img{width:56px;height:56px}.ha-panel{right:10px;bottom:10px;width:calc(100vw - 20px);height:min(650px,calc(100dvh - 20px))}.portfolio-card .card-body{min-height:0}.ha-form{padding-bottom:max(12px,env(safe-area-inset-bottom))}}
 
-  <section class="panel section" id="overview">
-    <div class="main-card">
-      <h2>Professional Overview</h2>
-      <p>I am an education, training, curriculum and quality assurance leader with more than 20 years of international experience across the United Kingdom, United States, United Arab Emirates, China and wider professional training environments. My career brings together teaching, programme leadership, curriculum development, internal quality assurance, vocational education, workforce training, digital learning and organisational improvement.</p>
-      <p>My work is strongest where education, assessment, compliance and real workplace needs meet. I design and lead training that is practical, learner-centred, compliant and useful for employers, awarding bodies, councils, training providers and learners.</p>
-      <div class="metric-grid">
-        <div class="metric"><strong>20+</strong><span>Years of international education and training leadership</span></div>
-        <div class="metric"><strong>Level 1-7</strong><span>Programme delivery, management and quality assurance range</span></div>
-        <div class="metric"><strong>15</strong><span>E-learning sites managed across North West England</span></div>
-        <div class="metric"><strong>100%</strong><span>Reported pass rates in selected professional certification programmes</span></div>
-      </div>
-      <div class="quote">My professional value lies in connecting curriculum, assessment, learner support, staff development, quality assurance and employment outcomes into one coherent education system.</div>
-    </div>
-  </section>
 
-  <section class="panel section" id="leadership">
-    <div class="main-card">
-      <h2>Strategic Training and Quality Leadership</h2>
-      <p>As Head of Education and Quality Assurance at HHF Training, I provide strategic leadership across education, quality assurance, curriculum standards, operational delivery, learner outcomes, staff performance, internal quality assurance and awarding body compliance.</p>
-      <div class="grid-2">
-        <div class="mini-card">
-          <h3>Leadership Responsibilities</h3>
-          <ul>
-            <li>Leading curriculum quality across online, blended and face-to-face programmes.</li>
-            <li>Managing IQA systems, assessment standardisation and quality improvement activity.</li>
-            <li>Supporting tutors, assessors, instructional designers and administrative teams.</li>
-            <li>Acting as a quality lead for awarding organisation requirements and EQA readiness.</li>
-          </ul>
-        </div>
-        <div class="mini-card">
-          <h3>Leadership Frameworks I Use</h3>
-          <ul>
-            <li>Continuous Quality Improvement cycles for reviewing and improving delivery.</li>
-            <li>Reflective practice to support staff and organisational learning.</li>
-            <li>Coaching and mentoring approaches for developing tutors, trainers and assessors.</li>
-            <li>Evidence-informed leadership using learner outcomes, feedback and QA findings.</li>
-          </ul>
-        </div>
-      </div>
-      <p style="margin-top:20px">This role reflects my ability to connect strategic planning, curriculum design, staff development, quality assurance and learner success in a practical way.</p>
-    </div>
-  </section>
+.hero-tagline{font-size:clamp(24px,2.5vw,34px);line-height:1.35;max-width:32ch}.hero-grid{grid-template-columns:1.25fr 1fr;gap:50px}.glance{border:2px solid #588d9e;box-shadow:0 18px 45px #14243a26;position:relative}.glance h2{background:linear-gradient(120deg,#14243a,#20566a);color:white;font-size:27px;padding:25px 28px;border-bottom:4px solid #31a9b5}.glance dl{background:#f0f7fa;padding:0 28px}.glance dl div{padding:18px 0;border-color:#bfd3dd}.glance dt{color:#416176;font-size:11px;font-weight:bold}.glance dd{font-size:16px;line-height:1.45}.glance-foot{background:#087f8c;color:white;padding:18px 28px;font-size:14px}.ha-launch{width:116px;background:linear-gradient(150deg,#e4f1f5,#bddde3);border:2px solid #087f8c;padding:8px 8px 10px;box-shadow:0 10px 28px #14243a40}.ha-launch img{width:94px;height:110px;object-fit:contain;filter:drop-shadow(0 3px 4px #14243a25)}.ha-launch span{background:#14243a;color:white;border-radius:7px;padding:7px 3px}.ha-head-avatar{width:54px;height:64px;object-fit:contain;background:#d5e9ee;border-radius:10px;flex-shrink:0}.ha-head{gap:11px}.ha-head h2{font-size:19px}.ha-head small{font-size:11px}.ha-close{margin-left:auto}.contact{padding-bottom:180px}@media(max-width:720px){.hero-grid{grid-template-columns:1fr;gap:32px}.hero-tagline{font-size:25px}.glance h2{font-size:25px}.ha-launch{width:94px}.ha-launch img{width:74px;height:85px}.ha-head-avatar{width:43px;height:53px}.ha-head{padding:14px 12px}.ha-head h2{font-size:18px}}
 
-  <section class="panel section" id="curriculum">
-    <div class="main-card">
-      <h2>Curriculum Design and Programme Development</h2>
-      <p>I have extensive experience designing, reviewing and improving curriculum across academic, vocational, commercial and professional training programmes. My curriculum practice is not only about producing course content; it is about building a clear learning journey from initial engagement to achievement and progression.</p>
-      <div class="grid-3">
-        <div class="framework-card"><span class="tag">Constructive Alignment</span><h3>Outcomes, Teaching and Assessment</h3><p>I align learning outcomes, teaching activities and assessment evidence so learners are taught what they need to know and assessed fairly against the correct standards.</p></div>
-        <div class="framework-card"><span class="tag">Bloom's Taxonomy</span><h3>Progressive Learning Design</h3><p>I design activities that move learners from knowledge and understanding into application, analysis, evaluation and creation, especially in business, IT, cybersecurity and project-based learning.</p></div>
-        <div class="framework-card"><span class="tag">Scaffolding</span><h3>Step-by-Step Development</h3><p>I structure programmes so learners first receive guidance, then practise with support, and gradually move towards independent performance and assessment readiness.</p></div>
-      </div>
-      <h2 class="subhead">Curriculum Responsibilities</h2>
-      <div class="grid-2">
-        <div class="mini-card">
-          <h3>Design and Mapping</h3>
-          <ul>
-            <li>Developing schemes of work, lesson plans, learning resources and course materials.</li>
-            <li>Mapping curriculum to awarding body standards, learning outcomes and assessment criteria.</li>
-            <li>Designing assessment strategies, evidence requirements and learner progression routes.</li>
-            <li>Building programmes that connect academic learning with practical workplace application.</li>
-          </ul>
-        </div>
-        <div class="mini-card">
-          <h3>Review and Improvement</h3>
-          <ul>
-            <li>Reviewing programmes using learner feedback, employer needs and performance data.</li>
-            <li>Using IQA findings to improve curriculum, delivery and assessment practice.</li>
-            <li>Researching new curriculum areas in cybersecurity, AI, digital skills and business.</li>
-            <li>Keeping programmes current, industry-relevant and suitable for different learner groups.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="panel section" id="qa">
-    <div class="main-card">
-      <h2>Executive Quality Assurance Model</h2>
-      <p>Excellent quality assurance is not achieved by checking paperwork at the end of a course. It starts with intent, curriculum design, assessment planning, staff readiness, learner support and evidence-informed monitoring. My approach is to build quality into the whole learner journey from course approval to progression.</p>
-      <p>High quality assurance in education starts before the course is approved, continues through teaching and assessment, and is completed only when evidence shows that learners, staff, curriculum, assessment and outcomes have all been reviewed properly.</p>
-      <div class="flow">
-        <div class="flow-step"><strong>1. Need</strong><span>Labour market, learner and qualification review</span></div>
-        <div class="flow-step"><strong>2. Design</strong><span>Curriculum, outcomes and assessment strategy</span></div>
-        <div class="flow-step"><strong>3. Staff</strong><span>Tutor, assessor, IQA and resource readiness</span></div>
-        <div class="flow-step"><strong>4. Delivery</strong><span>Teaching, support, monitoring and feedback</span></div>
-        <div class="flow-step"><strong>5. Assess</strong><span>Evidence, feedback, moderation and decisions</span></div>
-        <div class="flow-step"><strong>6. IQA</strong><span>Sampling, standardisation and action planning</span></div>
-        <div class="flow-step"><strong>7. Improve</strong><span>QIP, review, CPD and curriculum refresh</span></div>
-      </div>
-      <div class="quote">Quality assurance is strongest when it becomes part of everyday delivery, not something added only when an audit or external visit is due.</div>
-      <h2 class="subhead">Quality Dashboard: What I Monitor</h2>
-      <div class="grid-4">
-        <div class="dash"><strong>RAG</strong><span>Risk status for curriculum, learners, assessment and staffing</span></div>
-        <div class="dash"><strong>IQA</strong><span>Sampling completion, assessor feedback and action closure</span></div>
-        <div class="dash"><strong>EQA</strong><span>External quality assurance readiness and audit evidence</span></div>
-        <div class="dash"><strong>QIP</strong><span>Quality improvement actions, owners and review dates</span></div>
-      </div>
-      <div class="grid-3" style="margin-top:20px">
-        <div class="framework-card"><span class="tag">Learner Indicators</span><h3>Progress and Support</h3><p>Attendance, engagement, retention, achievement, feedback, support needs, reasonable adjustments and progression.</p></div>
-        <div class="framework-card"><span class="tag">Assessment Indicators</span><h3>Evidence and Decisions</h3><p>Assignment quality, observation records, authenticity, marking consistency, feedback quality and evidence gaps.</p></div>
-        <div class="framework-card"><span class="tag">Staff Indicators</span><h3>Capability and Consistency</h3><p>Tutor performance, assessor standardisation, IQA feedback, CPD needs and observation outcomes.</p></div>
-      </div>
-    </div>
-  </section>
+.ha-launch,.ha-launch:hover{background:transparent;border:0;box-shadow:none;border-radius:0;padding:0;width:116px}.ha-launch img{width:110px;height:126px;object-fit:contain;filter:drop-shadow(0 4px 5px #14243a25)}.ha-launch span{display:block;background:#14243a;color:white;border-radius:7px;padding:8px 5px;box-shadow:0 3px 10px #14243a25}.ha-head-avatar{background:transparent;border-radius:0}@media(max-width:720px){.ha-launch{width:94px}.ha-launch img{width:90px;height:104px}}
 
-  <section class="panel section" id="assessment">
-    <div class="main-card">
-      <h2>Assessment Methodology and Techniques</h2>
-      <p>Assessment is one of the most important parts of my professional practice. I do not see assessment as a box-ticking exercise. I see it as a structured method for confirming competence, supporting improvement and giving learners clear evidence of progress.</p>
-      <div class="grid-3">
-        <div class="framework-card"><span class="tag">Holistic Assessment</span><h3>Evidence Across Multiple Criteria</h3><p>I use a holistic approach where one strong piece of evidence can be mapped across several learning outcomes or assessment criteria, provided it is valid, authentic and sufficient. This avoids unnecessary duplication and makes assessment more realistic.</p></div>
-        <div class="framework-card"><span class="tag">VARCS Evidence Model</span><h3>Valid, Authentic, Reliable, Current, Sufficient</h3><p>I check that learner evidence meets the recognised evidence principles. This helps ensure assessment decisions are fair, consistent and defensible during IQA or EQA review.</p></div>
-        <div class="framework-card"><span class="tag">Assessment for Learning</span><h3>Feedback Before Final Judgement</h3><p>I use formative assessment, questioning, observation and feedback to help learners improve before final assessment decisions are made.</p></div>
-      </div>
-      <div class="grid-2" style="margin-top:20px">
-        <div class="mini-card">
-          <h3>Assessment Techniques I Use</h3>
-          <ul>
-            <li>Initial assessment to identify starting points and support needs.</li>
-            <li>Formative assessment during teaching and training.</li>
-            <li>Observation of practical performance and workplace competence.</li>
-            <li>Professional discussion to confirm understanding and close evidence gaps.</li>
-            <li>Assignments, written work, projects and case study responses.</li>
-            <li>Portfolio evidence, reflective accounts and workplace records.</li>
-          </ul>
-        </div>
-        <div class="mini-card">
-          <h3>How I Make Assessment Stronger</h3>
-          <ul>
-            <li>I make criteria clear before assessment begins.</li>
-            <li>I use assessment mapping to show where each outcome is covered.</li>
-            <li>I reduce repeated questions where holistic evidence already covers the requirement.</li>
-            <li>I use evidence triangulation by comparing observation, written evidence and discussion.</li>
-            <li>I give developmental feedback that helps learners understand how to improve.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="quote">A strong assessment system should be fair to the learner, clear to the assessor, reliable for the IQA and transparent for the awarding body.</div>
-    </div>
-  </section>
+.credential-card{border:2px solid #779dad;border-top:6px solid #087f8c;background:#f4f8fb;border-radius:14px;padding:28px;box-shadow:0 12px 28px #14243a18}.credential-card h3{font-size:23px;color:#14243a;padding-bottom:18px;border-bottom:1px solid #b9ced9;margin-bottom:8px}.credential-list{padding:0;list-style:none;counter-reset:credential 0}.credential-list[start="9"]{counter-reset:credential 8}.credential-list li{counter-increment:credential;display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid #cadbe3;color:#14243a;font-size:16px;font-weight:bold;line-height:1.45}.credential-list li:last-child{border:0}.credential-list li:before{content:counter(credential,decimal-leading-zero);display:flex;align-items:center;justify-content:center;flex:0 0 40px;height:40px;background:#087f8c;color:white;border-radius:9px;font-family:Consolas,monospace;font-size:17px}.credential-list li:first-child:before{background:#14243a}@media(max-width:720px){.credential-card{padding:22px}.credential-list li{font-size:15px}}
 
-  <section class="panel section" id="iqa">
-    <div class="main-card">
-      <h2>IQA, Standardisation and Compliance Profile</h2>
-      <p>Quality assurance is one of my strongest professional areas. I have worked as an assessor, internal verifier, lead IQA, curriculum manager, national training and quality assurance manager, and head of education and quality assurance. My IQA practice is built on fairness, consistency, evidence quality, assessor development and audit readiness.</p>
-      <div class="grid-3">
-        <div class="framework-card"><span class="tag">Risk-Based IQA Sampling</span><h3>Focused and Proportionate Sampling</h3><p>I use risk-based sampling by considering assessor experience, new qualifications, learner risk, previous issues, delivery mode and assessment method. This helps quality assurance focus on the areas that matter most.</p></div>
-        <div class="framework-card"><span class="tag">CAMERA Sampling Logic</span><h3>Candidates, Assessors, Methods, Evidence, Records, Assessment</h3><p>I use CAMERA-style thinking to make sure sampling covers different learners, assessors, assessment methods, evidence types, records and assessment decisions.</p></div>
-        <div class="framework-card"><span class="tag">Standardisation and Moderation</span><h3>Consistent Assessment Judgement</h3><p>I use standardisation meetings, peer review, sample marking, assessor discussion and IQA feedback to reduce variation and strengthen consistency across assessors.</p></div>
-      </div>
-      <div class="grid-2" style="margin-top:20px">
-        <div class="mini-card">
-          <h3>IQA and Compliance Activities</h3>
-          <ul>
-            <li>Designing and maintaining internal quality assurance systems.</li>
-            <li>Developing IQA sampling plans and standardisation schedules.</li>
-            <li>Monitoring assessment practice and assessor judgement.</li>
-            <li>Checking evidence against VARCS principles.</li>
-            <li>Conducting assessor observations and giving developmental feedback.</li>
-            <li>Preparing for external verifier and EQA activity.</li>
-          </ul>
-        </div>
-        <div class="mini-card">
-          <h3>Standardisation Methods I Use</h3>
-          <ul>
-            <li>Pre-assessment standardisation so assessors understand expectations before delivery.</li>
-            <li>Live assessor support during delivery where needed.</li>
-            <li>Post-assessment sampling to check consistency and evidence quality.</li>
-            <li>Cross-assessor comparison to identify differences in judgement.</li>
-            <li>Action planning where assessment or evidence quality needs improvement.</li>
-            <li>Recording standardisation outcomes for audit and EQA readiness.</li>
-          </ul>
-        </div>
-      </div>
-      <h2 class="subhead">Awarding Body and Professional Standards Experience</h2>
-      <div class="badges">
-        <span class="badge">Ofqual-regulated environments</span>
-        <span class="badge">iCQ requirements</span>
-        <span class="badge">NCFE documentation</span>
-        <span class="badge">Assessor standards</span>
-        <span class="badge">Internal verifier standards</span>
-        <span class="badge">Cisco Networking Academy</span>
-        <span class="badge">Microsoft certification</span>
-        <span class="badge">CompTIA certification</span>
-        <span class="badge">Certiport and IC3</span>
-        <span class="badge">Audit preparation</span>
-      </div>
-      <div class="quote">I use quality evidence to improve teaching, assessment, curriculum, learner support and organisational outcomes.</div>
-    </div>
-  </section>
+.credential-card{border:1px solid #a8becd;border-top:4px solid #087f8c;border-radius:12px;padding:22px 25px;box-shadow:0 7px 22px #14243a12}.credential-card h3{font-size:21px;padding-bottom:12px;margin-bottom:4px}.credential-list,.credential-list[start="9"]{counter-reset:credential 0;margin:6px 0 0}.credential-list li{gap:11px;padding:8px 0;font-size:14px;line-height:1.4}.credential-list li:before{flex-basis:27px;height:27px;border-radius:6px;font-size:12px}.resource-portfolio{margin-top:42px;padding-top:32px;border-top:1px solid #9cbac8}.resource-portfolio-title{font-size:26px;margin-bottom:22px}.anchor-alias{display:block;position:relative;top:-90px;visibility:hidden}@media(max-width:720px){.credential-card{padding:20px}.resource-portfolio-title{font-size:23px}}
 
-  <section class="panel section" id="routes">
-    <div class="main-card">
-      <h2>Higher Education and Vocational Quality Assurance Routes</h2>
-      <p>In Higher Education, quality assurance is built around academic standards, student academic experience, programme governance, assessment integrity, external examiner scrutiny, student voice and continuous enhancement. In vocational education, quality assurance confirms that learners can demonstrate competence against clear occupational or qualification standards.</p>
-      <div class="grid-2">
-        <div class="stage">
-          <h3>Higher Education Quality Assurance Route</h3>
-          <div class="flow compact">
-            <div class="flow-step"><strong>Validation</strong><span>Programme approval and standards</span></div>
-            <div class="flow-step"><strong>Delivery</strong><span>Teaching and learning experience</span></div>
-            <div class="flow-step"><strong>Moderation</strong><span>Assessment briefs and marking</span></div>
-            <div class="flow-step"><strong>External</strong><span>External examiner review</span></div>
-            <div class="flow-step"><strong>Review</strong><span>Boards and annual monitoring</span></div>
-          </div>
-          <div class="grid-3">
-            <div class="framework-card"><span class="tag">QAA Quality Code</span><h3>Academic Standards and Quality</h3><p>I use Quality Code principles to guide programme design, student engagement, assessment practice, monitoring, partnership work and enhancement.</p></div>
-            <div class="framework-card"><span class="tag">OfS Conditions</span><h3>Student Outcomes and Academic Experience</h3><p>For English HE providers, quality assurance must consider academic experience, standards, continuation, completion and student outcomes.</p></div>
-            <div class="framework-card"><span class="tag">External Examiner System</span><h3>Independent Academic Scrutiny</h3><p>External scrutiny helps confirm that standards are appropriate, assessment is fair and marking is consistent across modules and cohorts.</p></div>
-            <div class="framework-card"><span class="tag">Assessment Board Governance</span><h3>Transparent Decisions</h3><p>Use boards to review outcomes, confirm awards, consider progression and maintain a clear audit trail.</p></div>
-          </div>
-        </div>
-        <div class="stage">
-          <h3>Vocational Education Quality Assurance Route</h3>
-          <div class="flow compact">
-            <div class="flow-step"><strong>Approval</strong><span>Centre and qualification readiness</span></div>
-            <div class="flow-step"><strong>Mapping</strong><span>LOs, ACs and evidence plan</span></div>
-            <div class="flow-step"><strong>Delivery</strong><span>Teaching and formative checks</span></div>
-            <div class="flow-step"><strong>IQA</strong><span>Sampling and standardisation</span></div>
-            <div class="flow-step"><strong>Claim</strong><span>EQA readiness and certification</span></div>
-          </div>
-          <div class="grid-3">
-            <div class="framework-card"><span class="tag">Ofqual and Awarding Body Conditions</span><h3>Regulated Qualification Controls</h3><p>Vocational provision must maintain reliable assessment, secure evidence, clear records, fair treatment of learners and compliance with awarding organisation requirements.</p></div>
-            <div class="framework-card"><span class="tag">VARCS</span><h3>Evidence Quality</h3><p>Evidence must be valid, authentic, reliable, current and sufficient before an assessment decision is accepted.</p></div>
-            <div class="framework-card"><span class="tag">CAMERA</span><h3>IQA Sampling Coverage</h3><p>Sampling should consider candidates, assessors, methods, evidence, records and assessment decisions so IQA is broad and defensible.</p></div>
-            <div class="framework-card"><span class="tag">Holistic Assessment</span><h3>Efficient Evidence Mapping</h3><p>One strong piece of evidence can cover several criteria where it genuinely proves competence and avoids duplication.</p></div>
-          </div>
-        </div>
-      </div>
-      <h2 class="subhead">Where Quality Assurance Starts</h2>
-      <p>The first step is not writing a lesson plan. The first step is establishing whether the course has a clear educational purpose, a genuine learner or employer need, and the right systems to protect quality from the beginning.</p>
-      <div class="timeline">
-        <div class="timeline-row"><div class="timeline-label">Step 1</div><div class="timeline-body"><h3>Define the Purpose and Need</h3><p>Start with labour market needs, learner progression routes, employer requirements, qualification aims, sector expectations and institutional priorities.</p></div></div>
-        <div class="timeline-row"><div class="timeline-label">Step 2</div><div class="timeline-body"><h3>Check Regulatory and Awarding Body Requirements</h3><p>Identify whether the programme sits within HE academic governance, OfS/QAA expectations, or vocational awarding organisation requirements such as Ofqual-regulated qualification conditions.</p></div></div>
-        <div class="timeline-row"><div class="timeline-label">Step 3</div><div class="timeline-body"><h3>Build the Quality Architecture</h3><p>Confirm the people, documentation, systems and evidence required before delivery: course specification, assessment plan, IQA plan, schemes of work, staff allocation, resource checks and risk register.</p></div></div>
-        <div class="timeline-row"><div class="timeline-label">Step 4</div><div class="timeline-body"><h3>Map Learning Outcomes to Delivery and Assessment</h3><p>Use constructive alignment so each learning outcome has a planned teaching activity, assessment method, evidence source and quality assurance check.</p></div></div>
-      </div>
-      <div class="quote">If the course is not mapped properly at the start, quality assurance later becomes repair work instead of quality leadership.</div>
-      <h2 class="subhead">HE Quality Assurance Stages</h2>
-      <div class="grid-2">
-        <div class="mini-card"><h3>Before Delivery</h3><ul><li>Programme approval or revalidation.</li><li>Module specifications and learning outcomes.</li><li>Assessment strategy and marking criteria.</li><li>Resource, staffing and specialist facility checks.</li><li>Academic risk assessment and student support planning.</li></ul></div>
-        <div class="mini-card"><h3>During Delivery</h3><ul><li>Teaching observations and peer review.</li><li>Student voice, surveys and module feedback.</li><li>Attendance, engagement and learning analytics.</li><li>Timely formative feedback.</li><li>Academic integrity monitoring.</li></ul></div>
-        <div class="mini-card"><h3>Assessment and Boards</h3><ul><li>Internal moderation of briefs and marked work.</li><li>Second marking where required.</li><li>External examiner review.</li><li>Assessment boards and progression decisions.</li><li>Clear audit trail for decisions.</li></ul></div>
-        <div class="mini-card"><h3>Review and Enhancement</h3><ul><li>Annual programme monitoring.</li><li>Module evaluation reports.</li><li>Course committee actions.</li><li>Quality improvement planning.</li><li>Curriculum refresh using sector and employer feedback.</li></ul></div>
-      </div>
-      <div class="quote">In HE, the strongest quality systems protect academic standards while also improving the student learning experience year by year.</div>
-      <h2 class="subhead">Vocational QA Step-by-Step</h2>
-      <div class="timeline">
-        <div class="timeline-row"><div class="timeline-label">1</div><div class="timeline-body"><h3>Qualification Approval and Centre Readiness</h3><p>Check centre approval, staff competence, assessor/IQA qualifications, resources, policies, learner support systems and awarding body requirements.</p></div></div>
-        <div class="timeline-row"><div class="timeline-label">2</div><div class="timeline-body"><h3>Curriculum and Assessment Mapping</h3><p>Map every learning outcome and assessment criterion to teaching sessions, assessment tasks, evidence sources and IQA sampling points.</p></div></div>
-        <div class="timeline-row"><div class="timeline-label">3</div><div class="timeline-body"><h3>Assessor Standardisation Before Delivery</h3><p>Hold standardisation so assessors understand evidence expectations, marking judgement, feedback standards, reasonable adjustments and documentation.</p></div></div>
-        <div class="timeline-row"><div class="timeline-label">4</div><div class="timeline-body"><h3>Delivery Monitoring and Learner Support</h3><p>Monitor attendance, engagement, progress, formative assessment, feedback, learner needs and risks. Intervene early where learners fall behind.</p></div></div>
-        <div class="timeline-row"><div class="timeline-label">5</div><div class="timeline-body"><h3>Assessment and Evidence Collection</h3><p>Collect written work, observations, practical tasks, projects, professional discussions, witness statements and workplace evidence where appropriate.</p></div></div>
-        <div class="timeline-row"><div class="timeline-label">6</div><div class="timeline-body"><h3>IQA Sampling and Feedback</h3><p>Use risk-based sampling and CAMERA coverage. Provide clear IQA feedback to assessors and track actions to completion.</p></div></div>
-        <div class="timeline-row"><div class="timeline-label">7</div><div class="timeline-body"><h3>EQA Readiness and Certification Control</h3><p>Check learner evidence, IQA records, assessor feedback, standardisation minutes, sampling plans and claims before certification.</p></div></div>
-      </div>
-    </div>
-  </section>
 
-  <section class="panel section" id="cyber">
-    <div class="main-card">
-      <h2>Example: Level 4 Cybersecurity Course in Vocational Education</h2>
-      <p>This example shows how I would achieve high quality assurance for a Level 4 Cybersecurity course delivered in a vocational education setting. The same logic can be adapted for other technical, professional or regulated qualifications.</p>
-      <div class="flow">
-        <div class="flow-step"><strong>Intent</strong><span>Why the course is needed</span></div>
-        <div class="flow-step"><strong>Mapping</strong><span>LOs, ACs and evidence</span></div>
-        <div class="flow-step"><strong>Resources</strong><span>Labs, tools and scenarios</span></div>
-        <div class="flow-step"><strong>Delivery</strong><span>Teaching and practice</span></div>
-        <div class="flow-step"><strong>Evidence</strong><span>Assignments and labs</span></div>
-        <div class="flow-step"><strong>IQA</strong><span>Sampling and actions</span></div>
-        <div class="flow-step"><strong>Progression</strong><span>Jobs, HE or certification</span></div>
-      </div>
-      <div class="timeline">
-        <div class="timeline-row"><div class="timeline-label">Start</div><div class="timeline-body"><h3>Course Approval and Intent</h3><p>Confirm qualification requirements, employer need, learner entry criteria, progression routes, tutor competence, lab resources and assessment risks.</p></div></div>
-        <div class="timeline-row"><div class="timeline-label">Design</div><div class="timeline-body"><h3>Curriculum and Evidence Mapping</h3><p>Map all learning outcomes and assessment criteria to sessions, practical cybersecurity labs, written tasks, observations, professional discussions and portfolio evidence.</p></div></div>
-        <div class="timeline-row"><div class="timeline-label">Deliver</div><div class="timeline-body"><h3>Teaching and Practical Application</h3><p>Use risk scenarios, secure configuration tasks, network defence examples, cloud security cases, data protection exercises and threat analysis workshops.</p></div></div>
-        <div class="timeline-row"><div class="timeline-label">Assess</div><div class="timeline-body"><h3>Assessment Techniques</h3><p>Use assignments, practical observation, professional discussion, lab reports, reflective accounts, scenario responses and holistic assessment mapping.</p></div></div>
-        <div class="timeline-row"><div class="timeline-label">IQA</div><div class="timeline-body"><h3>Sampling and Standardisation</h3><p>Apply risk-based IQA sampling, CAMERA coverage, VARCS checks, assessor feedback, action tracking and standardisation meetings before certification claims.</p></div></div>
-      </div>
-      <div class="grid-2" style="margin-top:20px">
-        <div class="mini-card"><h3>Before Delivery</h3><ul><li>Confirm qualification specification, Level 4 expectations and assessment criteria.</li><li>Identify learner entry requirements and diagnostic assessment needs.</li><li>Create curriculum map showing all cybersecurity learning outcomes and assessment evidence.</li><li>Plan technical resources such as virtual machines, network labs, firewall examples and secure configuration tasks.</li><li>Allocate qualified tutors, assessors and IQA staff.</li></ul></div>
-        <div class="mini-card"><h3>During Delivery</h3><ul><li>Use structured teaching, demonstration, practical labs and scenario-based learning.</li><li>Teach threats, risk, network defence, secure systems, cloud security and data protection.</li><li>Use formative checks after each unit or topic.</li><li>Track attendance, progress, engagement and practical lab completion.</li></ul></div>
-        <div class="mini-card"><h3>Assessment Evidence</h3><ul><li>Written risk analysis report.</li><li>Network security scenario response.</li><li>Secure systems configuration task.</li><li>Practical observation of technical activity.</li><li>Professional discussion to confirm understanding.</li><li>Reflective account explaining decisions and lessons learned.</li></ul></div>
-        <div class="mini-card"><h3>IQA and Final Quality Checks</h3><ul><li>Sample early decisions to identify problems quickly.</li><li>Review high-risk learners, new assessors and borderline decisions.</li><li>Check evidence against VARCS.</li><li>Use CAMERA to ensure broad sampling coverage.</li><li>Record IQA feedback and assessor action plans.</li></ul></div>
-      </div>
-      <div class="quote">For a Level 4 Cybersecurity course, quality is achieved when learners can explain risk, apply technical controls, justify decisions and produce evidence that is reliable enough for assessor, IQA and EQA scrutiny.</div>
-    </div>
-  </section>
+.hero-specialisms{font-size:17px;line-height:1.7;color:#284b60;max-width:62ch;margin:0 0 18px}.hero-tagline{font-size:clamp(28px,3vw,42px);line-height:1.18}.header{background:#14243a;border-bottom:3px solid #087f8c;box-shadow:0 5px 18px #14243a30}.brand,nav a{color:#f4f8fb}.brand span{color:#58d1dc}nav a{position:relative;padding:8px 0}nav a:hover,nav a.active{color:#85e1e8}nav a.active:after{content:'';position:absolute;left:0;right:0;bottom:0;height:3px;background:#37c1cf;border-radius:3px}.menu-button{background:#244157;color:white;border-color:#517486}.resource{align-items:flex-start;gap:12px;min-height:150px;transition:transform .2s,box-shadow .2s,border-color .2s,background .2s}.resource strong{font-size:16px;display:block}.resource small{display:block;font-size:13px;line-height:1.6;color:#4b6477;font-weight:normal;margin-top:9px}.resource:hover,.resource:focus-visible{transform:translateY(-5px);background:#fff;border-color:#087f8c;box-shadow:0 12px 25px #14243a25}.resource.featured{background:linear-gradient(130deg,#14243a,#1d5365);color:white;border-left-color:#49c1cc}.resource.featured small{color:#d3e8ef}.resource.featured:hover,.resource.featured:focus-visible{background:#20596a;border-color:#49c1cc;color:white}.metric-link{display:block;text-decoration:none;color:var(--ink);transition:background .2s}.metric-link:hover,.metric-link:focus-visible{background:#d7eaef}.metric-link small{display:block;margin-top:12px;color:#08717c;font-size:11px;font-weight:bold}.career-toggle{margin-top:24px}.role[hidden]{display:none}.contact{padding-bottom:180px}@media(min-width:951px){.resource-grid{grid-template-columns:repeat(4,1fr)}}@media(max-width:720px){.resource{min-height:145px;padding:17px 14px}.resource strong{font-size:14px}.resource small{font-size:12px}.hero-specialisms{font-size:16px}nav a{color:white}}
 
-  <section class="panel section" id="tools">
-    <div class="main-card">
-      <h2>Frameworks, Tools and Evidence Pack</h2>
-      <p>The best quality assurance systems use a combination of educational frameworks, assessment controls, staff development methods and documented evidence. The aim is to make quality visible, consistent and improvable.</p>
-      <div class="tool-grid">
-        <div class="tool"><strong>QAA Quality Code</strong><span>HE quality, standards and enhancement reference point.</span></div>
-        <div class="tool"><strong>OfS Conditions</strong><span>Quality, standards, academic experience and student outcomes.</span></div>
-        <div class="tool"><strong>Ofqual Conditions</strong><span>Rules for regulated qualifications and awarding organisations.</span></div>
-        <div class="tool"><strong>ETF Standards</strong><span>Reflective teaching and training practice in FE and skills.</span></div>
-        <div class="tool"><strong>Constructive Alignment</strong><span>Align outcomes, teaching and assessment.</span></div>
-        <div class="tool"><strong>Bloom's Taxonomy</strong><span>Design learning from knowledge to evaluation and creation.</span></div>
-        <div class="tool"><strong>Kolb</strong><span>Use experience, reflection, theory and experimentation.</span></div>
-        <div class="tool"><strong>UDL</strong><span>Plan accessible routes into learning for different learners.</span></div>
-        <div class="tool"><strong>VARCS</strong><span>Check evidence quality in assessment.</span></div>
-        <div class="tool"><strong>CAMERA</strong><span>Structure IQA sampling coverage.</span></div>
-        <div class="tool"><strong>PDCA Cycle</strong><span>Plan, Do, Check, Act for continuous improvement.</span></div>
-        <div class="tool"><strong>SAR and QIP</strong><span>Self-assessment and quality improvement planning.</span></div>
-      </div>
-      <h2 class="subhead">Essential QA Documents</h2>
-      <div class="grid-3">
-        <div class="mini-card"><h3>Planning Evidence</h3><ul><li>Course specification</li><li>Curriculum map</li><li>Scheme of work</li><li>Assessment plan</li><li>Risk register</li><li>Resource checklist</li></ul></div>
-        <div class="mini-card"><h3>Delivery Evidence</h3><ul><li>Lesson plans</li><li>Attendance and progress trackers</li><li>Learner feedback</li><li>Observation records</li><li>Support logs</li><li>CPD records</li><li>Learner support logs</li></ul></div>
-        <div class="mini-card"><h3>QA Evidence</h3><ul><li>IQA sampling plan</li><li>Standardisation minutes</li><li>Assessor feedback</li><li>Action plans</li><li>EQA checklist</li><li>EQA preparation checklist</li><li>Quality improvement plan</li></ul></div>
-      </div>
-      <h2 class="subhead">What Excellent Quality Assurance Looks Like</h2>
-      <p>Excellent quality assurance is visible through evidence. It should be possible for a senior leader, IQA, EQA, external examiner, awarding body, inspector or reviewer to follow the whole learner journey clearly.</p>
-      <div class="grid-3">
-        <div class="framework-card"><span class="tag">Learner Journey</span><h3>Clear and Supported</h3><p>Learners understand the course, assessment expectations, support routes, feedback and progression options.</p></div>
-        <div class="framework-card"><span class="tag">Assessment</span><h3>Fair and Reliable</h3><p>Assessment decisions are mapped, justified, moderated and supported by valid evidence.</p></div>
-        <div class="framework-card"><span class="tag">Staff</span><h3>Trained and Standardised</h3><p>Tutors, assessors and IQAs understand their roles and apply consistent professional judgement.</p></div>
-        <div class="framework-card"><span class="tag">Curriculum</span><h3>Current and Relevant</h3><p>Programme content reflects learner needs, employer expectations, sector standards and technological change.</p></div>
-        <div class="framework-card"><span class="tag">Governance</span><h3>Documented and Accountable</h3><p>Decisions, actions, risks and improvements are recorded clearly and reviewed regularly.</p></div>
-        <div class="framework-card"><span class="tag">Improvement</span><h3>Continuous and Honest</h3><p>Feedback, data, observations and QA findings lead to real improvements, not just paperwork.</p></div>
-      </div>
-      <div class="quote">Excellent quality assurance is visible: anyone reviewing the course should be able to follow the learner journey, assessment decisions, IQA activity, staff support and improvement actions clearly.</div>
-    </div>
-  </section>
 
-  <section class="panel section" id="roadmap">
-    <div class="main-card">
-      <h2>30-60-90 Day Quality Improvement Strategy</h2>
-      <div class="grid-3">
-        <div class="mini-card"><h3>First 30 Days: Diagnose</h3><ul><li>Review all course files, assessment plans and IQA records.</li><li>RAG-rate risks across curriculum, staffing, assessment and learner progress.</li><li>Audit learner files and identify evidence gaps.</li><li>Hold initial standardisation with tutors, assessors and IQAs.</li></ul></div>
-        <div class="mini-card"><h3>Days 31-60: Stabilise</h3><ul><li>Update curriculum maps and assessment trackers.</li><li>Introduce risk-based IQA sampling.</li><li>Improve feedback quality and action tracking.</li><li>Deliver staff CPD on assessment, evidence and standardisation.</li></ul></div>
-        <div class="mini-card"><h3>Days 61-90: Improve</h3><ul><li>Complete quality improvement plan reviews.</li><li>Prepare EQA or external review evidence.</li><li>Use learner and employer feedback to refresh delivery.</li><li>Report progress to senior leadership with clear evidence.</li></ul></div>
-      </div>
-      <div class="quote">My approach to quality assurance is simple: start early, map clearly, support staff, check evidence, standardise judgement, listen to learners, act on data and improve continuously.</div>
-    </div>
-  </section>
+.metrics{padding:20px 0;align-items:stretch;gap:0}.metric,.metric:first-child{padding:0 18px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center}.metric strong{font-size:36px}.metric span{margin-top:6px}.metric-link small{margin-top:8px}.resource,.resource.featured{min-height:0;padding:15px 17px;align-items:center}.resource strong{font-size:14px}.resource small{font-size:12px;line-height:1.45;margin-top:6px}.resource-grid{gap:12px}.credential-card{padding:22px 25px}.credential-card .badges{gap:8px;margin-top:16px}.credential-card .badge{padding:7px 11px;font-size:13px;border:1px solid #b4d1d8;background:#e2f0f2;border-radius:6px}.glance dd{line-height:1.5}@media(max-width:720px){.metrics{padding:18px 0;gap:18px 0}.metric,.metric:first-child{padding:0 12px}.metric strong{font-size:32px}.resource,.resource.featured{min-height:0;padding:13px 14px}.resource strong{font-size:13px}.resource small{font-size:11px}.credential-card{padding:20px}}
 
-  <section class="panel section" id="digital">
-    <div class="main-card">
-      <h2>Digital Learning, Staff Development and Training Tools</h2>
-      <p>I have significant experience in digital, online and blended training environments. As Regional E-Learning Training Director, I established and managed 15 e-learning sites and approximately 75 staff across North West England. I continue to use digital learning, AI-supported resources and learner tracking systems where they improve access, engagement and quality.</p>
-      <div class="grid-2">
-        <div class="mini-card"><h3>Digital and Training Tools</h3><ul><li>Learning management systems and virtual learning environments.</li><li>Online course and workshop design.</li><li>Digital learning materials, templates and blended delivery frameworks.</li><li>Learner tracking, progress monitoring and feedback systems.</li><li>Digital assessment resources and online evidence collection.</li><li>AI-supported learning activities and Umer AI Learning Platform development.</li></ul></div>
-        <div class="mini-card"><h3>Staff Development Methods</h3><ul><li>Appraisals and performance reviews.</li><li>Training needs analysis and CPD planning.</li><li>Coaching and mentoring for tutors, trainers, assessors and IQAs.</li><li>Teaching observations and developmental feedback.</li><li>Standardisation meetings and communities of practice.</li><li>Support for unqualified assessors working towards assessor units.</li></ul></div>
-      </div>
-      <div class="quote">Technology is valuable when it strengthens teaching, improves access, supports tracking and helps learners apply knowledge with confidence.</div>
-    </div>
-  </section>
 
-  <section class="panel section" id="impact">
-    <div class="main-card">
-      <h2>Partnerships, Certification, Impact and Professional Value</h2>
-      <p>A major strength of my profile is connecting education with industry and employment. I have built partnerships and collaborative links with colleges, universities, employers, councils, public sector organisations and professional certification providers.</p>
-      <div class="grid-2">
-        <div class="mini-card"><h3>Industry and Partnership Engagement</h3><ul><li>Supporting articulation and partnership agreements with UAE institutions including HCT, Zayed University and Abu Dhabi Polytechnic.</li><li>Working with organisations including CompTIA, Microsoft, Cisco, ADNOC, Abu Dhabi Police and public sector stakeholders.</li><li>Supporting council, employer and community training needs.</li><li>Designing workforce and employability-focused programmes.</li><li>Promoting apprenticeships, placement opportunities and career progression routes.</li></ul></div>
-        <div class="mini-card"><h3>Certification and Training Centre Development</h3><ul><li>Established Cisco, Microsoft, CompTIA and Certiport laboratories at Al Jazirah Institute.</li><li>Secured recognition as an approved Cisco, Microsoft, CompTIA and IC3 training centre.</li><li>Embedded professional certification into academic and vocational programmes.</li><li>Supported learners to achieve both academic qualifications and industry-recognised credentials.</li></ul></div>
-      </div>
-      <h2 class="subhead">Major Training and Quality Achievements</h2>
-      <div class="grid-3">
-        <div class="mini-card"><h3>Learner Outcomes</h3><ul><li>95% pass rate for UAE National "Yes to Work" programme learners.</li><li>96% pass rate for academic learners.</li><li>100% pass rate for professional certification learners in selected programmes.</li></ul></div>
-        <div class="mini-card"><h3>Recognition</h3><ul><li>Certificate of Appreciation from ACTVET for work as Site Director, Assessor and Internal Quality Assurer.</li><li>ADVETI Employee of the Year Award and Certificate of Appreciation.</li><li>Leadership of national employability and workforce development training in the UAE.</li></ul></div>
-        <div class="mini-card"><h3>Professional Value</h3><ul><li>Lead education and training provision.</li><li>Improve curriculum and programme quality.</li><li>Strengthen internal quality assurance.</li><li>Develop staff and assessor capability.</li><li>Build employer and awarding body confidence.</li></ul></div>
-      </div>
-      <div class="quote">I aim to create and lead training provision that is credible, inclusive, industry-relevant and capable of helping learners, staff and organisations progress with confidence.</div>
-    </div>
-  </section>
+.subpage .page-hero{padding:52px 0 36px;background:radial-gradient(ellipse at 90% 10%,#b8dce2,transparent 60%),linear-gradient(130deg,#e5eff6,#d3e7ec);border-bottom:1px solid #abc4d1}.page-hero h1{font-size:clamp(34px,4.7vw,58px);max-width:23ch;line-height:1.13;margin:13px 0 18px}.page-hero p:not(.eyebrow){max-width:78ch;font-size:17px;color:#345469}.breadcrumbs{font-size:12px;color:#46667b;margin-bottom:25px}.breadcrumbs a{color:#08717c}.page-nav{position:sticky;top:83px;z-index:8;background:#e2edf3;border-bottom:1px solid #9cbac9;box-shadow:0 4px 10px #14243a09}.page-nav .container{display:flex;gap:18px;overflow:auto;padding-block:12px}.page-nav a{white-space:nowrap;font-size:12px;text-decoration:none;color:#254c62;font-weight:bold;padding:5px 0;border-bottom:2px solid transparent}.page-nav a.active{color:#08717c;border-color:#087f8c}.subpage .section{padding:35px 0;scroll-margin-top:150px}.main-card{padding:0;background:transparent;min-width:0}.subpage h2{font-size:clamp(26px,3vw,35px);margin-bottom:20px}.subpage h3{font-size:20px}.subpage p,.subpage li{font-size:15px;line-height:1.75}.subpage ul,.subpage ol{padding-left:22px}.mini-card,.framework-card,.letter-card,.cpd-item,.box,.tool,.flow-step,.stage{border:1px solid #abc2cf;border-left:4px solid #087f8c;border-radius:10px;background:#f4f8fb;padding:20px;box-shadow:0 6px 18px #14243a0a;min-width:0;overflow-wrap:anywhere}.mini-card p:last-child,.framework-card p:last-child{margin-bottom:0}.quote{border-left:4px solid #087f8c;background:#d1e7ec;padding:18px 22px;border-radius:0 9px 9px 0;margin:24px 0;color:#244f60;font-size:16px;line-height:1.65}.tag{display:inline-block;background:#d5ebef;color:#096776;padding:4px 9px;border:1px solid #a8ccd4;border-radius:5px;font-size:11px;letter-spacing:.04em;font-weight:bold;margin-bottom:12px}.grid-4,.info-grid,.metric-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:22px 0}.subpage .metric{border:1px solid #abc2cf;border-radius:9px;padding:18px;background:#edf6f8}.subpage .metric strong{font-size:29px}.subpage .metric span{font-size:13px}.box strong,.box span{display:block}.box strong{font-size:12px;color:#08717c;margin-bottom:7px}.box span{font-size:15px}.cpd-list{display:grid;gap:18px}.cpd-header{display:flex;justify-content:space-between;align-items:start;gap:20px;border-bottom:1px solid #c4d6df;padding-bottom:10px;margin-bottom:16px}.cpd-header h3{margin-bottom:7px}.cpd-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.cpd-col h4{margin:5px 0;font-size:14px;color:#08717c}.cpd-col p{margin:8px 0}.tool-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin:22px 0}.flow-step strong{display:block;color:#08717c}.timeline-row{display:grid;grid-template-columns:160px 1fr;gap:22px;padding:20px 0;border-bottom:1px solid #b7ced9}.timeline-label{font-weight:bold;color:#08717c}.subhead{margin:26px 0 15px}.dash{padding-left:20px}.signature{font-weight:bold;color:#14243a;margin-top:24px}.letter-head{border-bottom:1px solid #c1d4df;padding-bottom:15px;margin-bottom:20px}.related{padding:34px 0 45px;background:#cee4e9;border-top:1px solid #afc8d4}.related h2{font-size:26px}.related .resource-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.sub-footer{background:#14243a;color:#c9dce7;padding:25px 0 170px}.sub-footer .container{display:flex;gap:20px;justify-content:space-between;font-size:12px}.sub-footer a{color:#a6e5eb}table{width:100%;border-collapse:collapse;font-size:14px}td,th{padding:12px;border:1px solid #b9ccd8;text-align:left}th{background:#cee4e9}img{max-width:100%}@media(max-width:950px){.grid-4,.info-grid,.metric-grid,.tool-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.cpd-cols{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:720px){.page-hero{padding:35px 0 24px}.page-nav{top:68px}.subpage .section{padding:28px 0}.cpd-header{flex-direction:column;gap:7px}.timeline-row{grid-template-columns:1fr;gap:8px}.flow,.related .resource-grid{grid-template-columns:1fr}.sub-footer .container{flex-direction:column}.page-hero p:not(.eyebrow){font-size:15px}}
 
-  <div class="footer-container">
-    <footer>Quality Assurance | Mohammed Umer</footer>
-  </div>
-</div>
-</body>
-</html>
+.page-nav{display:block}.page-nav a{border-radius:0}.subpage .page-hero .eyebrow{font-size:11px}</style></head><body class="subpage"><a class="skip" href="#main">Skip to content</a><header class="header"><div class="container header-inner"><a class="brand" href="index.html">Mohammed Umer<span>.</span></a><button class="menu-button" aria-expanded="false" aria-controls="navigation">Menu</button><nav id="navigation" aria-label="Main navigation"><a href="index.html#profile">About</a><a href="index.html#expertise">Expertise</a><a href="index.html#experience">Experience</a><a href="index.html#qualifications">Credentials</a><a href="index.html#resources" class="active">Resources</a><a href="index.html#contact">Contact</a></nav></div></header><main id="main"><section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="index.html">Portfolio</a> / <a href="index.html#resources">Professional Resources</a> / Training, Curriculum &amp; Quality Assurance</div><p class="eyebrow">Mohammed Umer · Professional Resources</p><h1>Training, Curriculum &amp; Quality Assurance</h1><p>Executive profile covering training leadership, curriculum design, assessment methodology, internal quality assurance, standardisation, digital learning, compliance, Higher Education, vocational education and workforce-focused programme development.</p></div></section><nav class="page-nav" aria-label="On this page"><div class="container">
+ <a href="#overview">Overview</a>
+ <a href="#leadership">Leadership</a>
+ <a href="#curriculum">Curriculum</a>
+ <a href="#qa">QA Model</a>
+ <a href="#assessment">Assessment</a>
+ <a href="#iqa">IQA</a>
+ <a href="#routes">HE/Vocational</a>
+ <a href="#cyber">Cyber Example</a>
+ <a href="#tools">Tools</a>
+ <a href="#roadmap">30-60-90</a>
+ <a href="#digital">Digital</a>
+ <a href="#impact">Impact</a>
+ </div></nav><section class="section" id="overview"><div class="container">
+ <div class="main-card">
+ <h2>Professional Overview</h2>
+ <p>I am an education, training, curriculum and quality assurance leader with more than 20 years of international experience across the United Kingdom, United States, United Arab Emirates, China and wider professional training environments. My career brings together teaching, programme leadership, curriculum development, internal quality assurance, vocational education, workforce training, digital learning and organisational improvement.</p>
+ <p>My work is strongest where education, assessment, compliance and real workplace needs meet. I design and lead training that is practical, learner-centred, compliant and useful for employers, awarding bodies, councils, training providers and learners.</p>
+ <div class="metric-grid">
+ <div class="metric"><strong>20+</strong><span>Years of international education and training leadership</span></div>
+ <div class="metric"><strong>Level 1-7</strong><span>Programme delivery, management and quality assurance range</span></div>
+ <div class="metric"><strong>15</strong><span>E-learning sites managed across North West England</span></div>
+ <div class="metric"><strong>100%</strong><span>Reported pass rates in selected professional certification programmes</span></div>
+ </div>
+ <div class="quote">My professional value lies in connecting curriculum, assessment, learner support, staff development, quality assurance and employment outcomes into one coherent education system.</div>
+ </div>
+ </div></section><section class="section" id="leadership"><div class="container">
+ <div class="main-card">
+ <h2>Strategic Training and Quality Leadership</h2>
+ <p>As Head of Education and Quality Assurance at HHF Training, I provide strategic leadership across education, quality assurance, curriculum standards, operational delivery, learner outcomes, staff performance, internal quality assurance and awarding body compliance.</p>
+ <div class="grid-2">
+ <div class="mini-card">
+ <h3>Leadership Responsibilities</h3>
+ <ul>
+ <li>Leading curriculum quality across online, blended and face-to-face programmes.</li>
+ <li>Managing IQA systems, assessment standardisation and quality improvement activity.</li>
+ <li>Supporting tutors, assessors, instructional designers and administrative teams.</li>
+ <li>Acting as a quality lead for awarding organisation requirements and EQA readiness.</li>
+ </ul>
+ </div>
+ <div class="mini-card">
+ <h3>Leadership Frameworks I Use</h3>
+ <ul>
+ <li>Continuous Quality Improvement cycles for reviewing and improving delivery.</li>
+ <li>Reflective practice to support staff and organisational learning.</li>
+ <li>Coaching and mentoring approaches for developing tutors, trainers and assessors.</li>
+ <li>Evidence-informed leadership using learner outcomes, feedback and QA findings.</li>
+ </ul>
+ </div>
+ </div>
+ <p>This role reflects my ability to connect strategic planning, curriculum design, staff development, quality assurance and learner success in a practical way.</p>
+ </div>
+ </div></section><section class="section" id="curriculum"><div class="container">
+ <div class="main-card">
+ <h2>Curriculum Design and Programme Development</h2>
+ <p>I have extensive experience designing, reviewing and improving curriculum across academic, vocational, commercial and professional training programmes. My curriculum practice is not only about producing course content; it is about building a clear learning journey from initial engagement to achievement and progression.</p>
+ <div class="grid-3">
+ <div class="framework-card"><span class="tag">Constructive Alignment</span><h3>Outcomes, Teaching and Assessment</h3><p>I align learning outcomes, teaching activities and assessment evidence so learners are taught what they need to know and assessed fairly against the correct standards.</p></div>
+ <div class="framework-card"><span class="tag">Bloom&#x27;s Taxonomy</span><h3>Progressive Learning Design</h3><p>I design activities that move learners from knowledge and understanding into application, analysis, evaluation and creation, especially in business, IT, cybersecurity and project-based learning.</p></div>
+ <div class="framework-card"><span class="tag">Scaffolding</span><h3>Step-by-Step Development</h3><p>I structure programmes so learners first receive guidance, then practise with support, and gradually move towards independent performance and assessment readiness.</p></div>
+ </div>
+ <h2 class="subhead">Curriculum Responsibilities</h2>
+ <div class="grid-2">
+ <div class="mini-card">
+ <h3>Design and Mapping</h3>
+ <ul>
+ <li>Developing schemes of work, lesson plans, learning resources and course materials.</li>
+ <li>Mapping curriculum to awarding body standards, learning outcomes and assessment criteria.</li>
+ <li>Designing assessment strategies, evidence requirements and learner progression routes.</li>
+ <li>Building programmes that connect academic learning with practical workplace application.</li>
+ </ul>
+ </div>
+ <div class="mini-card">
+ <h3>Review and Improvement</h3>
+ <ul>
+ <li>Reviewing programmes using learner feedback, employer needs and performance data.</li>
+ <li>Using IQA findings to improve curriculum, delivery and assessment practice.</li>
+ <li>Researching new curriculum areas in cybersecurity, AI, digital skills and business.</li>
+ <li>Keeping programmes current, industry-relevant and suitable for different learner groups.</li>
+ </ul>
+ </div>
+ </div>
+ </div>
+ </div></section><section class="section" id="qa"><div class="container">
+ <div class="main-card">
+ <h2>Executive Quality Assurance Model</h2>
+ <p>Excellent quality assurance is not achieved by checking paperwork at the end of a course. It starts with intent, curriculum design, assessment planning, staff readiness, learner support and evidence-informed monitoring. My approach is to build quality into the whole learner journey from course approval to progression.</p>
+ <p>High quality assurance in education starts before the course is approved, continues through teaching and assessment, and is completed only when evidence shows that learners, staff, curriculum, assessment and outcomes have all been reviewed properly.</p>
+ <div class="flow">
+ <div class="flow-step"><strong>1. Need</strong><span>Labour market, learner and qualification review</span></div>
+ <div class="flow-step"><strong>2. Design</strong><span>Curriculum, outcomes and assessment strategy</span></div>
+ <div class="flow-step"><strong>3. Staff</strong><span>Tutor, assessor, IQA and resource readiness</span></div>
+ <div class="flow-step"><strong>4. Delivery</strong><span>Teaching, support, monitoring and feedback</span></div>
+ <div class="flow-step"><strong>5. Assess</strong><span>Evidence, feedback, moderation and decisions</span></div>
+ <div class="flow-step"><strong>6. IQA</strong><span>Sampling, standardisation and action planning</span></div>
+ <div class="flow-step"><strong>7. Improve</strong><span>QIP, review, CPD and curriculum refresh</span></div>
+ </div>
+ <div class="quote">Quality assurance is strongest when it becomes part of everyday delivery, not something added only when an audit or external visit is due.</div>
+ <h2 class="subhead">Quality Dashboard: What I Monitor</h2>
+ <div class="grid-4">
+ <div class="dash"><strong>RAG</strong><span>Risk status for curriculum, learners, assessment and staffing</span></div>
+ <div class="dash"><strong>IQA</strong><span>Sampling completion, assessor feedback and action closure</span></div>
+ <div class="dash"><strong>EQA</strong><span>External quality assurance readiness and audit evidence</span></div>
+ <div class="dash"><strong>QIP</strong><span>Quality improvement actions, owners and review dates</span></div>
+ </div>
+ <div class="grid-3">
+ <div class="framework-card"><span class="tag">Learner Indicators</span><h3>Progress and Support</h3><p>Attendance, engagement, retention, achievement, feedback, support needs, reasonable adjustments and progression.</p></div>
+ <div class="framework-card"><span class="tag">Assessment Indicators</span><h3>Evidence and Decisions</h3><p>Assignment quality, observation records, authenticity, marking consistency, feedback quality and evidence gaps.</p></div>
+ <div class="framework-card"><span class="tag">Staff Indicators</span><h3>Capability and Consistency</h3><p>Tutor performance, assessor standardisation, IQA feedback, CPD needs and observation outcomes.</p></div>
+ </div>
+ </div>
+ </div></section><section class="section" id="assessment"><div class="container">
+ <div class="main-card">
+ <h2>Assessment Methodology and Techniques</h2>
+ <p>Assessment is one of the most important parts of my professional practice. I do not see assessment as a box-ticking exercise. I see it as a structured method for confirming competence, supporting improvement and giving learners clear evidence of progress.</p>
+ <div class="grid-3">
+ <div class="framework-card"><span class="tag">Holistic Assessment</span><h3>Evidence Across Multiple Criteria</h3><p>I use a holistic approach where one strong piece of evidence can be mapped across several learning outcomes or assessment criteria, provided it is valid, authentic and sufficient. This avoids unnecessary duplication and makes assessment more realistic.</p></div>
+ <div class="framework-card"><span class="tag">VARCS Evidence Model</span><h3>Valid, Authentic, Reliable, Current, Sufficient</h3><p>I check that learner evidence meets the recognised evidence principles. This helps ensure assessment decisions are fair, consistent and defensible during IQA or EQA review.</p></div>
+ <div class="framework-card"><span class="tag">Assessment for Learning</span><h3>Feedback Before Final Judgement</h3><p>I use formative assessment, questioning, observation and feedback to help learners improve before final assessment decisions are made.</p></div>
+ </div>
+ <div class="grid-2">
+ <div class="mini-card">
+ <h3>Assessment Techniques I Use</h3>
+ <ul>
+ <li>Initial assessment to identify starting points and support needs.</li>
+ <li>Formative assessment during teaching and training.</li>
+ <li>Observation of practical performance and workplace competence.</li>
+ <li>Professional discussion to confirm understanding and close evidence gaps.</li>
+ <li>Assignments, written work, projects and case study responses.</li>
+ <li>Portfolio evidence, reflective accounts and workplace records.</li>
+ </ul>
+ </div>
+ <div class="mini-card">
+ <h3>How I Make Assessment Stronger</h3>
+ <ul>
+ <li>I make criteria clear before assessment begins.</li>
+ <li>I use assessment mapping to show where each outcome is covered.</li>
+ <li>I reduce repeated questions where holistic evidence already covers the requirement.</li>
+ <li>I use evidence triangulation by comparing observation, written evidence and discussion.</li>
+ <li>I give developmental feedback that helps learners understand how to improve.</li>
+ </ul>
+ </div>
+ </div>
+ <div class="quote">A strong assessment system should be fair to the learner, clear to the assessor, reliable for the IQA and transparent for the awarding body.</div>
+ </div>
+ </div></section><section class="section" id="iqa"><div class="container">
+ <div class="main-card">
+ <h2>IQA, Standardisation and Compliance Profile</h2>
+ <p>Quality assurance is one of my strongest professional areas. I have worked as an assessor, internal verifier, lead IQA, curriculum manager, national training and quality assurance manager, and head of education and quality assurance. My IQA practice is built on fairness, consistency, evidence quality, assessor development and audit readiness.</p>
+ <div class="grid-3">
+ <div class="framework-card"><span class="tag">Risk-Based IQA Sampling</span><h3>Focused and Proportionate Sampling</h3><p>I use risk-based sampling by considering assessor experience, new qualifications, learner risk, previous issues, delivery mode and assessment method. This helps quality assurance focus on the areas that matter most.</p></div>
+ <div class="framework-card"><span class="tag">CAMERA Sampling Logic</span><h3>Candidates, Assessors, Methods, Evidence, Records, Assessment</h3><p>I use CAMERA-style thinking to make sure sampling covers different learners, assessors, assessment methods, evidence types, records and assessment decisions.</p></div>
+ <div class="framework-card"><span class="tag">Standardisation and Moderation</span><h3>Consistent Assessment Judgement</h3><p>I use standardisation meetings, peer review, sample marking, assessor discussion and IQA feedback to reduce variation and strengthen consistency across assessors.</p></div>
+ </div>
+ <div class="grid-2">
+ <div class="mini-card">
+ <h3>IQA and Compliance Activities</h3>
+ <ul>
+ <li>Designing and maintaining internal quality assurance systems.</li>
+ <li>Developing IQA sampling plans and standardisation schedules.</li>
+ <li>Monitoring assessment practice and assessor judgement.</li>
+ <li>Checking evidence against VARCS principles.</li>
+ <li>Conducting assessor observations and giving developmental feedback.</li>
+ <li>Preparing for external verifier and EQA activity.</li>
+ </ul>
+ </div>
+ <div class="mini-card">
+ <h3>Standardisation Methods I Use</h3>
+ <ul>
+ <li>Pre-assessment standardisation so assessors understand expectations before delivery.</li>
+ <li>Live assessor support during delivery where needed.</li>
+ <li>Post-assessment sampling to check consistency and evidence quality.</li>
+ <li>Cross-assessor comparison to identify differences in judgement.</li>
+ <li>Action planning where assessment or evidence quality needs improvement.</li>
+ <li>Recording standardisation outcomes for audit and EQA readiness.</li>
+ </ul>
+ </div>
+ </div>
+ <h2 class="subhead">Awarding Body and Professional Standards Experience</h2>
+ <div class="badges">
+ <span class="badge">Ofqual-regulated environments</span>
+ <span class="badge">iCQ requirements</span>
+ <span class="badge">NCFE documentation</span>
+ <span class="badge">Assessor standards</span>
+ <span class="badge">Internal verifier standards</span>
+ <span class="badge">Cisco Networking Academy</span>
+ <span class="badge">Microsoft certification</span>
+ <span class="badge">CompTIA certification</span>
+ <span class="badge">Certiport and IC3</span>
+ <span class="badge">Audit preparation</span>
+ </div>
+ <div class="quote">I use quality evidence to improve teaching, assessment, curriculum, learner support and organisational outcomes.</div>
+ </div>
+ </div></section><section class="section" id="routes"><div class="container">
+ <div class="main-card">
+ <h2>Higher Education and Vocational Quality Assurance Routes</h2>
+ <p>In Higher Education, quality assurance is built around academic standards, student academic experience, programme governance, assessment integrity, external examiner scrutiny, student voice and continuous enhancement. In vocational education, quality assurance confirms that learners can demonstrate competence against clear occupational or qualification standards.</p>
+ <div class="grid-2">
+ <div class="stage">
+ <h3>Higher Education Quality Assurance Route</h3>
+ <div class="flow compact">
+ <div class="flow-step"><strong>Validation</strong><span>Programme approval and standards</span></div>
+ <div class="flow-step"><strong>Delivery</strong><span>Teaching and learning experience</span></div>
+ <div class="flow-step"><strong>Moderation</strong><span>Assessment briefs and marking</span></div>
+ <div class="flow-step"><strong>External</strong><span>External examiner review</span></div>
+ <div class="flow-step"><strong>Review</strong><span>Boards and annual monitoring</span></div>
+ </div>
+ <div class="grid-3">
+ <div class="framework-card"><span class="tag">QAA Quality Code</span><h3>Academic Standards and Quality</h3><p>I use Quality Code principles to guide programme design, student engagement, assessment practice, monitoring, partnership work and enhancement.</p></div>
+ <div class="framework-card"><span class="tag">OfS Conditions</span><h3>Student Outcomes and Academic Experience</h3><p>For English HE providers, quality assurance must consider academic experience, standards, continuation, completion and student outcomes.</p></div>
+ <div class="framework-card"><span class="tag">External Examiner System</span><h3>Independent Academic Scrutiny</h3><p>External scrutiny helps confirm that standards are appropriate, assessment is fair and marking is consistent across modules and cohorts.</p></div>
+ <div class="framework-card"><span class="tag">Assessment Board Governance</span><h3>Transparent Decisions</h3><p>Use boards to review outcomes, confirm awards, consider progression and maintain a clear audit trail.</p></div>
+ </div>
+ </div>
+ <div class="stage">
+ <h3>Vocational Education Quality Assurance Route</h3>
+ <div class="flow compact">
+ <div class="flow-step"><strong>Approval</strong><span>Centre and qualification readiness</span></div>
+ <div class="flow-step"><strong>Mapping</strong><span>LOs, ACs and evidence plan</span></div>
+ <div class="flow-step"><strong>Delivery</strong><span>Teaching and formative checks</span></div>
+ <div class="flow-step"><strong>IQA</strong><span>Sampling and standardisation</span></div>
+ <div class="flow-step"><strong>Claim</strong><span>EQA readiness and certification</span></div>
+ </div>
+ <div class="grid-3">
+ <div class="framework-card"><span class="tag">Ofqual and Awarding Body Conditions</span><h3>Regulated Qualification Controls</h3><p>Vocational provision must maintain reliable assessment, secure evidence, clear records, fair treatment of learners and compliance with awarding organisation requirements.</p></div>
+ <div class="framework-card"><span class="tag">VARCS</span><h3>Evidence Quality</h3><p>Evidence must be valid, authentic, reliable, current and sufficient before an assessment decision is accepted.</p></div>
+ <div class="framework-card"><span class="tag">CAMERA</span><h3>IQA Sampling Coverage</h3><p>Sampling should consider candidates, assessors, methods, evidence, records and assessment decisions so IQA is broad and defensible.</p></div>
+ <div class="framework-card"><span class="tag">Holistic Assessment</span><h3>Efficient Evidence Mapping</h3><p>One strong piece of evidence can cover several criteria where it genuinely proves competence and avoids duplication.</p></div>
+ </div>
+ </div>
+ </div>
+ <h2 class="subhead">Where Quality Assurance Starts</h2>
+ <p>The first step is not writing a lesson plan. The first step is establishing whether the course has a clear educational purpose, a genuine learner or employer need, and the right systems to protect quality from the beginning.</p>
+ <div class="timeline">
+ <div class="timeline-row"><div class="timeline-label">Step 1</div><div class="timeline-body"><h3>Define the Purpose and Need</h3><p>Start with labour market needs, learner progression routes, employer requirements, qualification aims, sector expectations and institutional priorities.</p></div></div>
+ <div class="timeline-row"><div class="timeline-label">Step 2</div><div class="timeline-body"><h3>Check Regulatory and Awarding Body Requirements</h3><p>Identify whether the programme sits within HE academic governance, OfS/QAA expectations, or vocational awarding organisation requirements such as Ofqual-regulated qualification conditions.</p></div></div>
+ <div class="timeline-row"><div class="timeline-label">Step 3</div><div class="timeline-body"><h3>Build the Quality Architecture</h3><p>Confirm the people, documentation, systems and evidence required before delivery: course specification, assessment plan, IQA plan, schemes of work, staff allocation, resource checks and risk register.</p></div></div>
+ <div class="timeline-row"><div class="timeline-label">Step 4</div><div class="timeline-body"><h3>Map Learning Outcomes to Delivery and Assessment</h3><p>Use constructive alignment so each learning outcome has a planned teaching activity, assessment method, evidence source and quality assurance check.</p></div></div>
+ </div>
+ <div class="quote">If the course is not mapped properly at the start, quality assurance later becomes repair work instead of quality leadership.</div>
+ <h2 class="subhead">HE Quality Assurance Stages</h2>
+ <div class="grid-2">
+ <div class="mini-card"><h3>Before Delivery</h3><ul><li>Programme approval or revalidation.<li>Module specifications and learning outcomes.<li>Assessment strategy and marking criteria.<li>Resource, staffing and specialist facility checks.<li>Academic risk assessment and student support planning.</ul></div>
+ <div class="mini-card"><h3>During Delivery</h3><ul><li>Teaching observations and peer review.<li>Student voice, surveys and module feedback.<li>Attendance, engagement and learning analytics.<li>Timely formative feedback.<li>Academic integrity monitoring.</ul></div>
+ <div class="mini-card"><h3>Assessment and Boards</h3><ul><li>Internal moderation of briefs and marked work.<li>Second marking where required.<li>External examiner review.<li>Assessment boards and progression decisions.<li>Clear audit trail for decisions.</ul></div>
+ <div class="mini-card"><h3>Review and Enhancement</h3><ul><li>Annual programme monitoring.<li>Module evaluation reports.<li>Course committee actions.<li>Quality improvement planning.<li>Curriculum refresh using sector and employer feedback.</ul></div>
+ </div>
+ <div class="quote">In HE, the strongest quality systems protect academic standards while also improving the student learning experience year by year.</div>
+ <h2 class="subhead">Vocational QA Step-by-Step</h2>
+ <div class="timeline">
+ <div class="timeline-row"><div class="timeline-label">1</div><div class="timeline-body"><h3>Qualification Approval and Centre Readiness</h3><p>Check centre approval, staff competence, assessor/IQA qualifications, resources, policies, learner support systems and awarding body requirements.</p></div></div>
+ <div class="timeline-row"><div class="timeline-label">2</div><div class="timeline-body"><h3>Curriculum and Assessment Mapping</h3><p>Map every learning outcome and assessment criterion to teaching sessions, assessment tasks, evidence sources and IQA sampling points.</p></div></div>
+ <div class="timeline-row"><div class="timeline-label">3</div><div class="timeline-body"><h3>Assessor Standardisation Before Delivery</h3><p>Hold standardisation so assessors understand evidence expectations, marking judgement, feedback standards, reasonable adjustments and documentation.</p></div></div>
+ <div class="timeline-row"><div class="timeline-label">4</div><div class="timeline-body"><h3>Delivery Monitoring and Learner Support</h3><p>Monitor attendance, engagement, progress, formative assessment, feedback, learner needs and risks. Intervene early where learners fall behind.</p></div></div>
+ <div class="timeline-row"><div class="timeline-label">5</div><div class="timeline-body"><h3>Assessment and Evidence Collection</h3><p>Collect written work, observations, practical tasks, projects, professional discussions, witness statements and workplace evidence where appropriate.</p></div></div>
+ <div class="timeline-row"><div class="timeline-label">6</div><div class="timeline-body"><h3>IQA Sampling and Feedback</h3><p>Use risk-based sampling and CAMERA coverage. Provide clear IQA feedback to assessors and track actions to completion.</p></div></div>
+ <div class="timeline-row"><div class="timeline-label">7</div><div class="timeline-body"><h3>EQA Readiness and Certification Control</h3><p>Check learner evidence, IQA records, assessor feedback, standardisation minutes, sampling plans and claims before certification.</p></div></div>
+ </div>
+ </div>
+ </div></section><section class="section" id="cyber"><div class="container">
+ <div class="main-card">
+ <h2>Example: Level 4 Cybersecurity Course in Vocational Education</h2>
+ <p>This example shows how I would achieve high quality assurance for a Level 4 Cybersecurity course delivered in a vocational education setting. The same logic can be adapted for other technical, professional or regulated qualifications.</p>
+ <div class="flow">
+ <div class="flow-step"><strong>Intent</strong><span>Why the course is needed</span></div>
+ <div class="flow-step"><strong>Mapping</strong><span>LOs, ACs and evidence</span></div>
+ <div class="flow-step"><strong>Resources</strong><span>Labs, tools and scenarios</span></div>
+ <div class="flow-step"><strong>Delivery</strong><span>Teaching and practice</span></div>
+ <div class="flow-step"><strong>Evidence</strong><span>Assignments and labs</span></div>
+ <div class="flow-step"><strong>IQA</strong><span>Sampling and actions</span></div>
+ <div class="flow-step"><strong>Progression</strong><span>Jobs, HE or certification</span></div>
+ </div>
+ <div class="timeline">
+ <div class="timeline-row"><div class="timeline-label">Start</div><div class="timeline-body"><h3>Course Approval and Intent</h3><p>Confirm qualification requirements, employer need, learner entry criteria, progression routes, tutor competence, lab resources and assessment risks.</p></div></div>
+ <div class="timeline-row"><div class="timeline-label">Design</div><div class="timeline-body"><h3>Curriculum and Evidence Mapping</h3><p>Map all learning outcomes and assessment criteria to sessions, practical cybersecurity labs, written tasks, observations, professional discussions and portfolio evidence.</p></div></div>
+ <div class="timeline-row"><div class="timeline-label">Deliver</div><div class="timeline-body"><h3>Teaching and Practical Application</h3><p>Use risk scenarios, secure configuration tasks, network defence examples, cloud security cases, data protection exercises and threat analysis workshops.</p></div></div>
+ <div class="timeline-row"><div class="timeline-label">Assess</div><div class="timeline-body"><h3>Assessment Techniques</h3><p>Use assignments, practical observation, professional discussion, lab reports, reflective accounts, scenario responses and holistic assessment mapping.</p></div></div>
+ <div class="timeline-row"><div class="timeline-label">IQA</div><div class="timeline-body"><h3>Sampling and Standardisation</h3><p>Apply risk-based IQA sampling, CAMERA coverage, VARCS checks, assessor feedback, action tracking and standardisation meetings before certification claims.</p></div></div>
+ </div>
+ <div class="grid-2">
+ <div class="mini-card"><h3>Before Delivery</h3><ul><li>Confirm qualification specification, Level 4 expectations and assessment criteria.<li>Identify learner entry requirements and diagnostic assessment needs.<li>Create curriculum map showing all cybersecurity learning outcomes and assessment evidence.<li>Plan technical resources such as virtual machines, network labs, firewall examples and secure configuration tasks.<li>Allocate qualified tutors, assessors and IQA staff.</ul></div>
+ <div class="mini-card"><h3>During Delivery</h3><ul><li>Use structured teaching, demonstration, practical labs and scenario-based learning.<li>Teach threats, risk, network defence, secure systems, cloud security and data protection.<li>Use formative checks after each unit or topic.<li>Track attendance, progress, engagement and practical lab completion.</ul></div>
+ <div class="mini-card"><h3>Assessment Evidence</h3><ul><li>Written risk analysis report.<li>Network security scenario response.<li>Secure systems configuration task.<li>Practical observation of technical activity.<li>Professional discussion to confirm understanding.<li>Reflective account explaining decisions and lessons learned.</ul></div>
+ <div class="mini-card"><h3>IQA and Final Quality Checks</h3><ul><li>Sample early decisions to identify problems quickly.<li>Review high-risk learners, new assessors and borderline decisions.<li>Check evidence against VARCS.<li>Use CAMERA to ensure broad sampling coverage.<li>Record IQA feedback and assessor action plans.</ul></div>
+ </div>
+ <div class="quote">For a Level 4 Cybersecurity course, quality is achieved when learners can explain risk, apply technical controls, justify decisions and produce evidence that is reliable enough for assessor, IQA and EQA scrutiny.</div>
+ </div>
+ </div></section><section class="section" id="tools"><div class="container">
+ <div class="main-card">
+ <h2>Frameworks, Tools and Evidence Pack</h2>
+ <p>The best quality assurance systems use a combination of educational frameworks, assessment controls, staff development methods and documented evidence. The aim is to make quality visible, consistent and improvable.</p>
+ <div class="tool-grid">
+ <div class="tool"><strong>QAA Quality Code</strong><span>HE quality, standards and enhancement reference point.</span></div>
+ <div class="tool"><strong>OfS Conditions</strong><span>Quality, standards, academic experience and student outcomes.</span></div>
+ <div class="tool"><strong>Ofqual Conditions</strong><span>Rules for regulated qualifications and awarding organisations.</span></div>
+ <div class="tool"><strong>ETF Standards</strong><span>Reflective teaching and training practice in FE and skills.</span></div>
+ <div class="tool"><strong>Constructive Alignment</strong><span>Align outcomes, teaching and assessment.</span></div>
+ <div class="tool"><strong>Bloom&#x27;s Taxonomy</strong><span>Design learning from knowledge to evaluation and creation.</span></div>
+ <div class="tool"><strong>Kolb</strong><span>Use experience, reflection, theory and experimentation.</span></div>
+ <div class="tool"><strong>UDL</strong><span>Plan accessible routes into learning for different learners.</span></div>
+ <div class="tool"><strong>VARCS</strong><span>Check evidence quality in assessment.</span></div>
+ <div class="tool"><strong>CAMERA</strong><span>Structure IQA sampling coverage.</span></div>
+ <div class="tool"><strong>PDCA Cycle</strong><span>Plan, Do, Check, Act for continuous improvement.</span></div>
+ <div class="tool"><strong>SAR and QIP</strong><span>Self-assessment and quality improvement planning.</span></div>
+ </div>
+ <h2 class="subhead">Essential QA Documents</h2>
+ <div class="grid-3">
+ <div class="mini-card"><h3>Planning Evidence</h3><ul><li>Course specification<li>Curriculum map<li>Scheme of work<li>Assessment plan<li>Risk register<li>Resource checklist</ul></div>
+ <div class="mini-card"><h3>Delivery Evidence</h3><ul><li>Lesson plans<li>Attendance and progress trackers<li>Learner feedback<li>Observation records<li>Support logs<li>CPD records<li>Learner support logs</ul></div>
+ <div class="mini-card"><h3>QA Evidence</h3><ul><li>IQA sampling plan<li>Standardisation minutes<li>Assessor feedback<li>Action plans<li>EQA checklist<li>EQA preparation checklist<li>Quality improvement plan</ul></div>
+ </div>
+ <h2 class="subhead">What Excellent Quality Assurance Looks Like</h2>
+ <p>Excellent quality assurance is visible through evidence. It should be possible for a senior leader, IQA, EQA, external examiner, awarding body, inspector or reviewer to follow the whole learner journey clearly.</p>
+ <div class="grid-3">
+ <div class="framework-card"><span class="tag">Learner Journey</span><h3>Clear and Supported</h3><p>Learners understand the course, assessment expectations, support routes, feedback and progression options.</p></div>
+ <div class="framework-card"><span class="tag">Assessment</span><h3>Fair and Reliable</h3><p>Assessment decisions are mapped, justified, moderated and supported by valid evidence.</p></div>
+ <div class="framework-card"><span class="tag">Staff</span><h3>Trained and Standardised</h3><p>Tutors, assessors and IQAs understand their roles and apply consistent professional judgement.</p></div>
+ <div class="framework-card"><span class="tag">Curriculum</span><h3>Current and Relevant</h3><p>Programme content reflects learner needs, employer expectations, sector standards and technological change.</p></div>
+ <div class="framework-card"><span class="tag">Governance</span><h3>Documented and Accountable</h3><p>Decisions, actions, risks and improvements are recorded clearly and reviewed regularly.</p></div>
+ <div class="framework-card"><span class="tag">Improvement</span><h3>Continuous and Honest</h3><p>Feedback, data, observations and QA findings lead to real improvements, not just paperwork.</p></div>
+ </div>
+ <div class="quote">Excellent quality assurance is visible: anyone reviewing the course should be able to follow the learner journey, assessment decisions, IQA activity, staff support and improvement actions clearly.</div>
+ </div>
+ </div></section><section class="section" id="roadmap"><div class="container">
+ <div class="main-card">
+ <h2>30-60-90 Day Quality Improvement Strategy</h2>
+ <div class="grid-3">
+ <div class="mini-card"><h3>First 30 Days: Diagnose</h3><ul><li>Review all course files, assessment plans and IQA records.<li>RAG-rate risks across curriculum, staffing, assessment and learner progress.<li>Audit learner files and identify evidence gaps.<li>Hold initial standardisation with tutors, assessors and IQAs.</ul></div>
+ <div class="mini-card"><h3>Days 31-60: Stabilise</h3><ul><li>Update curriculum maps and assessment trackers.<li>Introduce risk-based IQA sampling.<li>Improve feedback quality and action tracking.<li>Deliver staff CPD on assessment, evidence and standardisation.</ul></div>
+ <div class="mini-card"><h3>Days 61-90: Improve</h3><ul><li>Complete quality improvement plan reviews.<li>Prepare EQA or external review evidence.<li>Use learner and employer feedback to refresh delivery.<li>Report progress to senior leadership with clear evidence.</ul></div>
+ </div>
+ <div class="quote">My approach to quality assurance is simple: start early, map clearly, support staff, check evidence, standardise judgement, listen to learners, act on data and improve continuously.</div>
+ </div>
+ </div></section><section class="section" id="digital"><div class="container">
+ <div class="main-card">
+ <h2>Digital Learning, Staff Development and Training Tools</h2>
+ <p>I have significant experience in digital, online and blended training environments. As Regional E-Learning Training Director, I established and managed 15 e-learning sites and approximately 75 staff across North West England. I continue to use digital learning, AI-supported resources and learner tracking systems where they improve access, engagement and quality.</p>
+ <div class="grid-2">
+ <div class="mini-card"><h3>Digital and Training Tools</h3><ul><li>Learning management systems and virtual learning environments.<li>Online course and workshop design.<li>Digital learning materials, templates and blended delivery frameworks.<li>Learner tracking, progress monitoring and feedback systems.<li>Digital assessment resources and online evidence collection.<li>AI-supported learning activities and Umer AI Learning Platform development.</ul></div>
+ <div class="mini-card"><h3>Staff Development Methods</h3><ul><li>Appraisals and performance reviews.<li>Training needs analysis and CPD planning.<li>Coaching and mentoring for tutors, trainers, assessors and IQAs.<li>Teaching observations and developmental feedback.<li>Standardisation meetings and communities of practice.<li>Support for unqualified assessors working towards assessor units.</ul></div>
+ </div>
+ <div class="quote">Technology is valuable when it strengthens teaching, improves access, supports tracking and helps learners apply knowledge with confidence.</div>
+ </div>
+ </div></section><section class="section" id="impact"><div class="container">
+ <div class="main-card">
+ <h2>Partnerships, Certification, Impact and Professional Value</h2>
+ <p>A major strength of my profile is connecting education with industry and employment. I have built partnerships and collaborative links with colleges, universities, employers, councils, public sector organisations and professional certification providers.</p>
+ <div class="grid-2">
+ <div class="mini-card"><h3>Industry and Partnership Engagement</h3><ul><li>Supporting articulation and partnership agreements with UAE institutions including HCT, Zayed University and Abu Dhabi Polytechnic.<li>Working with organisations including CompTIA, Microsoft, Cisco, ADNOC, Abu Dhabi Police and public sector stakeholders.<li>Supporting council, employer and community training needs.<li>Designing workforce and employability-focused programmes.<li>Promoting apprenticeships, placement opportunities and career progression routes.</ul></div>
+ <div class="mini-card"><h3>Certification and Training Centre Development</h3><ul><li>Established Cisco, Microsoft, CompTIA and Certiport laboratories at Al Jazirah Institute.<li>Secured recognition as an approved Cisco, Microsoft, CompTIA and IC3 training centre.<li>Embedded professional certification into academic and vocational programmes.<li>Supported learners to achieve both academic qualifications and industry-recognised credentials.</ul></div>
+ </div>
+ <h2 class="subhead">Major Training and Quality Achievements</h2>
+ <div class="grid-3">
+ <div class="mini-card"><h3>Learner Outcomes</h3><ul><li>95% pass rate for UAE National &quot;Yes to Work&quot; programme learners.<li>96% pass rate for academic learners.<li>100% pass rate for professional certification learners in selected programmes.</ul></div>
+ <div class="mini-card"><h3>Recognition</h3><ul><li>Certificate of Appreciation from ACTVET for work as Site Director, Assessor and Internal Quality Assurer.<li>ADVETI Employee of the Year Award and Certificate of Appreciation.<li>Leadership of national employability and workforce development training in the UAE.</ul></div>
+ <div class="mini-card"><h3>Professional Value</h3><ul><li>Lead education and training provision.<li>Improve curriculum and programme quality.<li>Strengthen internal quality assurance.<li>Develop staff and assessor capability.<li>Build employer and awarding body confidence.</ul></div>
+ </div>
+ <div class="quote">I aim to create and lead training provision that is credible, inclusive, industry-relevant and capable of helping learners, staff and organisations progress with confidence.</div>
+ </div>
+ </div></section></main><section class="related"><div class="container"><p class="eyebrow">Continue exploring</p><h2>Professional Resources</h2><div class="resource-grid"><a class="resource" href="covering-letter.html"><strong>Covering Letter</strong><span aria-hidden="true">↗</span></a><a class="resource" href="cpd.html"><strong>CPD Record</strong><span aria-hidden="true">↗</span></a><a class="resource" href="teaching-statement.html"><strong>Teaching Statement</strong><span aria-hidden="true">↗</span></a><a class="resource" href="teaching-style.html"><strong>Teaching Style &amp; Methodology</strong><span aria-hidden="true">↗</span></a><a class="resource" href="teaching-philosophy.html"><strong>Teaching Philosophy</strong><span aria-hidden="true">↗</span></a><a class="resource featured" href="index.html#resources"><strong>All resources</strong><span aria-hidden="true">↗</span></a></div></div></section><footer class="sub-footer"><div class="container"><span>Mohammed Umer · Education &amp; Digital Transformation Professional</span><a href="index.html">Return to portfolio ↗</a></div></footer><script>const button=document.querySelector('.menu-button'),nav=document.querySelector('#navigation');button.addEventListener('click',()=>{const open=button.getAttribute('aria-expanded')!=='true';button.setAttribute('aria-expanded',String(open));nav.classList.toggle('open',open)});(()=>{const sections=[...document.querySelectorAll('main section[id]')],links=[...document.querySelectorAll('.page-nav a')];function update(){let current=sections[0]?.id;sections.forEach(s=>{if(s.getBoundingClientRect().top<=190)current=s.id});links.forEach(a=>{const match=a.getAttribute('href')==='#'+current;a.classList.toggle('active',match);if(match)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current')})}addEventListener('scroll',update,{passive:true});update()})();</script><script>
+(()=>{'use strict';
+const entries=[{"id": "page-overview", "question": "Professional Overview", "keywords": ["overview"], "answer": "Professional Overview I am an education, training, curriculum and quality assurance leader with more than 20 years of international experience across the United Kingdom, United States, United Arab Emirates, China and wider professional training environments. My career brings together teaching, programme leadership, curriculum development, internal quality assurance, vocational education, workforce training, digital learning and organisational improvement. My work is strongest where education, assessment, compliance and real workplace needs meet. I design and lead training that is practical, learner-centred, compliant and useful for employers, awarding bodies, councils, training providers and learners. 20+ Years of international education and training leadership Level 1-7 Programme delivery, management and quality assurance range 15 E-lear… Read this section for the complete detail.", "links": [["Read this section", "#overview"]]}, {"id": "page-leadership", "question": "Strategic Training and Quality Leadership", "keywords": ["strategic", "training", "quality", "leadership"], "answer": "Strategic Training and Quality Leadership As Head of Education and Quality Assurance at HHF Training, I provide strategic leadership across education, quality assurance, curriculum standards, operational delivery, learner outcomes, staff performance, internal quality assurance and awarding body compliance. Leadership Responsibilities Leading curriculum quality across online, blended and face-to-face programmes. Managing IQA systems, assessment standardisation and quality improvement activity. Supporting tutors, assessors, instructional designers and administrative teams. Acting as a quality lead for awarding organisation requirements and EQA readiness. Leadership Frameworks I Use Continuous Quality Improvement cycles for reviewing and improving delivery. Reflective practice to support staff and organisational learning. Coaching and mentor… Read this section for the complete detail.", "links": [["Read this section", "#leadership"]]}, {"id": "page-curriculum", "question": "Curriculum Design and Programme Development", "keywords": ["curriculum", "design", "programme", "development"], "answer": "Curriculum Design and Programme Development I have extensive experience designing, reviewing and improving curriculum across academic, vocational, commercial and professional training programmes. My curriculum practice is not only about producing course content; it is about building a clear learning journey from initial engagement to achievement and progression. Constructive Alignment Outcomes, Teaching and Assessment I align learning outcomes, teaching activities and assessment evidence so learners are taught what they need to know and assessed fairly against the correct standards. Bloom's Taxonomy Progressive Learning Design I design activities that move learners from knowledge and understanding into application, analysis, evaluation and creation, especially in business, IT, cybersecurity and project-based learning. Scaffolding Step-by-… Read this section for the complete detail.", "links": [["Read this section", "#curriculum"]]}, {"id": "page-qa", "question": "Executive Quality Assurance Model", "keywords": ["executive", "quality", "assurance", "model"], "answer": "Executive Quality Assurance Model Excellent quality assurance is not achieved by checking paperwork at the end of a course. It starts with intent, curriculum design, assessment planning, staff readiness, learner support and evidence-informed monitoring. My approach is to build quality into the whole learner journey from course approval to progression. High quality assurance in education starts before the course is approved, continues through teaching and assessment, and is completed only when evidence shows that learners, staff, curriculum, assessment and outcomes have all been reviewed properly. 1. Need Labour market, learner and qualification review 2. Design Curriculum, outcomes and assessment strategy 3. Staff Tutor, assessor, IQA and resource readiness 4. Delivery Teaching, support, monitoring and feedback 5. Assess Evidence, feedbac… Read this section for the complete detail.", "links": [["Read this section", "#qa"]]}, {"id": "page-assessment", "question": "Assessment Methodology and Techniques", "keywords": ["assessment", "methodology", "techniques"], "answer": "Assessment Methodology and Techniques Assessment is one of the most important parts of my professional practice. I do not see assessment as a box-ticking exercise. I see it as a structured method for confirming competence, supporting improvement and giving learners clear evidence of progress. Holistic Assessment Evidence Across Multiple Criteria I use a holistic approach where one strong piece of evidence can be mapped across several learning outcomes or assessment criteria, provided it is valid, authentic and sufficient. This avoids unnecessary duplication and makes assessment more realistic. VARCS Evidence Model Valid, Authentic, Reliable, Current, Sufficient I check that learner evidence meets the recognised evidence principles. This helps ensure assessment decisions are fair, consistent and defensible during IQA or EQA review. Assessm… Read this section for the complete detail.", "links": [["Read this section", "#assessment"]]}, {"id": "page-iqa", "question": "IQA, Standardisation and Compliance Profile", "keywords": ["standardisation", "compliance", "profile"], "answer": "IQA, Standardisation and Compliance Profile Quality assurance is one of my strongest professional areas. I have worked as an assessor, internal verifier, lead IQA, curriculum manager, national training and quality assurance manager, and head of education and quality assurance. My IQA practice is built on fairness, consistency, evidence quality, assessor development and audit readiness. Risk-Based IQA Sampling Focused and Proportionate Sampling I use risk-based sampling by considering assessor experience, new qualifications, learner risk, previous issues, delivery mode and assessment method. This helps quality assurance focus on the areas that matter most. CAMERA Sampling Logic Candidates, Assessors, Methods, Evidence, Records, Assessment I use CAMERA-style thinking to make sure sampling covers different learners, assessors, assessment met… Read this section for the complete detail.", "links": [["Read this section", "#iqa"]]}, {"id": "page-routes", "question": "Higher Education and Vocational Quality Assurance Routes", "keywords": ["higher", "education", "vocational", "quality", "assurance", "routes"], "answer": "Higher Education and Vocational Quality Assurance Routes In Higher Education, quality assurance is built around academic standards, student academic experience, programme governance, assessment integrity, external examiner scrutiny, student voice and continuous enhancement. In vocational education, quality assurance confirms that learners can demonstrate competence against clear occupational or qualification standards. Higher Education Quality Assurance Route Validation Programme approval and standards Delivery Teaching and learning experience Moderation Assessment briefs and marking External External examiner review Review Boards and annual monitoring QAA Quality Code Academic Standards and Quality I use Quality Code principles to guide programme design, student engagement, assessment practice, monitoring, partnership work and enhancemen… Read this section for the complete detail.", "links": [["Read this section", "#routes"]]}, {"id": "page-cyber", "question": "Example: Level 4 Cybersecurity Course in Vocational Education", "keywords": ["example", "level", "cybersecurity", "course", "vocational", "education"], "answer": "Example: Level 4 Cybersecurity Course in Vocational Education This example shows how I would achieve high quality assurance for a Level 4 Cybersecurity course delivered in a vocational education setting. The same logic can be adapted for other technical, professional or regulated qualifications. Intent Why the course is needed Mapping LOs, ACs and evidence Resources Labs, tools and scenarios Delivery Teaching and practice Evidence Assignments and labs IQA Sampling and actions Progression Jobs, HE or certification Start Course Approval and Intent Confirm qualification requirements, employer need, learner entry criteria, progression routes, tutor competence, lab resources and assessment risks. Design Curriculum and Evidence Mapping Map all learning outcomes and assessment criteria to sessions, practical cybersecurity labs, written tasks, ob… Read this section for the complete detail.", "links": [["Read this section", "#cyber"]]}, {"id": "page-tools", "question": "Frameworks, Tools and Evidence Pack", "keywords": ["frameworks", "tools", "evidence", "pack"], "answer": "Frameworks, Tools and Evidence Pack The best quality assurance systems use a combination of educational frameworks, assessment controls, staff development methods and documented evidence. The aim is to make quality visible, consistent and improvable. QAA Quality Code HE quality, standards and enhancement reference point. OfS Conditions Quality, standards, academic experience and student outcomes. Ofqual Conditions Rules for regulated qualifications and awarding organisations. ETF Standards Reflective teaching and training practice in FE and skills. Constructive Alignment Align outcomes, teaching and assessment. Bloom's Taxonomy Design learning from knowledge to evaluation and creation. Kolb Use experience, reflection, theory and experimentation. UDL Plan accessible routes into learning for different learners. VARCS Check evidence quality … Read this section for the complete detail.", "links": [["Read this section", "#tools"]]}, {"id": "page-roadmap", "question": "30-60-90 Day Quality Improvement Strategy", "keywords": ["quality", "improvement", "strategy"], "answer": "30-60-90 Day Quality Improvement Strategy First 30 Days: Diagnose Review all course files, assessment plans and IQA records. RAG-rate risks across curriculum, staffing, assessment and learner progress. Audit learner files and identify evidence gaps. Hold initial standardisation with tutors, assessors and IQAs. Days 31-60: Stabilise Update curriculum maps and assessment trackers. Introduce risk-based IQA sampling. Improve feedback quality and action tracking. Deliver staff CPD on assessment, evidence and standardisation. Days 61-90: Improve Complete quality improvement plan reviews. Prepare EQA or external review evidence. Use learner and employer feedback to refresh delivery. Report progress to senior leadership with clear evidence. My approach to quality assurance is simple: start early, map clearly, support staff, check evidence, standa… Read this section for the complete detail.", "links": [["Read this section", "#roadmap"]]}, {"id": "page-digital", "question": "Digital Learning, Staff Development and Training Tools", "keywords": ["digital", "learning", "staff", "development", "training", "tools"], "answer": "Digital Learning, Staff Development and Training Tools I have significant experience in digital, online and blended training environments. As Regional E-Learning Training Director, I established and managed 15 e-learning sites and approximately 75 staff across North West England. I continue to use digital learning, AI-supported resources and learner tracking systems where they improve access, engagement and quality. Digital and Training Tools Learning management systems and virtual learning environments. Online course and workshop design. Digital learning materials, templates and blended delivery frameworks. Learner tracking, progress monitoring and feedback systems. Digital assessment resources and online evidence collection. AI-supported learning activities and Umer AI Learning Platform development. Staff Development Methods Appraisals … Read this section for the complete detail.", "links": [["Read this section", "#digital"]]}, {"id": "page-impact", "question": "Partnerships, Certification, Impact and Professional Value", "keywords": ["partnerships", "certification", "impact", "value"], "answer": "Partnerships, Certification, Impact and Professional Value A major strength of my profile is connecting education with industry and employment. I have built partnerships and collaborative links with colleges, universities, employers, councils, public sector organisations and professional certification providers. Industry and Partnership Engagement Supporting articulation and partnership agreements with UAE institutions including HCT, Zayed University and Abu Dhabi Polytechnic. Working with organisations including CompTIA, Microsoft, Cisco, ADNOC, Abu Dhabi Police and public sector stakeholders. Supporting council, employer and community training needs. Designing workforce and employability-focused programmes. Promoting apprenticeships, placement opportunities and career progression routes. Certification and Training Centre Development Est… Read this section for the complete detail.", "links": [["Read this section", "#impact"]]}] .concat([
+{id:'profile',question:'Who is Mohammed Umer?',keywords:['who','mohammed','umer','about','profile','summary','background'],answer:'Mohammed Umer is an education and training leader with over 20 years of international experience across the UK, USA, UAE and China. His work covers teaching, curriculum leadership, quality assurance, vocational education and organisational management.',links:[['Professional summary','index.html#profile']]},
+{id:'experience',question:'What is Mohammed’s leadership experience?',keywords:['leadership','leader','experience','career','employment','history','current','role','job','hhf','director','work'],answer:'His current role is Head of Education and Quality Assurance at HHF Training in the United Kingdom, since February 2023. Previous roles include Head of IT / Business Management at The ELA Education Group and Director of Teaching and Learning in Nanjing, China. The employment history contains all 11 roles. Three recent roles are shown first; use “View full career history” to reveal the rest, then expand a role to read its details.',links:[['Employment history','index.html#experience']]},
+{id:'teaching',question:'What subjects does Mohammed teach?',keywords:['teach','teaching','subjects','courses','programmes','levels','lecturer','business','cybersecurity','ai','artificial','intelligence'],answer:'His teaching includes Business Management, Project Management, IT, cybersecurity, programming, digital skills and Artificial Intelligence. The portfolio lists teaching across BTEC, HNC, HND, FdSc and bachelor’s programmes, alongside professional certification preparation.',links:[['Teaching contribution','index.html#teaching'],['Teaching Style','teaching-style.html'],['Teaching Statement','teaching-statement.html']]},
+{id:'philosophy',question:'Where can I read his teaching philosophy?',keywords:['philosophy','approach','inclusive','learner','centred','pedagogy'],answer:'His portfolio emphasises inclusive, learner-centred teaching, practical learning and continuous improvement. You can read the dedicated teaching philosophy and teaching statement pages for more detail.',links:[['Teaching Philosophy','teaching-philosophy.html'],['Teaching Statement','teaching-statement.html']]},
+{id:'quality',question:'Show quality assurance resources',keywords:['quality','assurance','iqa','eqa','external','internal','assessment','assessor','verification','verifier','standardisation','compliance','awarding'],answer:'His experience includes leading IQA frameworks, assessment monitoring, standardisation, compliance reviews, assessor development and preparation for external quality assurance visits. At HHF Training he leads education quality and acts as Quality Nominee for UK awarding organisations.',links:[['Quality Assurance','quality-assurance.html'],['Key competencies','index.html#expertise']]},
+{id:'qualifications',question:'What qualifications does he hold?',keywords:['qualifications','qualification','degree','degrees','academic','msc','bachelor','bcs','btec','education'],answer:'The portfolio lists an MSc in Business Management and Information Technology (2004–2005), a Bachelor of Computer Science (1993–1996), and BTEC First and National Diploma studies in Electronics and Computer Technology (1990–1993). Professional teaching and IT credentials are listed separately.',links:[['Academic qualifications','index.html#qualifications'],['Professional certifications','index.html#certifications']]},
+{id:'certifications',question:'What professional certifications are listed?',keywords:['certification','certifications','credentials','qtls','det','cisco','ccna','microsoft','comptia','ic3','ecdl','certificate'],answer:'Listed credentials include QTLS, Level 5 Diploma in Teaching, assessor credentials, Internal Quality Assurance, External Quality Assurance, Lead Internal Quality Assurance and ESLM Teaching English. IT credentials include IC3, ECDL, OCR, CompTIA A+, Microsoft credentials and Cisco CCNA. The page does not confirm current renewal status for individual certifications.',links:[['Professional certifications','index.html#certifications']]},
+{id:'achievements',question:'What are his main achievements?',keywords:['achievement','achievements','award','awards','outcomes','pass','rates','yes2work','centres','staff','recognition','impact'],answer:'Selected achievements include managing 15 e-learning centres and approximately 75 staff, and managing more than 70 staff and over 650 learners on YES2WORK. Recorded outcomes include a 95% YES2WORK pass rate, 96% academic pass rate and 100% pass rate for specified professional certification programmes. These relate to previous programmes, not a guarantee of future results. Recognition includes ADVETI Employee of the Year 2015/2016.',links:[['Achievements and recognition','index.html#achievements'],['Employment details','index.html#experience']]},
+{id:'learning',question:'Explore My Learning Hub',keywords:['learning','platform','online','digital','elearning','blended','resources','training'],answer:'The learning platform is linked from the Digital Learning portfolio card and Professional Resources. His experience includes online, blended and face-to-face delivery, digital course development and regional e-learning operations.',links:[['My Learning Hub','https://umeraio.github.io/home/'],['Professional resources','index.html#resources']]},
+{id:'cpd',question:'Where is his CPD record?',keywords:['cpd','development','record','mentoring','coaching'],answer:'The CPD Record has its own linked page in Professional Resources. His background also includes staff mentoring, assessor development, appraisals and professional development planning.',links:[['CPD Record','cpd.html']]},
+{id:'publications',question:'Where are his articles and publications?',keywords:['publication','publications','article','articles','library','research','writing','submitted','papers'],answer:'The portfolio lists six cybersecurity and information security manuscripts as submitted. They are not presented as accepted or published articles. You can also explore the separate Article Library.',links:[['Submitted manuscripts','index.html#publications'],['Article Library','https://mumer.org/ai-article-index.html']]},
+{id:'cover',question:'Where is the covering letter?',keywords:['cover','covering','letter','cv','resume','download'],answer:'The Covering Letter is available through Professional Resources. The main page also contains the full career history, qualifications and certifications. A separate downloadable CV file has not been supplied for this version.',links:[['Covering Letter','covering-letter.html'],['Employment history','index.html#experience']]},
+{id:'contact',question:'How can I contact him?',keywords:['contact','email','phone','telephone','mobile','number','address','reach','linkedin','book','booking'],answer:'Phone numbers and email addresses are not published on this portfolio. You can use the existing LinkedIn profile to connect with Mohammed Umer.',links:[['LinkedIn','https://www.linkedin.com/in/umeredu']]},
+{id:'countries',question:'Where has he worked?',keywords:['countries','country','international','uk','usa','uae','china','british','nationality','location','based'],answer:'His professional experience spans the United Kingdom, United States, United Arab Emirates and China. His current role is in the United Kingdom. The profile lists his nationality as British; no personal address is published.',links:[['Professional summary','index.html#profile'],['Employment history','index.html#experience']]}
+]);
+const $=(tag,text,parent,cls)=>{const n=document.createElement(tag);if(text)n.textContent=text;if(cls)n.className=cls;if(parent)parent.append(n);return n};
+const launch=$('button','',document.body,'ha-launch');launch.type='button';launch.setAttribute('aria-label','Open portfolio assistant');launch.setAttribute('aria-expanded','false');launch.setAttribute('aria-controls','portfolio-assistant');const image=$('img','',launch);image.src='assets/portfolio-adviser.png';image.alt='';$('span','Ask about me',launch);
+const panel=$('section','',document.body,'ha-panel');panel.id='portfolio-assistant';panel.hidden=true;panel.setAttribute('role','dialog');panel.setAttribute('aria-labelledby','assistant-title');const head=$('header','',panel,'ha-head');const title=$('div','',head);const headerAvatar=$('img','',head,'ha-head-avatar');headerAvatar.src='assets/portfolio-adviser.png';headerAvatar.alt='';head.insertBefore(headerAvatar,title);$('h2','Portfolio Assistant',title).id='assistant-title';$('small','Mohammed Umer · Professional portfolio',title);const close=$('button','×',head,'ha-close');close.type='button';close.setAttribute('aria-label','Close portfolio assistant');$('div','Answers from this portfolio. Chats stay in your browser and are not saved or sent.',panel,'ha-context');const messages=$('div','',panel,'ha-messages');messages.setAttribute('role','log');messages.setAttribute('aria-live','polite');messages.setAttribute('aria-relevant','additions');
+const form=$('form','',panel,'ha-form');const input=$('input','',form);input.placeholder='Ask about experience, teaching…';input.setAttribute('aria-label','Your portfolio question');input.maxLength=600;input.required=true;input.autocomplete='off';const send=$('button','Send',form);send.type='submit';const foot=$('div','',panel,'ha-foot');const reset=$('button','New conversation',foot);reset.type='button';$('span','Portfolio answers · No external AI',foot);
+function scroll(){messages.scrollTop=messages.scrollHeight}function message(text,user=false){const m=$('div','',messages,'ha-message'+(user?' ha-user':''));$('p',text,m);scroll();return m}function choice(parent,label,action){const b=$('button',label,parent,'ha-choice');b.type='button';b.addEventListener('click',action);return b}
+function hide(){panel.hidden=true;launch.hidden=false;launch.setAttribute('aria-expanded','false');launch.focus()}
+function answer(e){const m=message(e.answer);const a=$('div','',m,'ha-actions');e.links.forEach(([label,url])=>{const link=$('a',label+' ↗',a,'ha-choice');link.href=url;if(url.startsWith('https:')){link.target='_blank';link.rel='noopener noreferrer'}else link.addEventListener('click',hide)});scroll()}
+function greeting(){messages.replaceChildren();const m=message('Hello! Ask about this Training, Curriculum and Quality Assurance page, or explore Mohammed Umer’s wider professional portfolio.');const a=$('div','',m,'ha-actions');["page-overview", "page-leadership", "page-curriculum", "experience", "quality", "contact"].forEach(id=>{const e=entries.find(e=>e.id===id);choice(a,e.question,()=>answer(e))});scroll()}
+const norm=q=>q.toLowerCase().replace(/[’']/g,'').replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
+function respond(q){const n=norm(q);if(/^(hi|hello|hey|good morning|good afternoon)$/.test(n)){message('Hello! Ask about Mohammed’s career, qualifications, teaching, quality assurance or professional resources.');return}if(/^(thanks|thank you|thankyou)$/.test(n)){message('You’re welcome. Is there another part of the portfolio you would like to explore?');return}
+ const ranked=entries.map(e=>({e,score:e.keywords.reduce((v,k)=>v+(new RegExp('\\b'+k+'\\b').test(n)?1:0),0)+(n===norm(e.question)?10:0)})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score);
+ if(!ranked.length){const m=message('I do not have a reliable answer to that in the portfolio. I can help with experience, qualifications, teaching, quality assurance, CPD and resource links. I cannot browse other websites or confirm information that is not provided here.');const a=$('div','',m,'ha-actions');choice(a,'Explore his experience',()=>answer(entries.find(e=>e.id==='experience')));choice(a,'Show professional resources',()=>answer(entries.find(e=>e.id==='learning')));scroll();return}
+ const direct=ranked.find(x=>['contact','cpd','philosophy','publications'].includes(x.e.id));if(direct){answer(direct.e);return}if(ranked.length>1&&ranked[0].score===ranked[1].score){const m=message('Which part would you like to explore?');const a=$('div','',m,'ha-actions');ranked.slice(0,3).forEach(x=>choice(a,x.e.question,()=>answer(x.e)));scroll();return}answer(ranked[0].e)}
+launch.addEventListener('click',()=>{panel.hidden=false;launch.hidden=true;launch.setAttribute('aria-expanded','true');if(!messages.children.length)greeting();input.focus()});close.addEventListener('click',hide);panel.addEventListener('keydown',e=>{if(e.key==='Escape')hide()});reset.addEventListener('click',()=>{greeting();input.value='';input.focus()});form.addEventListener('submit',e=>{e.preventDefault();const q=input.value.trim();if(!q)return;input.value='';if(/\b(?:password|otp|verification code|recovery key)\s*(?:is|:|=)\s*\S+|[\w.+-]+@[\w.-]+\.[a-z]{2,}|(?:\+?\d[\s()-]*){9,}/i.test(q)){message('Please do not enter personal contact details, passwords or security codes. That message has not been displayed or sent. Ask a question about the portfolio instead.');return}message(q,true);respond(q)});
+})();
+</script></body></html>
